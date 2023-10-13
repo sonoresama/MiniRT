@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:38:21 by eorer             #+#    #+#             */
-/*   Updated: 2023/09/26 11:41:23 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/13 15:38:52 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ typedef struct	s_ray{
 	t_vect	direction;
 }	t_ray;
 
+typedef struct	s_plan{
+	t_vect	point;
+	t_vect	direction;
+	t_vect	color;
+}	t_plan;
+
 typedef	struct	s_sphere{
 	t_vect	center;
 	t_vect	color;
@@ -81,6 +87,7 @@ typedef struct s_data {
 	void	*mlx;
 	void	*win;
 	t_screen screen;
+	t_sphere	sphere;
 	t_img	mlx_img;
 	int	img_width;
 	int	img_height;
@@ -90,8 +97,20 @@ typedef struct s_data {
 
 // FONCTIONS PROGRAM //
 
-void	draw_sphere(t_data *data, t_sphere *sphere);
+	/* Sphere */
+//void	is_hiting_sphere(t_ray ray, t_sphere sphere, t_vect **hit_point);
+float	is_hiting_sphere(t_ray ray, t_sphere sphere);
+float	is_hiting_plan(t_ray ray, t_plan plan);
+
+	/*Image*/
+void	draw_scene(t_data *data);
+
+	/*Ray*/
 void	generate_ray(t_ray *ray, t_data *data, t_pixel pixel);
+
+	/*Camera*/
+void	generate_rot_matrix(t_data *data);
+t_vect	camera_to_world(double matrix[3][3], t_vect *vector, t_vect dest);
 t_vect	rotate_cam(double angle, char axis, t_vect vector);
 
 // VECTORS UTILITIES //

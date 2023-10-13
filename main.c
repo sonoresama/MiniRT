@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/09/26 11:45:24 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/13 14:57:28 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,31 @@
 #define WIDTH 800
 #define HEIGHT 450 
 
+void	handle_key(int keycode, t_data *data)
+{
+	if (keycode == XK_Left)
+		data->camera.look.x -= 0.1;
+	else if (keycode == XK_Right)
+		data->camera.look.x += 0.1;
+	else if (keycode == XK_Up)
+		data->camera.look.y -= 0.1;
+	else if (keycode == XK_Down)
+		data->camera.look.y += 0.1;
+	generate_rot_matrix(data);
+}
+
 int	keypress(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape)
 	{
 		mlx_destroy_window(data->mlx, data->win);
 		data->win = NULL;
+		return (0);
 	}
+	else
+		handle_key(keycode, data);
+	draw_scene(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->mlx_img.img, 0, 0);
 	return (0);
 }
 
@@ -63,7 +81,7 @@ int	init_data(t_data *data)
 	data->img_width = WIDTH;
 	data->img_height = HEIGHT;
 	data->camera.pos.x = 0;
-	data->camera.pos.y = 10;
+	data->camera.pos.y = 0;
 	data->camera.pos.z = 0;
 	data->camera.look.x = 0;
 	data->camera.look.y = 0;
@@ -81,26 +99,21 @@ void	init_sphere(t_sphere *sphere)
 	sphere->radius = 10;
 	sphere->center.x = 0;
 	sphere->center.y = 0;
-	sphere->center.z = -20;
+	sphere->center.z = -60;
 	sphere->color.x = 255;
 	sphere->color.y = 255;
 	sphere->color.z = 155;
 }
 
-void	print_vect(t_vect vect)
-{
-	printf("(%f %f %f)\n", vect.x, vect.y, vect.z);
-}
-
 int	main(void)
 {
 	t_data		data;
-	t_sphere	sphere;
 
 	if (init_data(&data))
 		return (1);
-	init_sphere(&sphere);
-	draw_sphere(&data, &sphere);
+	init_sphere(&data.sphere);
+	generate_rot_matrix(&data);
+	draw_scene(&data);
 	mlx_put_image_to_window(data.mlx, data.win, data.mlx_img.img, 0, 0);
 	mlx_loop_hook(data.mlx, &render, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, &keypress, &data);
