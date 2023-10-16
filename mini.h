@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:38:21 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/13 15:38:52 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/16 13:28:27 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include "minilibx-linux/mlx_int.h"
 
 // MACROS //
+
+#define WIDTH 800
+#define HEIGHT 450 
 
 // STRUCTURES //
 
@@ -57,6 +60,7 @@ typedef	struct	s_sphere{
 	t_vect	center;
 	t_vect	color;
 	int	radius;
+	struct s_sphere	*next;
 }	t_sphere;
 
 typedef struct	s_screen{
@@ -87,23 +91,32 @@ typedef struct s_data {
 	void	*mlx;
 	void	*win;
 	t_screen screen;
-	t_sphere	sphere;
+	t_sphere	*sphere;
+//	t_plan	*plan;
+//	t_cylindre	*cylindre;
 	t_img	mlx_img;
 	int	img_width;
 	int	img_height;
 	int	fov;
+	t_vect	hit_point;
+	void*	closest_obj;
 	t_camera	camera;
 }	t_data;
 
 // FONCTIONS PROGRAM //
 
+	/* Init */
+
+int	init_data(t_data *data);
+
 	/* Sphere */
 //void	is_hiting_sphere(t_ray ray, t_sphere sphere, t_vect **hit_point);
 float	is_hiting_sphere(t_ray ray, t_sphere sphere);
-float	is_hiting_plan(t_ray ray, t_plan plan);
+float	is_hiting_plan(t_ray ray, t_data *data);
 
 	/*Image*/
 void	draw_scene(t_data *data);
+int		get_color(t_data *data);
 
 	/*Ray*/
 void	generate_ray(t_ray *ray, t_data *data, t_pixel pixel);

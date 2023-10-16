@@ -6,11 +6,16 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:29:27 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/13 15:14:08 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/16 13:59:05 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+//void	set_closest_obj(t_data *data)
+//{
+//
+//}
 
 void	draw_scene(t_data *data)
 {
@@ -18,8 +23,7 @@ void	draw_scene(t_data *data)
 	int	j;
 	t_ray	ray;
 	float t;
-//	t_vect	hit_point;
-//	t_vect	*ptr;
+	int	color;
 
 	i = 0;
 	j = 0;
@@ -27,11 +31,12 @@ void	draw_scene(t_data *data)
 	{
 		while (j < data->img_height)
 		{
-			ptr = &hit_point;
 			generate_ray(&ray, data, (t_pixel){i, j});
-			is_hiting_sphere(ray, data->sphere, &ptr);
-			if (ptr)
-				my_mlx_pixel_put(&data->mlx_img, i, j, init_color(0, 255, 255, 150));
+			t = is_hiting_sphere(ray, *data->sphere);
+			data->hit_point = add_vectors(ray.origin, mult_const_vector(ray.direction, t));
+			color = get_color(data);
+			if (t != -1)
+				my_mlx_pixel_put(&data->mlx_img, i, j, color);
 			else
 				my_mlx_pixel_put(&data->mlx_img, i, j, 0);
 			j++;
