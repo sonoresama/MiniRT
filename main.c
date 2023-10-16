@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/16 13:24:32 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/16 18:32:04 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,19 @@ void	print_mat_x3(double matrix[3][3])
 	}
 }
 
+void	free_sphere(t_data *data)
+{
+	t_sphere *tmp;
+
+	tmp = data->sphere;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		free(data->sphere);
+		data->sphere = tmp;
+	}
+}
+
 int	main(void)
 {
 	t_data		data;
@@ -79,4 +92,6 @@ int	main(void)
 	mlx_destroy_image(data.mlx, data.mlx_img.img);
 	mlx_destroy_display(data.mlx);
 	free(data.mlx);
+	free_sphere(&data);
+	return (0);
 }

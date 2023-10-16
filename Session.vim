@@ -11,7 +11,7 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-$argadd draw_sphere.c
+$argadd scene.c
 set stal=2
 tabnew
 tabnew
@@ -19,12 +19,10 @@ tabnew
 tabnew
 tabnew
 tabnew
-tabnew
-tabnew
 tabrewind
-edit sphere.c
+edit main.c
 argglobal
-balt draw_sphere.c
+balt scene.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -35,16 +33,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 66 - ((35 * winheight(0) + 18) / 36)
+let s:l = 96 - ((35 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 66
-normal! 0
+keepjumps 96
+normal! 015|
 tabnext
-edit scene.c
+edit init.c
 argglobal
-balt sphere.c
+balt main.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -55,16 +53,35 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 20 - ((13 * winheight(0) + 18) / 36)
+let s:l = 57 - ((11 * winheight(0) + 18) / 36)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 57
+normal! 024|
+tabnext
+edit scene.c
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 20 - ((0 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 20
-normal! 012|
+normal! 0
 tabnext
-edit utils.c
+edit color.c
 argglobal
-balt sphere.c
+balt scene.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -75,16 +92,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 15 - ((8 * winheight(0) + 18) / 36)
+let s:l = 38 - ((18 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 15
-normal! 0
+keepjumps 38
+normal! 044|
 tabnext
-edit maths_utils.c
+edit sphere.c
 argglobal
-balt utils.c
+balt scene.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -95,76 +112,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 48 - ((35 * winheight(0) + 18) / 36)
+let s:l = 36 - ((13 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 48
-normal! 0
-tabnext
-edit main.c
-argglobal
-balt sphere.c
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 108 - ((24 * winheight(0) + 18) / 36)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 108
-normal! 0
-tabnext
-edit utils.c
-argglobal
-balt main.c
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 25 - ((24 * winheight(0) + 18) / 36)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 25
-normal! 0
-tabnext
-edit camera.c
-argglobal
-balt main.c
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 47 - ((35 * winheight(0) + 18) / 36)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 47
-normal! 0
+keepjumps 36
+normal! 024|
 tabnext
 edit ray.c
 argglobal
-balt draw_sphere.c
+balt sphere.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -175,16 +132,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 37 - ((35 * winheight(0) + 18) / 36)
+let s:l = 54 - ((23 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 37
-normal! 0
+keepjumps 54
+normal! 017|
 tabnext
 edit mini.h
 argglobal
-balt draw_sphere.c
+balt scene.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -195,23 +152,24 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 53 - ((11 * winheight(0) + 18) / 36)
+let s:l = 136 - ((24 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 53
-normal! 018|
-tabnext 1
+keepjumps 136
+normal! 011|
+tabnext 4
 set stal=1
-badd +15 draw_sphere.c
+badd +1 main.c
+badd +1 scene.c
+badd +1 init.c
+badd +0 color.c
+badd +1 sphere.c
 badd +1 mini.h
+badd +16 mlx_utilities.c
 badd +0 ray.c
-badd +0 sphere.c
-badd +0 scene.c
-badd +0 main.c
-badd +0 camera.c
-badd +0 utils.c
-badd +0 maths_utils.c
+badd +11 utils.c
+badd +111 maths_utils.c
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif

@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:38:21 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/16 13:28:27 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/16 19:32:26 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 # define MINI_H
 
 # include <stdio.h>
+# include <stdlib.h>
 # include <math.h>
+# include <time.h>
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 
 // MACROS //
 
-#define WIDTH 800
-#define HEIGHT 450 
+# define WIDTH 1600
+# define HEIGHT 900 
+# define SAMPLES_PER_PIXEL 1 
+# define MAX_DEPTH 3
+# define SPHERE 10
+# define PLAN 11
+# define CYLINDRE 12
+# define BACKGROUND 13
 
 // STRUCTURES //
 
@@ -33,9 +41,9 @@ typedef struct	s_pixel{
 }	t_pixel;
 
 typedef struct	s_vect{
-	double	x;
-	double	y;
-	double	z;
+	float	x;
+	float	y;
+	float	z;
 }	t_vect;
 
 typedef struct	s_vect4{
@@ -62,6 +70,13 @@ typedef	struct	s_sphere{
 	int	radius;
 	struct s_sphere	*next;
 }	t_sphere;
+
+typedef struct	s_hit_point{
+	t_vect	point;
+	int		type;
+	float	t;
+	void*	obj;
+}	t_hit_point;
 
 typedef struct	s_screen{
 	float	focal_length;//distance entre l'observateurice et le screen
@@ -98,28 +113,31 @@ typedef struct s_data {
 	int	img_width;
 	int	img_height;
 	int	fov;
-	t_vect	hit_point;
-	void*	closest_obj;
+	t_hit_point	hit_point;
 	t_camera	camera;
 }	t_data;
 
 // FONCTIONS PROGRAM //
 
 	/* Init */
-
 int	init_data(t_data *data);
 
 	/* Sphere */
 //void	is_hiting_sphere(t_ray ray, t_sphere sphere, t_vect **hit_point);
 float	is_hiting_sphere(t_ray ray, t_sphere sphere);
 float	is_hiting_plan(t_ray ray, t_data *data);
+float	get_closest_sphere(t_ray ray, t_data *data, t_hit_point *hit_point);
+t_vect	v_normal_sphere(t_sphere sphere, t_vect hit_point);
 
 	/*Image*/
 void	draw_scene(t_data *data);
-int		get_color(t_data *data);
+t_vect	get_color(t_ray ray, t_data *data, int depth);
+int		get_sampled_color(t_vect color);
+t_hit_point	set_closest_obj(t_ray ray, t_data *data);
 
 	/*Ray*/
-void	generate_ray(t_ray *ray, t_data *data, t_pixel pixel);
+t_ray	generate_ray(t_data *data, t_pixel pixel);
+t_ray	new_ray(t_vect origin, t_vect direction);
 
 	/*Camera*/
 void	generate_rot_matrix(t_data *data);

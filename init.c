@@ -6,13 +6,14 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:19:28 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/16 13:25:34 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/16 18:52:04 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
 t_sphere*	init_sphere(void);
+t_sphere*	init_sphere2(void);
 
 int	init_data(t_data *data)
 {
@@ -39,6 +40,7 @@ int	init_data(t_data *data)
 	data->screen.aspect_ratio = (double)WIDTH / (double)HEIGHT;
 	data->screen.height = data->screen.width / data->screen.aspect_ratio;
 	data->sphere = init_sphere();
+	data->sphere->next = init_sphere2();
 	return (0);
 }
 
@@ -50,12 +52,22 @@ t_sphere*	init_sphere(void)
 	if (!sphere)
 		return (NULL);
 	sphere->radius = 10;
-	sphere->center.x = 0;
-	sphere->center.y = 0;
-	sphere->center.z = -60;
-	sphere->color.x = 255;
-	sphere->color.y = 255;
-	sphere->color.z = 155;
+	sphere->center = new_vector(0, 0, -60);
+	sphere->color = new_vector(255, 255, 155);
+	sphere->next = NULL;
+	return (sphere);
+}
+
+t_sphere*	init_sphere2(void)
+{
+	t_sphere *sphere;
+
+	sphere = malloc(sizeof(t_sphere));
+	if (!sphere)
+		return (NULL);
+	sphere->radius = 100;
+	sphere->center = new_vector(0, 100, -100);
+	sphere->color = new_vector(155, 255, 155);
 	sphere->next = NULL;
 	return (sphere);
 }
