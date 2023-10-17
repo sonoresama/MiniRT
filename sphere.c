@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:20:19 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/16 19:21:22 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/17 15:35:00 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,6 @@ float	is_hiting_sphere(t_ray ray, t_sphere sphere)
 	return (t);
 }
 
-t_vect	v_normal_sphere(t_sphere sphere, t_vect hit_point)
-{
-	t_vect	result;
-
-	result = sous_vectors(hit_point, sphere.center);
-	ft_normalize(&result);
-	return (result);
-}
-
 float	get_closest_sphere(t_ray ray, t_data *data, t_hit_point *hit_point)
 {
 	t_sphere	*tmp;
@@ -62,7 +53,6 @@ float	get_closest_sphere(t_ray ray, t_data *data, t_hit_point *hit_point)
 		{
 			min_dist = t;
 			hit_point->obj = tmp;
-			hit_point->type = SPHERE;
 		}
 		tmp = tmp->next;
 	}

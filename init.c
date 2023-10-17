@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:19:28 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/16 18:52:04 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/17 17:43:36 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_sphere*	init_sphere(void);
 t_sphere*	init_sphere2(void);
+t_lights*	init_lights(void);
 
 int	init_data(t_data *data)
 {
@@ -28,12 +29,8 @@ int	init_data(t_data *data)
 		return (1);
 	data->img_width = WIDTH;
 	data->img_height = HEIGHT;
-	data->camera.pos.x = 0;
-	data->camera.pos.y = 0;
-	data->camera.pos.z = 0;
-	data->camera.look.x = 0;
-	data->camera.look.y = 0;
-	data->camera.look.z = -1;
+	data->camera.pos = new_vector(0, 0, 0);
+	data->camera.look = new_vector(0, 0, -1);
 	data->camera.fov = 90;
 	data->screen.focal_length = 1.0;
 	data->screen.width = 4.0;
@@ -41,6 +38,8 @@ int	init_data(t_data *data)
 	data->screen.height = data->screen.width / data->screen.aspect_ratio;
 	data->sphere = init_sphere();
 	data->sphere->next = init_sphere2();
+	data->albedo = 0.5;
+	data->lights = init_lights();
 	return (0);
 }
 
@@ -55,6 +54,7 @@ t_sphere*	init_sphere(void)
 	sphere->center = new_vector(0, 0, -60);
 	sphere->color = new_vector(255, 255, 155);
 	sphere->next = NULL;
+	sphere->normal = &v_normal_sphere;
 	return (sphere);
 }
 
@@ -68,6 +68,21 @@ t_sphere*	init_sphere2(void)
 	sphere->radius = 100;
 	sphere->center = new_vector(0, 100, -100);
 	sphere->color = new_vector(155, 255, 155);
+	sphere->normal = &v_normal_sphere;
 	sphere->next = NULL;
 	return (sphere);
+}
+
+t_lights*	init_lights(void)
+{
+	t_lights	*lights;
+
+	lights = (t_lights *)malloc(sizeof(t_lights));
+	if (!lights)
+		return (NULL);
+	lights->intensity = 1.0;
+	lights->coord = new_vector(0, 10, 60);
+	lights->color = new_vector(255, 155, 255);
+	lights->next = NULL;
+	return (lights);
 }

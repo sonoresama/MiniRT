@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:38:21 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/16 19:32:26 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/17 13:41:13 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,103 +19,18 @@
 # include <time.h>
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
+# include "structures.h"
 
 // MACROS //
 
 # define WIDTH 1600
 # define HEIGHT 900 
 # define SAMPLES_PER_PIXEL 1 
-# define MAX_DEPTH 3
+# define MAX_DEPTH 1
 # define SPHERE 10
 # define PLAN 11
 # define CYLINDRE 12
 # define BACKGROUND 13
-
-// STRUCTURES //
-
-typedef unsigned int	t_ui;
-
-typedef struct	s_pixel{
-	int	x;
-	int	y;
-}	t_pixel;
-
-typedef struct	s_vect{
-	float	x;
-	float	y;
-	float	z;
-}	t_vect;
-
-typedef struct	s_vect4{
-	double	x;
-	double	y;
-	double	z;
-	double	w;
-}	t_vect4;
-
-typedef struct	s_ray{
-	t_vect	origin;
-	t_vect	direction;
-}	t_ray;
-
-typedef struct	s_plan{
-	t_vect	point;
-	t_vect	direction;
-	t_vect	color;
-}	t_plan;
-
-typedef	struct	s_sphere{
-	t_vect	center;
-	t_vect	color;
-	int	radius;
-	struct s_sphere	*next;
-}	t_sphere;
-
-typedef struct	s_hit_point{
-	t_vect	point;
-	int		type;
-	float	t;
-	void*	obj;
-}	t_hit_point;
-
-typedef struct	s_screen{
-	float	focal_length;//distance entre l'observateurice et le screen
-	float	width;
-	float	height;
-	float	aspect_ratio;
-}	t_screen;
-
-typedef struct s_img {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	int		width;
-	int		height;
-}	t_img;
-
-typedef struct s_camera{
-	t_vect	pos;
-	t_vect	look;
-	double	matrix[3][3];
-	double	fov;
-}	t_camera;
-
-typedef struct s_data {
-	void	*mlx;
-	void	*win;
-	t_screen screen;
-	t_sphere	*sphere;
-//	t_plan	*plan;
-//	t_cylindre	*cylindre;
-	t_img	mlx_img;
-	int	img_width;
-	int	img_height;
-	int	fov;
-	t_hit_point	hit_point;
-	t_camera	camera;
-}	t_data;
 
 // FONCTIONS PROGRAM //
 
@@ -131,9 +46,10 @@ t_vect	v_normal_sphere(t_sphere sphere, t_vect hit_point);
 
 	/*Image*/
 void	draw_scene(t_data *data);
-t_vect	get_color(t_ray ray, t_data *data, int depth);
+t_vect	get_color(t_ray ray, t_data *data, int depth, t_vect prev_color);
 int		get_sampled_color(t_vect color);
 t_hit_point	set_closest_obj(t_ray ray, t_data *data);
+t_vect	get_sphere_color(t_hit_point hit_point);
 
 	/*Ray*/
 t_ray	generate_ray(t_data *data, t_pixel pixel);

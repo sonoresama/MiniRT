@@ -19,6 +19,8 @@ tabnew
 tabnew
 tabnew
 tabnew
+tabnew
+tabnew
 tabrewind
 edit main.c
 argglobal
@@ -50,15 +52,25 @@ setlocal fdi=#
 setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
-setlocal fen
+setlocal nofen
 silent! normal! zE
+20,44fold
+47,59fold
+62,74fold
+77,88fold
 let &fdl = &fdl
-let s:l = 57 - ((11 * winheight(0) + 18) / 36)
+20
+normal! zo
+47
+normal! zo
+77
+normal! zo
+let s:l = 84 - ((34 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 57
-normal! 024|
+keepjumps 84
+normal! 035|
 tabnext
 edit scene.c
 argglobal
@@ -71,17 +83,47 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
+16,20fold
+23,42fold
+46,74fold
 let &fdl = &fdl
-let s:l = 20 - ((0 * winheight(0) + 18) / 36)
+46
+normal! zo
+let s:l = 64 - ((48 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 20
+keepjumps 64
 normal! 0
 tabnext
 edit color.c
 argglobal
-balt scene.c
+balt sphere.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+32,48fold
+51,58fold
+61,70fold
+let &fdl = &fdl
+32
+normal! zo
+let s:l = 24 - ((13 * winheight(0) + 18) / 36)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 24
+normal! 044|
+tabnext
+edit maths_utils.c
+argglobal
+balt color.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -92,12 +134,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 38 - ((18 * winheight(0) + 18) / 36)
+let s:l = 16 - ((0 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 38
-normal! 044|
+keepjumps 16
+normal! 0
 tabnext
 edit sphere.c
 argglobal
@@ -112,12 +154,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 36 - ((13 * winheight(0) + 18) / 36)
+let s:l = 12 - ((0 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 36
-normal! 024|
+keepjumps 12
+normal! 0
 tabnext
 edit ray.c
 argglobal
@@ -132,12 +174,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 54 - ((23 * winheight(0) + 18) / 36)
+let s:l = 49 - ((18 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 54
-normal! 017|
+keepjumps 49
+normal! 016|
 tabnext
 edit mini.h
 argglobal
@@ -152,24 +194,49 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 136 - ((24 * winheight(0) + 18) / 36)
+let s:l = 28 - ((27 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 136
-normal! 011|
-tabnext 4
+keepjumps 28
+normal! 029|
+tabnext
+edit structures.h
+argglobal
+balt mini.h
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 89 - ((6 * winheight(0) + 18) / 36)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 89
+normal! 018|
+tabnext 2
 set stal=1
 badd +1 main.c
-badd +1 scene.c
+badd +46 scene.c
 badd +1 init.c
-badd +0 color.c
+badd +1 color.c
 badd +1 sphere.c
+badd +1 ray.c
 badd +1 mini.h
-badd +16 mlx_utilities.c
-badd +0 ray.c
-badd +11 utils.c
-badd +111 maths_utils.c
+badd +1 mlx_utilities.c
+badd +1 utils.c
+badd +21 maths_utils.c
+badd +43 ~/.vimrc
+badd +0 structures.h
+badd +3 utils.o
+badd +15 normal_vector.c
+badd +0 normal_vector.c\\
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -180,7 +247,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
