@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/19 17:11:52 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 17:51:02 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ t_ray	cast_ray(t_data *data, t_pixel pixel);
 
 // VECTORS UTILITIES //
 
-void	ft_normalize(t_vect *vector);
+float	ft_norm(t_vect vect);
+t_vect	ft_normalize(t_vect vector);
 t_vect	add_vectors(t_vect vect_a, t_vect vect_b);
 t_vect	sous_vectors(t_vect vect_a, t_vect vect_b);
 t_vect	mult_const_vector(t_vect vector, double c);

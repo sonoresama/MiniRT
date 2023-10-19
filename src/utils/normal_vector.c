@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:34:29 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/17 15:34:55 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 17:52:05 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ t_vect	v_normal_sphere(t_sphere sphere, t_vect hit_point)
 	t_vect	result;
 
 	result = sous_vectors(hit_point, sphere.center);
-	ft_normalize(&result);
+	result = ft_normalize(result);
 	return (result);
 }

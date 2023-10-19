@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 13:39:50 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 14:48:16 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 17:36:16 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ typedef struct s_data {
 	int	img_width;
 	int	img_height;
 	float	albedo;
+	int	count;
 }	t_data;
 
 #endif

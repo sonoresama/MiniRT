@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:32:23 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 16:39:45 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 17:50:53 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,24 @@ t_vect	rotate_cam(double angle, char axis, t_vect vector)
 //	return (result);
 //}
 
-void	ft_normalize(t_vect *vector)
+t_vect	ft_normalize(t_vect vector)
+{
+	float	norm;
+	t_vect	vect;
+
+	norm = ft_norm(vector);
+	if (!norm)
+		return (new_vector(0, 0, 0));
+	vect.x = vector.x / norm;
+	vect.y = vector.y / norm;
+	vect.z = vector.z / norm;
+	return (vect);
+}
+
+float	ft_norm(t_vect vect)
 {
 	float	norm;
 
-	norm = sqrt(pow(vector->x, 2) + pow(vector->x, 2) + pow(vector->x, 2));
-	if (!norm)
-		return ;
-	vector->x = vector->x / norm;
-	vector->y = vector->y / norm;
-	vector->z = vector->z / norm;
+	norm = sqrt(pow(vect.x, 2) + pow(vect.y, 2) + pow(vect.z, 2));
+	return (norm);
 }

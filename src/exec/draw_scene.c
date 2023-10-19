@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:58:09 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 17:22:03 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 18:21:54 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	draw_scene(t_data *data)
 	int	color;
 
 	i = 0;
-	j = 0;
 	while (i < data->img_width)
 	{
+		j = 0;
 		while (j < data->img_height)
 		{
 			pixel.x = i;
