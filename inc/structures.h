@@ -6,12 +6,14 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 13:39:50 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 12:24:13 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 14:48:16 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
+
+# include "../minilibx-linux/mlx_int.h"
 
 // STRUCTURES //
 
@@ -29,19 +31,19 @@ typedef struct	s_vect{
 	float	z;
 }	t_vect;
 
-typedef struct s_color
+typedef struct s_colors
 {
 	int	red;
 	int	green;
 	int	blue;
-}	t_color;
+}	t_colors;
 
 typedef struct	s_ray{
 	t_vect	origin;
 	t_vect	direction;
 }	t_ray;
 
-	/*Objects *******************************************/
+	/*Objects ********************************************/
 typedef struct s_plan
 {
 	t_vect			start;
@@ -53,8 +55,8 @@ typedef struct s_plan
 
 typedef	struct	s_sphere{
 	t_vect	center;
-	t_color	color;
-	int	radius;
+	t_colors	colors;
+	float	radius;
 	t_vect (*normal)(struct s_sphere, t_vect);
 	struct s_sphere	*next;
 }	t_sphere;
@@ -63,14 +65,14 @@ typedef struct s_cylinder
 {
 	t_vect				center;
 	t_vect				vecteur;
-	double				diameter;
-	double				height;
+	float				diameter;
+	float				height;
 	t_colors			colors;
 	t_vect (*normal)(struct s_cylinder, t_vect);
 	struct s_cylinder	*next;
 }	t_cylinder;
 
-	/*Scene *******************************************/
+	/*Scene **********************************************/
 typedef struct	s_hit_point{
 	t_vect	point;
 	int		type;
@@ -90,25 +92,25 @@ typedef struct s_camera{
 	t_vect	pos;
 	t_vect	look;
 	double	matrix[3][3];
-	double	fov;
+	float	fov;
 }	t_camera;
 
 typedef struct s_atmos
 {
-	double		ratio;
+	float		ratio;
 	t_colors	colors;
 }	t_atmos;
 
 typedef struct s_light
 {
 	t_vect		pos;
-	double		ratio;
+	float		ratio;
 	t_colors	colors;
 	struct	s_light	*next;
 }	t_light;
 
 	/* General *******************************************/
-typedef struct s_img {
+typedef struct s_imgs {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -116,7 +118,7 @@ typedef struct s_img {
 	int		endian;
 	int		width;
 	int		height;
-}	t_img;
+}	t_imgs;
 
 typedef struct s_scene
 {
@@ -134,10 +136,9 @@ typedef struct s_data {
 	t_scene	*scene;
 	t_screen screen;
 	t_sphere	*sphere;
-	t_img	mlx_img;
+	t_imgs	mlx_img;
 	int	img_width;
 	int	img_height;
-	int	fov;
 	float	albedo;
 }	t_data;
 

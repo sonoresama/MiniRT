@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:47:44 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/17 12:11:42 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:12:49 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_fill_sphere(char **tab, t_scene *scene, int line)
 	tmp = ft_calloc(sizeof(t_sphere), 1);
 	if (ft_fill_vector(tab[1], &tmp->center, line))
 		return (1);
-	if (ft_atod(tab[2], &tmp->diameter) || tmp->diameter <= 0)
+	if (ft_atod(tab[2], &tmp->radius) || tmp->radius <= 0)
 		return (printf("%s%i\n", DIA_ERR, line), 1);
 	colors = ft_split(tab[3], ',');
 	if (!colors)

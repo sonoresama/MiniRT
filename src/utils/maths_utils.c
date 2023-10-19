@@ -6,11 +6,11 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:32:23 by eorer             #+#    #+#             */
-/*   Updated: 2023/09/26 11:41:08 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 14:14:17 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "../../inc/minirt.h"
 
 t_vect	add_vectors(t_vect vect_a, t_vect vect_b)
 {

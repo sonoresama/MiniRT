@@ -24,7 +24,7 @@ int	init_data(t_data *data)
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "MINI");
 	if (!data->win)
 		return (1);
-	init_img(&data->mlx_img, &data->mlx, WIDTH, HEIGHT);
+	init_imgs(&data->mlx_img, &data->mlx, WIDTH, HEIGHT);
 	if (!data->mlx_img.img || !data->mlx_img.addr)
 		return (1);
 	data->img_width = WIDTH;

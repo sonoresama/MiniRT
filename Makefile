@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/10/19 12:25:22 by eorer            ###   ########.fr        #
+#    Updated: 2023/10/19 14:44:45 by eorer            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,13 +41,13 @@ SRC = 	src/parsing/check_file.c		\
 	src/utils/maths_utils.c \
 	src/utils/mlx_utilities.c \
 	src/utils/normal_vector.c \
-	src/tito/camera.c\
-	src/tito/color.c \
-	src/tito/init.c \
-	src/tito/ray.c \
-	src/tito/scene.c \
-	src/tito/sphere.c \
 	src/main.c
+#	src/tito/camera.c\
+#	src/tito/color.c \
+#	src/tito/init.c \
+#	src/tito/ray.c \
+#	src/tito/scene.c \
+#	src/tito/sphere.c 
 	
 
 INC =	inc/				\

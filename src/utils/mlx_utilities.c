@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:55:47 by eorer             #+#    #+#             */
-/*   Updated: 2023/09/19 10:56:10 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 14:49:31 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	init_color(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-t_ui	mlx_get_pixel(t_img *img, int x, int y)
+t_ui	mlx_get_pixel(t_imgs *img, int x, int y)
 {
 	return (*(unsigned int *)img->addr + (y * img->line_length
 			+ x * (img->bits_per_pixel / 8)));
 }
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_imgs *img, int x, int y, int color)
 {
 	char	*pixel;
 
@@ -35,7 +35,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)pixel = color;
 }
 
-void	init_img(t_img *img, void **mlx, int x, int y)
+void	init_img(t_imgs *img, void **mlx, int x, int y)
 {
 	img->img = mlx_new_image(*mlx, x, y);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,

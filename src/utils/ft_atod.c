@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:31:01 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/16 16:38:25 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:07:56 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_longlen(long nb)
 	return (i);
 }
 
-static int	ft_atod_after_separator(char **nptr, long resultat, double *res)
+static int	ft_atod_after_separator(char **nptr, long resultat, float *res)
 {
 	long	diviseur;
 	int		lengh;
@@ -56,7 +56,7 @@ static int	ft_atod_after_separator(char **nptr, long resultat, double *res)
 	return (0);
 }
 
-int	ft_atod(char *nptr, double *res)
+int	ft_atod(char *nptr, float *res)
 {
 	long	neg;
 	long	resultat;
