@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 14:49:10 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 15:01:06 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ int	init_data(t_data *data, t_scene *scene)
 int	main(int argc, char **argv)
 {
 	t_data		data;
-	t_scene		scene;
+	t_scene		*scene;
 
-	if (check_file(argc, argv, &scene))
-		return (ft_clear_all(&scene), 1);
-	if (init_data(&data, &scene))
+	scene = ft_calloc(sizeof(t_scene), 1);
+	if (check_file(argc, argv, scene))
+		return (ft_clear_all(scene), 1);
+	if (init_data(&data, scene))
 		return (1);
 	mlx_put_image_to_window(data.mlx, data.win, data.mlx_img.img, 0, 0);
 	mlx_loop_hook(data.mlx, &render, &data);
@@ -67,5 +68,6 @@ int	main(int argc, char **argv)
 	mlx_destroy_image(data.mlx, data.mlx_img.img);
 	mlx_destroy_display(data.mlx);
 	free(data.mlx);
+	ft_clear_all(scene);
 	return (0);
 }

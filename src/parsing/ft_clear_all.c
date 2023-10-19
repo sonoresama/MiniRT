@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:50:26 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/16 16:39:01 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:54:13 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	ft_clear_cylinder(t_cylinder *cylinder)
 
 void	ft_clear_all(t_scene *scene)
 {
+	if (!scene)
+		return ;
 	if (scene->atmos)
 		free(scene->atmos);
 	if (scene->camera)
