@@ -6,11 +6,11 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:29:27 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/17 13:07:37 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/18 16:11:39 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "../../inc/minirt.h"
 
 void	set_bg(t_data *data)
 {
@@ -58,7 +58,7 @@ void	draw_scene(t_data *data)
 		{
 			color = new_vector(0, 0, 0);
 			s = 0;
-			while (s < SAMPLES_PER_PIXEL)
+
 			{
 				ray = generate_ray(data, (t_pixel){i, j});
 				color = add_vectors(color, get_color(ray, data, 0, (t_vect){0, 0, 0}));

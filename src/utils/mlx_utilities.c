@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "../../inc/minirt.h"
 
 int	init_color(int t, int r, int g, int b)
 {

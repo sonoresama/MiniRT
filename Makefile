@@ -3,44 +3,81 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eorer <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/18 18:32:12 by eorer             #+#    #+#              #
-#    Updated: 2023/09/19 10:54:37 by eorer            ###   ########.fr        #
+#    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
+#    Updated: 2023/10/19 12:25:22 by eorer            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = miniRT
+
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g -I$(INC) -I./minilibx-linux
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=leak
 
-LFLAGS = -L./minilibx-linux -lmlx -L$(INCLIB) -lXext -lX11 -lm -lbsd
+SRC = 	src/parsing/check_file.c		\
+	src/parsing/ft_clear_all.c		\
+	src/parsing/ft_fill_atmos.c		\
+	src/parsing/ft_fill_camera.c		\
+	src/parsing/ft_fill_cylinder.c		\
+	src/parsing/ft_fill_light.c		\
+	src/parsing/ft_fill_plan.c		\
+	src/parsing/ft_fill_sphere.c		\
+	src/parsing/ft_fill_vector.c		\
+	src/parsing/ft_print_all.c		\
+	src/utils/ft_calloc.c			\
+	src/utils/ft_clear_gnl.c		\
+	src/utils/ft_strncmp.c			\
+	src/utils/ft_free_tab.c			\
+	src/utils/ft_split.c			\
+	src/utils/ft_split_2_separator.c	\
+	src/utils/ft_atod.c			\
+	src/utils/ft_atoi.c			\
+	src/utils/ft_strlen.c			\
+	src/utils/get_next_line.c		\
+	src/utils/get_next_line_utils.c		\
+	src/utils/utils.c	\
+	src/utils/maths_utils.c \
+	src/utils/mlx_utilities.c \
+	src/utils/normal_vector.c \
+	src/tito/camera.c\
+	src/tito/color.c \
+	src/tito/init.c \
+	src/tito/ray.c \
+	src/tito/scene.c \
+	src/tito/sphere.c \
+	src/main.c
+	
 
-INC = /usr/include
+INC =	inc/				\
 
-INCLIB = $(INC)/../lib
 
-LIBX = libmlx_Linux.a
+MLX_FILE	=	libmlx_Linux.a
 
-SRC = $(wildcard ./*.c) 
+MLX_FLAG	=	-lX11 -lXext -lm -lbsd
+
+MLX_PATH	=	./minilibx-linux/
+
+MLX_LIB		=	$(addprefix $(MLX_PATH), $(MLX_FILE))
+
+MLX_EX		=	$(MLX_LIB) $(MLX_FLAG)
 
 OBJ = $(SRC:.c=.o)
 
-NAME = minirt
+all : $(NAME)	
 
+mlx:
+	make -sC $(MLX_PATH)
 
-all : $(NAME)
+$(NAME): mlx $(OBJ)
+	$(CC) -g $(CFLAGS) $(OBJ) -lm -I $(INC)  $(MLX_EX) -o $(NAME)
 
-$(NAME) : $(OBJ) $(LIBX)
-	$(CC) $(OBJ) $(LFLAGS) -o $(NAME)
-
-$(LIBX) :
-	@make -C ./minilibx-linux
-
-clean : 
+clean:
+	make clean -sC $(MLX_PATH)
 	/bin/rm -f $(OBJ)
 
-fclean : clean
+fclean: clean
 	/bin/rm -f $(NAME)
 
 re : fclean all

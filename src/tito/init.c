@@ -6,11 +6,11 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:19:28 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/17 17:43:36 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/18 17:08:37 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "../../inc/minirt.h"
 
 t_sphere*	init_sphere(void);
 t_sphere*	init_sphere2(void);
@@ -65,11 +65,11 @@ t_sphere*	init_sphere2(void)
 	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)
 		return (NULL);
-	sphere->radius = 100;
-	sphere->center = new_vector(0, 100, -100);
+	sphere->radius = 150;
+	sphere->center = new_vector(0, -50, -100);
 	sphere->color = new_vector(155, 255, 155);
-	sphere->normal = &v_normal_sphere;
 	sphere->next = NULL;
+	sphere->normal = &v_normal_sphere;
 	return (sphere);
 }
 

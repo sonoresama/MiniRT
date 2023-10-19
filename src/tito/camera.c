@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "../../inc/minirt.h"
 
 void	generate_rot_matrix(t_data *data)
 {

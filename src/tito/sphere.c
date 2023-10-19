@@ -6,11 +6,11 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:20:19 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/17 15:35:00 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/18 17:04:29 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "../../inc/minirt.h"
 
 float	is_hiting_sphere(t_ray ray, t_sphere sphere)
 {
@@ -25,7 +25,7 @@ float	is_hiting_sphere(t_ray ray, t_sphere sphere)
 	c = mult_vectors(sous_vectors(ray.origin, sphere.center), sous_vectors(ray.origin, sphere.center)) - pow(sphere.radius, 2);
 	d = pow(b, 2) - 4 * a * c ;
 	if (d < 0)
-		return (0);
+		return (-1);
 	else if (d == 0)
 		t = (-b + sqrt(d)) / (2 * a);
 	else
@@ -44,12 +44,12 @@ float	get_closest_sphere(t_ray ray, t_data *data, t_hit_point *hit_point)
 	while (tmp)
 	{
 		t = is_hiting_sphere(ray, *tmp);
-		if (!t)
+		if (t < 0.0)
 		{
 			tmp = tmp->next;
 			continue;
 		}
-		if (min_dist == 0 || t > min_dist)
+		if (min_dist == 0 || t < min_dist)
 		{
 			min_dist = t;
 			hit_point->obj = tmp;

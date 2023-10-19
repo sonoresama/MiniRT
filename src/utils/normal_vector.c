@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "../../inc/minirt.h"
 
 t_vect	v_normal_sphere(t_sphere sphere, t_vect hit_point)
 {

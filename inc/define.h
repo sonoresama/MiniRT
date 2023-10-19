@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/17 14:24:42 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:43:11 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,16 @@ plusieurs fois\n"
 # define RAT_ERR "Error\nMauvaise déclaration du ratio de luminosité à la ligne "
 # define DIA_ERR "Error\nMauvaise déclaration du diamètre à la ligne "
 # define HEI_ERR "Error\nMauvaise déclaration de la hauteur à la ligne "
+
+// MACROS //
+
+# define WIDTH 1600
+# define HEIGHT 900 
+# define SAMPLES_PER_PIXEL 1 
+# define MAX_DEPTH 1
+# define SPHERE 10
+# define PLAN 11
+# define CYLINDRE 12
+# define BACKGROUND 13
 
 #endif

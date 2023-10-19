@@ -6,11 +6,11 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/16 18:32:04 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 12:23:35 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "../inc/minirt.h"
 
 void	handle_key(int keycode, t_data *data)
 {
