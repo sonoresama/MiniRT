@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 15:01:06 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:31:50 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,16 @@ int	main(int argc, char **argv)
 		return (ft_clear_all(scene), 1);
 	if (init_data(&data, scene))
 		return (1);
+	if (draw_scene(&data))
+		return (1);
+	printf("fov : %f\n", data.scene->camera->fov);
+//	printf("sphere center : ");
+//	print_vect(data.scene->sphere->center);
+//	printf("sphere radius : %f\n", data.scene->sphere->radius);
+//	printf("camera center : ");
+//	print_vect(data.scene->camera->pos);
+	printf("camera direction : ");
+	print_vect(data.scene->camera->look);
 	mlx_put_image_to_window(data.mlx, data.win, data.mlx_img.img, 0, 0);
 	mlx_loop_hook(data.mlx, &render, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, &keypress, &data);

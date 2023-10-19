@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:32:23 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 14:14:17 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 16:39:45 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_vect	mult_const_vector(t_vect vector, double c)
 	return ((t_vect){c * vector.x, c * vector.y, c * vector.z});
 }
 
-double	mult_vectors(t_vect vect_a, t_vect vect_b)
+double	dot(t_vect vect_a, t_vect vect_b)
 {
 	double	result;
 
