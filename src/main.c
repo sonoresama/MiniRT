@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 17:31:50 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/19 17:33:36 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ int	keypress(int keycode, t_data *data)
 		data->win = NULL;
 		return (0);
 	}
+	return (0);
+}
+
+int	handle_client_message(t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->win);
+	data->win = NULL;
 	return (0);
 }
 
@@ -63,17 +70,19 @@ int	main(int argc, char **argv)
 		return (1);
 	if (draw_scene(&data))
 		return (1);
-	printf("fov : %f\n", data.scene->camera->fov);
+//	printf("fov : %f\n", data.scene->camera->fov);
 //	printf("sphere center : ");
 //	print_vect(data.scene->sphere->center);
 //	printf("sphere radius : %f\n", data.scene->sphere->radius);
 //	printf("camera center : ");
 //	print_vect(data.scene->camera->pos);
-	printf("camera direction : ");
-	print_vect(data.scene->camera->look);
+//	printf("camera direction : ");
+//	print_vect(data.scene->camera->look);
 	mlx_put_image_to_window(data.mlx, data.win, data.mlx_img.img, 0, 0);
 	mlx_loop_hook(data.mlx, &render, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, &keypress, &data);
+	mlx_hook(data.win, ClientMessage, StructureNotifyMask,
+		&handle_client_message, &data);
 	mlx_loop(data.mlx);
 	mlx_destroy_image(data.mlx, data.mlx_img.img);
 	mlx_destroy_display(data.mlx);
