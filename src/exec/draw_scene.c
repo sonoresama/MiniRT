@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:58:09 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 18:21:54 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/20 15:30:44 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	draw_scene(t_data *data)
 {
 	int	i;
 	int	j;
-	t_pixel	pixel;
 	t_ray	ray;
 	int	color;
 
@@ -26,9 +25,7 @@ int	draw_scene(t_data *data)
 		j = 0;
 		while (j < data->img_height)
 		{
-			pixel.x = i;
-			pixel.y = j;
-			ray = cast_ray(data, pixel);
+			ray = cast_ray(data, i, j);
 			color = ray_color(data, ray);
 			if (color == -1)
 				return (-1);

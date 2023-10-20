@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 13:39:50 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 17:36:16 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/20 15:22:18 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ typedef struct	s_ray{
 	t_vect	origin;
 	t_vect	direction;
 }	t_ray;
+
+typedef struct	s_hit{
+	t_vect	point;
+	void*	obj;
+	int	type;
+}	t_hit;
 
 	/*Objects ********************************************/
 typedef struct s_plan
@@ -141,6 +147,7 @@ typedef struct s_data {
 	int	img_height;
 	float	albedo;
 	int	count;
+	int	error;
 }	t_data;
 
 #endif

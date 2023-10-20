@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/20 11:59:27 by bastien          ###   ########.fr       */
+/*   Updated: 2023/10/20 15:31:55 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	ft_print_all(t_scene *scene);
 
 	/* Sphere */
 t_vect	v_normal_sphere(t_sphere sphere, t_vect hit_point);
-int	is_hiting_sphere(t_ray ray, t_sphere *sphere);
+float	is_hiting_sphere(t_ray ray, t_sphere *sphere);
+t_hit	*get_closest_sphere(t_data *data, t_ray ray);
 
 	/*Scene*/
 int	draw_scene(t_data *data);
@@ -66,7 +67,8 @@ int	ray_color(t_data *data, t_ray ray);
 
 	/*Ray*/
 t_ray	new_ray(t_vect origin, t_vect direction);
-t_ray	cast_ray(t_data *data, t_pixel pixel);
+t_ray	cast_ray(t_data *data, int i, int j);
+t_vect	intersection(t_ray ray, float t);
 
 	/*Camera*/
 

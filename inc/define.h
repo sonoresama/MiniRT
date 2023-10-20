@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/20 11:19:40 by bastien          ###   ########.fr       */
+/*   Updated: 2023/10/20 13:32:45 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ plusieurs fois\n"
 # define PLAN 11
 # define CYLINDRE 12
 # define BACKGROUND 13
+# define MALLOC_ERR 100
 
 #endif
