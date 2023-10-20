@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:18 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/20 17:20:43 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/20 17:47:04 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ray_color(t_data *data, t_ray ray)
 	t_colors	color;
 
 	hit_point = get_closest_sphere(data, ray);
+	is_hiting_plan(ray, data->scene->plan, hit_point);
 	if (!hit_point && data->error == MALLOC_ERR)
 		return (-1);
 	if (!hit_point)

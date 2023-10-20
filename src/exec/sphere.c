@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:49 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/20 15:22:55 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/20 17:44:47 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_hit	*get_closest_sphere(t_data *data, t_ray ray)
 			if (min == 0 || t < min)
 			{
 				min = t;
+				hit_point->time = t;
 				hit_point->obj = tmp;
 			}
 		}

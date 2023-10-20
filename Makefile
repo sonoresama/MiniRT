@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/10/20 11:59:41 by bastien          ###   ########.fr        #
+#    Updated: 2023/10/20 17:37:56 by bastien          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRC = 	src/parsing/check_file.c		\
 	src/utils/normal_vector.c		\
 	src/exec/draw_scene.c			\
 	src/exec/sphere.c			\
+	src/exec/is_hiting_plan.c		\
 	src/exec/color.c			\
 	src/exec/ray.c				\
 	src/main.c
