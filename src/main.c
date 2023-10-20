@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/20 12:34:37 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/20 17:20:54 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 	if (parsing(&data, argc, argv))
 		return (1);
 	data.count = 0;
+	print_vect(data.scene->light->pos);
 	mlx_put_image_to_window(data.mlx, data.win, data.mlx_img.img, 0, 0);
 	mlx_loop_hook(data.mlx, &render, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, &keypress, &data);

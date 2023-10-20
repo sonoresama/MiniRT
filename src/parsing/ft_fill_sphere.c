@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:47:44 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/19 14:12:49 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/20 17:00:41 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_fill_sphere(char **tab, t_scene *scene, int line)
 		|| tmp->colors.green < 0 || tmp->colors.green > 255
 		|| tmp->colors.blue < 0 || tmp->colors.blue > 255)
 		return (ft_free_tab(colors), printf("%s%i\n", COL_ERR, line), 1);
+	tmp->normal = &v_normal_sphere;
 	ft_sphere_add_back(tmp, scene);
 	return (ft_free_tab(colors), 0);
 }
