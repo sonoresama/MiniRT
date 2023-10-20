@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 18:12:52 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/20 12:03:39 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,39 +36,11 @@ int	render(void *ptr)
 	return (0);
 }
 
-int	init_data(t_data *data, t_scene *scene)
-{
-	data->mlx = mlx_init();
-	if (!data->mlx)
-		return (1);
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "MINI");
-	if (!data->win)
-		return (1);
-	init_img(&data->mlx_img, &data->mlx, WIDTH, HEIGHT);
-	if (!data->mlx_img.img || !data->mlx_img.addr)
-		return (1);
-	data->scene = scene;
-	data->img_width = WIDTH;
-	data->img_height = HEIGHT;
-	data->screen.focal_length = 1.0;
-	data->screen.width = 4.0;
-	data->screen.aspect_ratio = (double)WIDTH / (double)HEIGHT;
-	data->screen.height = data->screen.width / data->screen.aspect_ratio;
-	data->albedo = 0.18;
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_data		data;
-	t_scene		*scene;
 
-	scene = ft_calloc(sizeof(t_scene), 1);
-	if (check_file(argc, argv, scene))
-		return (ft_clear_all(scene), 1);
-	if (init_data(&data, scene))
-		return (1);
-	if (draw_scene(&data))
+	if (parsing(&data, argc, argv))
 		return (1);
 	data.count = 0;
 	mlx_put_image_to_window(data.mlx, data.win, data.mlx_img.img, 0, 0);
@@ -80,6 +52,6 @@ int	main(int argc, char **argv)
 	mlx_destroy_image(data.mlx, data.mlx_img.img);
 	mlx_destroy_display(data.mlx);
 	free(data.mlx);
-	ft_clear_all(scene);
+	ft_clear_all(data.scene);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/10/19 16:58:37 by eorer            ###   ########.fr        #
+#    Updated: 2023/10/20 11:59:41 by bastien          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ SRC = 	src/parsing/check_file.c		\
 	src/parsing/ft_fill_plan.c		\
 	src/parsing/ft_fill_sphere.c		\
 	src/parsing/ft_fill_vector.c		\
+	src/parsing/ft_init_data.c		\
 	src/parsing/ft_print_all.c		\
+	src/parsing/parsing.c			\
 	src/utils/ft_calloc.c			\
 	src/utils/ft_clear_gnl.c		\
 	src/utils/ft_strncmp.c			\
@@ -37,14 +39,14 @@ SRC = 	src/parsing/check_file.c		\
 	src/utils/ft_strlen.c			\
 	src/utils/get_next_line.c		\
 	src/utils/get_next_line_utils.c		\
-	src/utils/utils.c	\
-	src/utils/maths_utils.c \
-	src/utils/mlx_utilities.c \
-	src/utils/normal_vector.c \
-	src/exec/draw_scene.c \
-	src/exec/sphere.c \
-	src/exec/color.c \
-	src/exec/ray.c \
+	src/utils/utils.c			\
+	src/utils/maths_utils.c 		\
+	src/utils/mlx_utilities.c		\
+	src/utils/normal_vector.c		\
+	src/exec/draw_scene.c			\
+	src/exec/sphere.c			\
+	src/exec/color.c			\
+	src/exec/ray.c				\
 	src/main.c
 #	src/tito/camera.c\
 #	src/tito/color.c \

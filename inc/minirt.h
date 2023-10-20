@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/19 17:51:02 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/20 11:59:27 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int		ft_fill_light(char **tab, t_scene *scene, int line);
 int		ft_fill_plan(char **tab, t_scene *scene, int line);
 int		ft_fill_sphere(char **tab, t_scene *scene, int line);
 int		ft_fill_vector(char *str, t_vect *vector, int line);
+int		ft_init_data(t_data *data, t_scene *scene);
+int		parsing(t_data *data, int argc, char **argv);
 size_t	ft_strlen(const char *str);
 char	**ft_split_2_separator(char const *str, char c, char d);
 char	**ft_split(const char *s, char c);

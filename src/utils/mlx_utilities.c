@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:55:47 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 14:49:31 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/20 11:15:37 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,12 @@ void	my_mlx_pixel_put(t_imgs *img, int x, int y, int color)
 void	init_img(t_imgs *img, void **mlx, int x, int y)
 {
 	img->img = mlx_new_image(*mlx, x, y);
+	if (!img->img)
+		return ;
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 	if (!img->addr)
-	{
-		perror("ERREUR");
-		return ;
-	}
+		return (free(img->img));
 	img->width = x;
 	img->height = y;
 }

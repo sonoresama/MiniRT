@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/19 11:43:11 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/20 11:19:40 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ plusieurs fois\n"
 # define RAT_ERR "Error\nMauvaise déclaration du ratio de luminosité à la ligne "
 # define DIA_ERR "Error\nMauvaise déclaration du diamètre à la ligne "
 # define HEI_ERR "Error\nMauvaise déclaration de la hauteur à la ligne "
+# define MLX_ERR "Error\nProbleme lors de l'utilisation des fonctions de la mlx\n"
 
 // MACROS //
 
