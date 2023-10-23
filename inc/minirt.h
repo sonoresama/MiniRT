@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/20 15:31:55 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/23 18:16:33 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_hit	*get_closest_sphere(t_data *data, t_ray ray);
 	/*Scene*/
 int	draw_scene(t_data *data);
 int	ray_color(t_data *data, t_ray ray);
+t_colors	get_form_color(t_data *data, t_hit *hit_point);
 
 	/*Ray*/
 t_ray	new_ray(t_vect origin, t_vect direction);

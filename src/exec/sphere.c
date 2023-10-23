@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:49 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/20 15:22:55 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/23 15:46:59 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,16 @@ t_hit	*get_closest_sphere(t_data *data, t_ray ray)
 			{
 				min = t;
 				hit_point->obj = tmp;
+				hit_point->color = tmp->colors;
+				hit_point->point = intersection(ray, min);
+				hit_point->normal = v_normal_sphere(*tmp, hit_point->point);
+				hit_point->type = SPHERE;
 			}
 		}
 		tmp = tmp->next;
 	}
 	if (!min)
 		return (NULL);
-	hit_point->point = intersection(ray, min);
-	hit_point->type = SPHERE;
 	return (hit_point);
 }
 

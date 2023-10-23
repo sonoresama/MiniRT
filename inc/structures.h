@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 13:39:50 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/20 15:22:18 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/23 18:03:34 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct	s_ray{
 
 typedef struct	s_hit{
 	t_vect	point;
+	t_colors	color;
+	t_vect	normal;
 	void*	obj;
 	int	type;
 }	t_hit;
@@ -134,6 +136,7 @@ typedef struct s_scene
 	t_sphere	*sphere;	
 	t_plan		*plan;
 	t_cylinder	*cylinder;
+	float	albedo;
 }	t_scene;
 
 typedef struct s_data {
@@ -145,7 +148,6 @@ typedef struct s_data {
 	t_imgs	mlx_img;
 	int	img_width;
 	int	img_height;
-	float	albedo;
 	int	count;
 	int	error;
 }	t_data;

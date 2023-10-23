@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:35:17 by bastien           #+#    #+#             */
-/*   Updated: 2023/10/20 13:33:52 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/23 15:58:25 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	ft_init_data(t_data *data, t_scene *scene)
 	data->screen.width = 4.0;
 	data->screen.aspect_ratio = (double)WIDTH / (double)HEIGHT;
 	data->screen.height = data->screen.width / data->screen.aspect_ratio;
-	data->albedo = 0.18;
 	data->count = 0;
 	data->error = 0;
+	data->scene->albedo = 0.18;
 	return (0);
 }
