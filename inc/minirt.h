@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/20 17:39:10 by bastien          ###   ########.fr       */
+/*   Updated: 2023/10/23 16:35:51 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	ft_print_all(t_scene *scene);
 
 	/* Sphere */
 t_vect	v_normal_sphere(t_sphere sphere, t_vect hit_point);
-float	is_hiting_sphere(t_ray ray, t_sphere *sphere);
-void	is_hiting_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point);
-t_hit	*get_closest_sphere(t_data *data, t_ray ray);
+void	get_closest_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point);
+void	get_closest_sphere(t_ray ray, t_sphere *sphere, t_hit *first_hit_point);
+t_colors	get_form_color(t_scene *scene, t_hit *hit_point, t_ray ray);
 
 	/*Scene*/
 int	draw_scene(t_data *data);

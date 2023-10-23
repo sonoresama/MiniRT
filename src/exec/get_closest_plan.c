@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_hiting_plan.c                                   :+:      :+:    :+:   */
+/*   get_closest_plan.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 13:45:08 by bastien           #+#    #+#             */
-/*   Updated: 2023/10/20 17:46:44 by bastien          ###   ########.fr       */
+/*   Created: 2023/10/23 17:28:18 by blerouss          #+#    #+#             */
+/*   Updated: 2023/10/23 17:28:21 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-void	is_hiting_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point)
+void	get_closest_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point)
 {
 	float	p_dot;
 	float	t;
@@ -27,6 +27,7 @@ void	is_hiting_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point)
 			if (t > 0 && t < first_hit_point->time)
 			{
 				first_hit_point->time = t;
+				first_hit_point->point = intersection(ray, t);
 				first_hit_point->type = PLAN;
 				first_hit_point->obj = plan;
 			}
