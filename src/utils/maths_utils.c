@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:32:23 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/19 17:50:53 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/23 12:39:09 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,12 @@ float	ft_norm(t_vect vect)
 
 	norm = sqrt(pow(vect.x, 2) + pow(vect.y, 2) + pow(vect.z, 2));
 	return (norm);
+}
+
+t_vect	intersection(t_ray ray, float t)
+{
+	t_vect	point;
+
+	point = add_vectors(ray.origin, mult_const_vector(ray.direction, t));
+	return (point);
 }
