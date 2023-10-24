@@ -81,13 +81,6 @@ typedef struct s_cylinder
 }	t_cylinder;
 
 	/*Scene **********************************************/
-typedef struct	s_hit_point{
-	t_vect	point;
-	int		type;
-	float	t;
-	void*	obj;
-	t_vect	color;
-}	t_hit_point;
 
 typedef struct	s_screen{
 	float	focal_length;//distance entre l'observateurice et le screen

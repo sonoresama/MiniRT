@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:29:27 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/18 16:11:39 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/24 15:24:44 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ void	draw_scene(t_data *data)
 
 	i = 0;
 	j = 0;
+			color = new_vector(0, 0, 0);
 	while (i < data->img_width)
 	{
 		while (j < data->img_height)
 		{
-			color = new_vector(0, 0, 0);
 			s = 0;
 
 			{
