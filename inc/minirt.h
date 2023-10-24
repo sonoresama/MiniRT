@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/24 14:03:26 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/24 16:01:02 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_print_all(t_scene *scene);
 
 	/* Sphere */
 t_vect	v_normal_sphere(t_sphere sphere, t_vect hit_point);
+t_vect	v_normal_plan(t_plan plan);
 void	get_closest_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point);
 void	get_closest_sphere(t_ray ray, t_sphere *sphere, t_hit *first_hit_point);
 
