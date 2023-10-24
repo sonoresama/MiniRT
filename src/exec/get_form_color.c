@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:18 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/23 18:16:50 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/23 18:42:02 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ t_colors	get_form_color(t_data *data, t_hit *hit_point)
 	int	shadow;
 	t_hit	*hit;
 
+	hit = ft_calloc(sizeof(t_hit), 1);
 	l_direction = sous_vectors(hit_point->point, data->scene->light->pos);
 	color = hit_point->color;
 	shadow = 0;
-	hit = get_closest_sphere(data, new_ray(hit_point->point, ft_normalize(l_direction)));
+	get_closest_sphere(new_ray(hit_point->point, ft_normalize(l_direction)), data->scene->sphere, hit);
 	if (!hit || hit->obj == hit_point->obj)
 		shadow = 1;
 	facing_ratio = shadow * data->scene->albedo / M_PI * data->scene->light->ratio 

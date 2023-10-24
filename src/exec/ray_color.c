@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:19:25 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/23 18:12:34 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:43:50 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ray_color(t_data *data, t_ray ray)
 		return (free(hit_point), init_color(0, 0, 0, 0));
 	else 
 	{
-		color = get_form_color(data->scene, hit_point, ray);
+		color = get_form_color(data, hit_point);
 		free(hit_point);
 		return(init_color(0, color.red, color.green, color.blue));
 	}
