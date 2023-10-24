@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:49 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/24 16:01:34 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/24 16:46:56 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,25 @@ static float	is_hiting_sphere(t_ray ray, t_sphere *sphere)
 void	get_closest_sphere(t_ray ray, t_sphere *sphere, t_hit *first_hit_point)
 {
 	float	t;
-	t_sphere	*tmp;
 
-	tmp = sphere;
-	if (!tmp)
+	if (!sphere)
 		return ;
-	while (tmp)
+	while (sphere)
 	{
-		t = is_hiting_sphere(ray, tmp);
+		t = is_hiting_sphere(ray, sphere);
 		if (t != -1)
 		{
 			if (first_hit_point->time == 0 || t < first_hit_point->time)
 			{
 				first_hit_point->time = t;
-				first_hit_point->obj = tmp;
+				first_hit_point->obj = sphere;
 				first_hit_point->point = intersection(ray, first_hit_point->time);
 				first_hit_point->type = SPHERE;
-				first_hit_point->normal = v_normal_sphere(*tmp, first_hit_point->point);
-				first_hit_point->color = tmp->colors;
+				first_hit_point->normal = v_normal_sphere(*sphere, first_hit_point->point);
+				first_hit_point->color = sphere->colors;
 			}
 		}
-		tmp = tmp->next;
+		sphere = sphere->next;
 	}
-	return ;
+	return;
 }
