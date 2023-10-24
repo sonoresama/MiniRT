@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:28:18 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/23 17:28:21 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:36:06 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	get_closest_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point)
 			{
 				first_hit_point->time = t;
 				first_hit_point->point = intersection(ray, t);
+				first_hit_point->normal = v_normal_plan((*plan));
 				first_hit_point->type = PLAN;
 				first_hit_point->obj = plan;
 			}

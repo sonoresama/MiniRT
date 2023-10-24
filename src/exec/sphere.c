@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:49 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/23 18:33:50 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/24 15:05:12 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,4 @@ void	get_closest_sphere(t_ray ray, t_sphere *sphere, t_hit *first_hit_point)
 		}
 		sphere = sphere->next;
 	}
-	if (!t)
-		return ;
 }
