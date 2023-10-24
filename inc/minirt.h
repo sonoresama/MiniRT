@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/23 18:33:08 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/24 14:03:26 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ void	get_closest_sphere(t_ray ray, t_sphere *sphere, t_hit *first_hit_point);
 
 	/*Scene*/
 int	draw_scene(t_data *data);
-int	ray_color(t_data *data, t_ray ray);
+t_colors	ray_color(t_data *data, t_ray ray);
 t_colors	get_form_color(t_data *data, t_hit *hit_point);
+t_colors	new_color(int red, int green, int blue);
 
 	/*Ray*/
 t_ray	new_ray(t_vect origin, t_vect direction);
@@ -78,6 +79,7 @@ t_vect	intersection(t_ray ray, float t);
 float	ft_norm(t_vect vect);
 t_vect	ft_normalize(t_vect vector);
 t_vect	add_vectors(t_vect vect_a, t_vect vect_b);
+t_colors	add_colors(t_colors ca, t_colors cb);
 t_vect	sous_vectors(t_vect vect_a, t_vect vect_b);
 t_vect	mult_const_vector(t_vect vector, double c);
 double	dot(t_vect vect_a, t_vect vect_b);

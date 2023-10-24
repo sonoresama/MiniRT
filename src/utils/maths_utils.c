@@ -6,11 +6,31 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:32:23 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/23 12:39:09 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:04:27 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
+
+t_colors	new_color(int red, int green, int blue)
+{
+	t_colors	result;
+
+	result.red = red;
+	result.green = green;
+	result.blue = blue;
+	return (result);
+}
+
+t_colors	add_colors(t_colors ca, t_colors cb)
+{
+	t_colors	result;
+
+	result.red = ca.red + cb.red;
+	result.green = ca.green + cb.green;
+	result.blue = ca.blue + cb.blue;
+	return (result);
+}
 
 t_vect	add_vectors(t_vect vect_a, t_vect vect_b)
 {

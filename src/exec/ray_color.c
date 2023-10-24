@@ -6,13 +6,13 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:19:25 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/23 18:12:34 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:54:39 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-int	ray_color(t_data *data, t_ray ray)
+t_colors	ray_color(t_data *data, t_ray ray)
 {
 	t_hit	*hit_point;
 	t_colors	color;
@@ -29,6 +29,6 @@ int	ray_color(t_data *data, t_ray ray)
 	{
 		color = get_form_color(data->scene, hit_point, ray);
 		free(hit_point);
-		return(init_color(0, color.red, color.green, color.blue));
+		return(color);
 	}
 }
