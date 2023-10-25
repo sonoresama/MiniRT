@@ -64,7 +64,7 @@ typedef struct s_plan
 typedef	struct	s_sphere{
 	t_vect	center;
 	t_colors	colors;
-	float	radius;
+	float	diameter;
 	t_vect (*normal)(struct s_sphere, t_vect);
 	struct s_sphere	*next;
 }	t_sphere;

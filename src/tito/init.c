@@ -50,7 +50,7 @@ t_sphere*	init_sphere(void)
 	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)
 		return (NULL);
-	sphere->radius = 10;
+	sphere->diameter = 10;
 	sphere->center = new_vector(0, 0, -60);
 	sphere->color = new_vector(255, 255, 155);
 	sphere->next = NULL;
@@ -65,7 +65,7 @@ t_sphere*	init_sphere2(void)
 	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)
 		return (NULL);
-	sphere->radius = 150;
+	sphere->diameter = 150;
 	sphere->center = new_vector(0, -50, -100);
 	sphere->color = new_vector(155, 255, 155);
 	sphere->next = NULL;

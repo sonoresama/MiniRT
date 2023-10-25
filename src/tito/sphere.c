@@ -22,7 +22,7 @@ float	is_hiting_sphere(t_ray ray, t_sphere sphere)
 
 	a = mult_vectors(ray.direction, ray.direction);
 	b = mult_vectors(mult_const_vector(ray.direction, 2), sous_vectors(ray.origin, sphere.center));
-	c = mult_vectors(sous_vectors(ray.origin, sphere.center), sous_vectors(ray.origin, sphere.center)) - pow(sphere.radius, 2);
+	c = mult_vectors(sous_vectors(ray.origin, sphere.center), sous_vectors(ray.origin, sphere.center)) - pow(sphere.diameter, 2);
 	d = pow(b, 2) - 4 * a * c ;
 	if (d < 0)
 		return (-1);
