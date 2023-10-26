@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/25 16:42:27 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/26 15:38:20 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ plusieurs fois\n"
 
 # define WIDTH 1600
 # define HEIGHT 900 
-# define SAMPLES_PER_PIXEL 1
+# define SAMPLES_PER_PIXEL 2
 # define MAX_DEPTH 1
 # define SPHERE 10
 # define PLAN 11
@@ -45,4 +45,9 @@ plusieurs fois\n"
 # define BACKGROUND 13
 # define MALLOC_ERR 100
 
+// COLOR PRINT //
+
+# define RED "\033[0;31m"
+# define YELLOW "\033[0;33m"
+# define GREEN "\033[0;32m"
 #endif

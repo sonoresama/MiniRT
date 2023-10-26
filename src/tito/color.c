@@ -24,10 +24,10 @@ t_vect	a_color(t_data *data, t_hit_point hit_point, t_sphere *sphere)
 	light_dir = sous_vectors(hit_point.point, data->camera.pos);
 	//light_dir = sous_vectors(data->lights->coord, hit_point.point);
 	inten = data->albedo / M_PI * data->lights->intensity;
-	facing_ratio = fmax(0.f, (float)mult_vectors(sphere->normal(*sphere, hit_point.point), mult_const_vector(light_dir, -1)));
+	facing_ratio = fmax(0.f, (float)mult_vectors(sphere->normal(*sphere, hit_point.point), mult(light_dir, -1)));
 	return (hit_point.color);
-	return (mult_const_vector(data->lights->color, facing_ratio));
-//	return (mult_const_vector(mult_const_vector(data->lights->color, inten), 
+	return (mult(data->lights->color, facing_ratio));
+//	return (mult(mult(data->lights->color, inten), 
 //				fmax(0.f, (float)mult_vectors(sphere->normal(*sphere, hit_point.point), light_dir))));
 }
 

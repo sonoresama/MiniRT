@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/10/23 18:39:03 by blerouss         ###   ########.fr        #
+#    Updated: 2023/10/26 15:50:34 by eorer            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC = 	src/parsing/check_file.c		\
 	src/exec/draw_scene.c			\
 	src/exec/sphere.c			\
 	src/exec/get_closest_plan.c		\
+	src/exec/is_hiting_object.c		\
 	src/exec/get_form_color.c		\
 	src/exec/ray.c				\
 	src/exec/ray_color.c			\

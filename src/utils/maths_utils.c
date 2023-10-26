@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:32:23 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/25 13:30:41 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/26 17:29:46 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_vect	sous_vectors(t_vect vect_a, t_vect vect_b)
 	return (result);
 }
 
-t_vect	mult_const_vector(t_vect vector, double c)
+t_vect	mult(t_vect vector, double c)
 {
 	return ((t_vect){c * vector.x, c * vector.y, c * vector.z});
 }
@@ -146,6 +146,6 @@ t_vect	intersection(t_ray ray, float t)
 {
 	t_vect	point;
 
-	point = add_vectors(ray.origin, mult_const_vector(ray.direction, t));
+	point = add_vectors(ray.origin, mult(ray.direction, t));
 	return (point);
 }

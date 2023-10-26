@@ -34,7 +34,7 @@ t_hit_point	set_closest_obj(t_ray ray, t_data *data)
 		hit_point.color = new_vector(0, 0, 0);
 		return (hit_point);
 	}
-	hit_point.point = add_vectors(ray.origin, mult_const_vector(ray.direction, t));
+	hit_point.point = add_vectors(ray.origin, mult(ray.direction, t));
 	hit_point.type = SPHERE;
 	hit_point.t = t;
 	hit_point.color = get_sphere_color(hit_point);

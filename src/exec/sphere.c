@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:49 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/25 15:28:17 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/26 15:41:50 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,6 @@
 //
 //float	is_hiting_sphere(t_ray ray, t_sphere *sphere)
 //=======
-float	is_hiting_sphere(t_ray ray, t_sphere *sphere)
-{
-	float	a;
-	float	b;
-	float	c;
-	t_vect	s_to_ray;
-	float	d;
-
-	s_to_ray = sous_vectors(ray.origin, sphere->center);
-	a = dot(ray.direction, ray.direction);
-	b = 2 * dot(ray.direction, s_to_ray);
-	c = dot(s_to_ray, s_to_ray) - pow(sphere->diameter / 2, 2);
-	d = pow(b, 2) - 4 * a * c;
-	if (d < 0.0)
-		return (-1);
-	return (fmin((-b + sqrt(d)) / 2 * a, (-b - sqrt(d)) / 2 * a));
-}
-
 void	get_closest_sphere(t_ray ray, t_sphere *sphere, t_hit *first_hit_point)
 {
 	float	t;

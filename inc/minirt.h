@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/24 16:09:57 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:29:56 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ t_vect	v_normal_sphere(t_sphere sphere, t_vect hit_point);
 t_vect	v_normal_plan(t_plan *plan);
 void	get_closest_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point);
 void	get_closest_sphere(t_ray ray, t_sphere *sphere, t_hit *first_hit_point);
+float	is_hiting_sphere(t_ray ray, t_sphere *sphere);
+float	is_hiting_plan(t_ray ray, t_plan *plan);
+int	is_hiting_object(t_data *data, t_ray ray);
 
 	/*Scene*/
 int	draw_scene(t_data *data);
@@ -82,7 +85,7 @@ t_vect	ft_normalize(t_vect vector);
 t_vect	add_vectors(t_vect vect_a, t_vect vect_b);
 t_colors	add_colors(t_colors ca, t_colors cb);
 t_vect	sous_vectors(t_vect vect_a, t_vect vect_b);
-t_vect	mult_const_vector(t_vect vector, double c);
+t_vect	mult(t_vect vector, double c);
 double	dot(t_vect vect_a, t_vect vect_b);
 t_vect	cross_product(t_vect a, t_vect b);
 double	rad(double angle);
@@ -96,4 +99,5 @@ t_ui	mlx_get_pixel(t_imgs *img, int x, int y);
 void	my_mlx_pixel_put(t_imgs *img, int x, int y, int color);
 void	init_img(t_imgs *img, void **mlx, int x, int y);
 
+void	ft_bzero(void *s, size_t n);
 #endif
