@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/26 17:29:56 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/26 18:36:38 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ t_vect	add_vectors(t_vect vect_a, t_vect vect_b);
 t_colors	add_colors(t_colors ca, t_colors cb);
 t_vect	sous_vectors(t_vect vect_a, t_vect vect_b);
 t_vect	mult(t_vect vector, double c);
+t_vect	mult_mat_vect(float mat[4][4], t_vect vector);
 double	dot(t_vect vect_a, t_vect vect_b);
 t_vect	cross_product(t_vect a, t_vect b);
 double	rad(double angle);

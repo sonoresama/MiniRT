@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:39 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/24 15:22:34 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/26 17:32:40 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ t_ray	cast_ray(t_data *data, int i, int j)
 	pixel_cam.y = (1 - 2 * (j + 0.5 + pixel_sample()) / HEIGHT) * scale;
 	pixel_cam.z = -1;
 	ray = new_ray(data->scene->camera->pos, sous_vectors(pixel_cam, data->scene->camera->pos));
-	ray.direction = ft_normalize(ray.direction);
+	ray.origin = data->scene->camera->pos;
+	//ray.direction = ft_normalize(ray.direction);
+	ray.direction = mult_mat_vect(data->scene->camera->matrix, ray.direction);
 	return (ray);
 }
