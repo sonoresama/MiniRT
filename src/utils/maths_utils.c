@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:32:23 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/26 17:29:46 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/26 18:44:22 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_vect	cross_product(t_vect a, t_vect b)
 	return (result);
 }
 
-t_vect	mult_mat_vect(double mat[3][3], t_vect vector)
+t_vect	mult_mat_vect(float mat[4][4], t_vect vector)
 {
 	t_vect	result;
 
@@ -88,24 +88,6 @@ t_vect	mult_mat_vect(double mat[3][3], t_vect vector)
 double	rad(double angle)
 {
 	return (angle * M_PI / 180);
-}
-
-// angle must be in radian
-
-t_vect	rotate_cam(double angle, char axis, t_vect vector)
-{
-	if (axis == 1)
-	{
-		return (mult_mat_vect((double[3][3]){{1, 0, 0}, {0, cos(angle), -sin(angle)}, {0, sin(angle), cos(angle)}}, vector));
-	}
-	else if (axis == 2)
-	{
-		return (mult_mat_vect((double[3][3]){{cos(angle), 0, sin(angle)}, {0, 1, 0}, {-sin(angle), 0, cos(angle)}}, vector));
-	}
-	else 
-	{
-		return (mult_mat_vect((double[3][3]){{cos(angle), -sin(angle), 0}, {sin(angle), cos(angle), 0}, {0, 0, 1}}, vector));
-	}
 }
 
 // In this function, if vector.w = 0 then we rotate a vectorm if vector.w = 1, we transform and translate a point

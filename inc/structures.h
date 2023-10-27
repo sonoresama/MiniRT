@@ -92,7 +92,7 @@ typedef struct	s_screen{
 typedef struct s_camera{
 	t_vect	pos;
 	t_vect	look;
-	double	matrix[3][3];
+	float	matrix[4][4];
 	float	fov;
 }	t_camera;
 

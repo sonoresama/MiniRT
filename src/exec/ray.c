@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:39 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/24 15:22:34 by eorer            ###   ########.fr       */
+/*   Updated: 2023/10/27 15:18:00 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ t_ray	cast_ray(t_data *data, int i, int j)
 	pixel_cam.x = (2 * (i + 0.5 + pixel_sample()) / WIDTH - 1) * data->screen.aspect_ratio * scale;
 	pixel_cam.y = (1 - 2 * (j + 0.5 + pixel_sample()) / HEIGHT) * scale;
 	pixel_cam.z = -1;
-	ray = new_ray(data->scene->camera->pos, sous_vectors(pixel_cam, data->scene->camera->pos));
+	ray = new_ray(data->scene->camera->pos, sous_vectors(pixel_cam, new_vector(0, 0, 0)));
+	ray.direction = mult_mat_vect(data->scene->camera->matrix, ray.direction);
 	ray.direction = ft_normalize(ray.direction);
 	return (ray);
 }
