@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:46:03 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/26 18:47:22 by bastien          ###   ########.fr       */
+/*   Updated: 2023/10/27 16:42:16 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,13 @@ static void	init_matrix(float matrix[4][4])
 
 static void	fill_matrix_rotation(float matrix[4][4], double angle, t_vect rot)
 {
-	matrix[0][0] = cos(angle) + rot.x * rot.z * (1 - cos(angle));
-	matrix[0][1] = rot.x * rot.y * (1 - cos(angle)) - rot.z * sin(angle);
+	matrix[0][0] = cos(angle) + rot.x * rot.x * (1 - cos(angle));
 	matrix[0][2] = rot.x * rot.z * (1 - cos(angle)) + rot.y * sin(angle);
-	matrix[1][0] = rot.y * rot.x * (1 - cos(angle)) + rot.z * sin(angle);
 	matrix[1][1] = cos(angle) + rot.y * rot.y * (1 - cos(angle));
 	matrix[1][2] = rot.y * rot.z * (1 - cos(angle)) - rot.x * sin(angle);
 	matrix[2][0] = rot.z * rot.x * (1 - cos(angle)) - rot.y * sin(angle);
 	matrix[2][1] = rot.z * rot.y * (1 - cos(angle)) + rot.x * sin(angle);
 	matrix[2][2] = cos(angle) + rot.z * rot.z * (1 - cos(angle));
-
 }
 
 static void	ft_calc_matrix_cam(t_camera *camera)
@@ -55,7 +52,7 @@ static void	ft_calc_matrix_cam(t_camera *camera)
 	angle = acos(dot(camera->look, new_vector(0, 0, -1)) / (ft_norm(camera->look) * ft_norm(new_vector(0, 0, -1))));
 	rotation_axe = ft_normalize(cross_product(camera->look, new_vector(0, 0, -1)));
 	fill_matrix_rotation(camera->matrix, angle, rotation_axe);
-//	print_vect(rotation_axe);
+	//print_vect(rotation_axe);
 //	printf("angle = %f\n", angle);
 //	printf("| %f %f %f |\n", camera->matrix[0][0], camera->matrix[0][1], camera->matrix[0][2]);
 //	printf("| %f %f %f |\n", camera->matrix[1][0], camera->matrix[1][1], camera->matrix[1][2]);
