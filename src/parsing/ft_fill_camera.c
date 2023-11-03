@@ -50,7 +50,7 @@ static void	ft_calc_matrix_cam(t_camera *camera)
 
 	init_matrix(camera->matrix); 
 	angle = acos(dot(camera->look, new_vector(0, 0, -1)) / (ft_norm(camera->look) * ft_norm(new_vector(0, 0, -1))));
-	rotation_axe = ft_normalize(cross_product(camera->look, new_vector(0, 0, -1)));
+	rotation_axe = ft_normalize(cross(camera->look, new_vector(0, 0, -1)));
 	fill_matrix_rotation(camera->matrix, angle, rotation_axe);
 	//print_vect(rotation_axe);
 //	printf("angle = %f\n", angle);

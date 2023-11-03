@@ -21,9 +21,9 @@ void	generate_rot_matrix(t_data *data)
 
 	tmp = new_vector(0, 1, 0);
 	forward = data->camera.look;
-	right = cross_product(tmp, forward);
+	right = cross(tmp, forward);
 	ft_normalize(&right);
-	up = cross_product(forward, right);
+	up = cross(forward, right);
 	data->camera.matrix[0][0] = right.x;
 	data->camera.matrix[0][1] = right.y;
 	data->camera.matrix[0][2] = right.z;

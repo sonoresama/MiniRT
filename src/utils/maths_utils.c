@@ -65,7 +65,7 @@ double	dot(t_vect a, t_vect b)
 	return (result);
 }
 
-t_vect	cross_product(t_vect a, t_vect b)
+t_vect	cross(t_vect a, t_vect b)
 {
 	t_vect	result;
 

@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/26 18:36:38 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/01 18:24:21 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_vect	v_normal_sphere(t_sphere sphere, t_vect hit_point);
 t_vect	v_normal_plan(t_plan *plan);
 void	get_closest_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point);
 void	get_closest_sphere(t_ray ray, t_sphere *sphere, t_hit *first_hit_point);
+void	get_closest_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *first_hit_point);
 float	is_hiting_sphere(t_ray ray, t_sphere *sphere);
 float	is_hiting_plan(t_ray ray, t_plan *plan);
 int	is_hiting_object(t_data *data, t_ray ray);
@@ -68,7 +69,7 @@ int	is_hiting_object(t_data *data, t_ray ray);
 	/*Scene*/
 int	draw_scene(t_data *data);
 t_colors	ray_color(t_data *data, t_ray ray);
-t_colors	get_form_color(t_data *data, t_hit *hit_point);
+t_colors	get_form_color(t_data *data, t_hit *hit_point, t_ray ray);
 t_colors	new_color(int red, int green, int blue);
 
 	/*Ray*/
@@ -88,7 +89,7 @@ t_vect	sous_vectors(t_vect vect_a, t_vect vect_b);
 t_vect	mult(t_vect vector, double c);
 t_vect	mult_mat_vect(float mat[4][4], t_vect vector);
 double	dot(t_vect vect_a, t_vect vect_b);
-t_vect	cross_product(t_vect a, t_vect b);
+t_vect	cross(t_vect a, t_vect b);
 double	rad(double angle);
 t_vect	new_vector(int x, int y, int z);
 void	print_vect(t_vect vect);
