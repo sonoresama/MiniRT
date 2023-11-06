@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:46:03 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/27 16:42:16 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/06 17:56:23 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static void	ft_calc_matrix_cam(t_camera *camera)
 	t_vect	rotation_axe;
 
 	init_matrix(camera->matrix); 
-	angle = acos(dot(camera->look, new_vector(0, 0, -1)) / (ft_norm(camera->look) * ft_norm(new_vector(0, 0, -1))));
-	rotation_axe = ft_normalize(cross(camera->look, new_vector(0, 0, -1)));
+	angle = acos(dot(camera->look, new_vector(0, 0, 1)) / (ft_norm(camera->look) * ft_norm(new_vector(0, 0, 1))));
+	rotation_axe = ft_normalize(cross(camera->look, new_vector(0, 0, 1)));
 	fill_matrix_rotation(camera->matrix, angle, rotation_axe);
 	//print_vect(rotation_axe);
 //	printf("angle = %f\n", angle);
