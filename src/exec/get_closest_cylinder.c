@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:27:09 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/03 17:12:15 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/07 12:01:42 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	set_hit_cy(t_cylinder *cylinder, t_vect point, float t, t_hit *hit)
 void	get_closest_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *first_hit_point)
 {
 	float	t;
-	t_vect	p;
+//	t_vect	p;
 
 	while (cylinder)
 	{
@@ -70,7 +70,7 @@ void	get_closest_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *first_hit_poin
 		}
 		else
 		{
-			p = intersection(ray, t);
+//			p = intersection(ray, t);
 			if (!first_hit_point->time || (t > 0.01 && t < first_hit_point->time))
 				set_hit_cy(cylinder, intersection(ray, t), t, first_hit_point);
 		}

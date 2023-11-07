@@ -94,6 +94,7 @@ typedef struct s_camera{
 	t_vect	look;
 	float	matrix[4][4];
 	float	fov;
+	float	scale;
 }	t_camera;
 
 typedef struct s_atmos
