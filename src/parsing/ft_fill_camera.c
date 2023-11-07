@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:46:03 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/06 17:56:23 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:37:27 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,33 @@ static void	init_matrix(float matrix[4][4])
 	matrix[3][3] = 1;
 }
 
-static void	fill_matrix_rotation(float matrix[4][4], double angle, t_vect rot)
-{
-	matrix[0][0] = cos(angle) + rot.x * rot.x * (1 - cos(angle));
-	matrix[0][2] = rot.x * rot.z * (1 - cos(angle)) + rot.y * sin(angle);
-	matrix[1][1] = cos(angle) + rot.y * rot.y * (1 - cos(angle));
-	matrix[1][2] = rot.y * rot.z * (1 - cos(angle)) - rot.x * sin(angle);
-	matrix[2][0] = rot.z * rot.x * (1 - cos(angle)) - rot.y * sin(angle);
-	matrix[2][1] = rot.z * rot.y * (1 - cos(angle)) + rot.x * sin(angle);
-	matrix[2][2] = cos(angle) + rot.z * rot.z * (1 - cos(angle));
-}
-
 static void	ft_calc_matrix_cam(t_camera *camera)
 {
-	double	angle;
-	t_vect	rotation_axe;
+	t_vect	forward;
+	t_vect	right;
+	t_vect	up;
+	t_vect	tmp;
 
-	init_matrix(camera->matrix); 
-	angle = acos(dot(camera->look, new_vector(0, 0, 1)) / (ft_norm(camera->look) * ft_norm(new_vector(0, 0, 1))));
-	rotation_axe = ft_normalize(cross(camera->look, new_vector(0, 0, 1)));
-	fill_matrix_rotation(camera->matrix, angle, rotation_axe);
-	//print_vect(rotation_axe);
-//	printf("angle = %f\n", angle);
-//	printf("| %f %f %f |\n", camera->matrix[0][0], camera->matrix[0][1], camera->matrix[0][2]);
-//	printf("| %f %f %f |\n", camera->matrix[1][0], camera->matrix[1][1], camera->matrix[1][2]);
-//	printf("| %f %f %f |\n", camera->matrix[2][0], camera->matrix[2][1], camera->matrix[2][2]);
+	init_matrix(camera->matrix);
+	tmp = new_vector(0, 1, 0);
+	if (camera->look.x == 0 && camera->look.z == 0 && camera->look.y > 0)
+		tmp = new_vector(0, 0, 1);
+	else if (camera->look.x == 0 && camera->look.z == 0 && camera->look.y < 0)
+		tmp = new_vector(0, 0, -1);
+	camera->look.y = -camera->look.y;
+	camera->look.x = -camera->look.x;
+	forward = ft_normalize(camera->look);
+	right = cross(tmp, forward);
+	up = cross(forward, right);
+	camera->matrix[0][0] = right.x;
+	camera->matrix[0][1] = right.y;
+	camera->matrix[0][2] = right.z;
+	camera->matrix[1][0] = up.x;
+	camera->matrix[1][1] = up.y;
+	camera->matrix[1][2] = up.z;
+	camera->matrix[2][0] = forward.x;
+	camera->matrix[2][1] = forward.y;
+	camera->matrix[2][2] = forward.z;
 }
 
 int	ft_fill_camera(char **tab, t_scene *scene, int line)
@@ -73,8 +75,9 @@ int	ft_fill_camera(char **tab, t_scene *scene, int line)
 	if (ft_atod(tab[3], &scene->camera->fov) || scene->camera->fov < 0
 		|| scene->camera->fov > 180)
 		return (printf("%s%i\n", FOV_ERR, line), 1);
+	scene->camera->scale = tan(rad(scene->camera->fov) * 0.5);
 	ft_calc_matrix_cam(scene->camera);
-//	print_vect(scene->camera->pos);
-//	print_vect(scene->camera->look);
+	print_vect(scene->camera->pos);
+	print_vect(scene->camera->look);
 	return (0);
 }
