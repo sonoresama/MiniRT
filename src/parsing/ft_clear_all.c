@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:50:26 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/19 14:54:13 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:52:48 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,18 @@ void	ft_clear_cylinder(t_cylinder *cylinder)
 	}
 }
 
+void	ft_clear_light(t_light *light)
+{
+	t_light	*tmp;
+
+	while (light)
+	{
+		tmp = light->next;
+		free(light);
+		light = tmp;
+	}
+}
+
 void	ft_clear_all(t_scene *scene)
 {
 	if (!scene)
@@ -57,7 +69,7 @@ void	ft_clear_all(t_scene *scene)
 	if (scene->camera)
 		free(scene->camera);
 	if (scene->light)
-		free(scene->light);
+		ft_clear_light(scene->light);
 	if (scene->sphere)
 		ft_clear_sphere(scene->sphere);
 	if (scene->plan)

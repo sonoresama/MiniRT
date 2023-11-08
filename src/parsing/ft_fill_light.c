@@ -6,36 +6,50 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:17:40 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/16 16:37:04 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:46:52 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
+static void	ft_light_add_back(t_light *light, t_scene *scene)
+{
+	t_light	*tmp;
+
+	if (!scene->light)
+		scene->light = light;
+	else
+	{
+		tmp = scene->light;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = light;
+	}
+}
+
 int	ft_fill_light(char **tab, t_scene *scene, int line)
 {
 	char	**colors;
+	t_light	*tmp;
 
-	if (scene->light)
-		return (printf("%s", DTL_ERR), 1);
-	scene->light = ft_calloc(sizeof(t_light), 1);
-	if (!scene->light)
+	tmp = ft_calloc(sizeof(t_light), 1);
+	if (!tmp)
 		return (printf("%s", MAL_ERR), 1);
-	if (ft_fill_vector(tab[1], &scene->light->pos, line))
+	if (ft_fill_vector(tab[1], &tmp->pos, line))
 		return (1);
-	if (ft_atod(tab[2], &scene->light->ratio) || scene->light->ratio < 0
-		|| scene->light->ratio > 1)
+	if (ft_atod(tab[2], &tmp->ratio) || tmp->ratio < 0
+		|| tmp->ratio > 1)
 		return (printf("%s%i\n", RAT_ERR, line), 1);
 	colors = ft_split(tab[3], ',');
 	if (!colors)
 		return (printf("%s", MAL_ERR), 1);
-	if (ft_atoi(colors[0], &scene->light->colors.red)
-		|| ft_atoi(colors[1], &scene->light->colors.green)
-		|| ft_atoi(colors[2], &scene->light->colors.blue)
-		|| scene->light->colors.red < 0 || scene->light->colors.red > 255
-		|| scene->light->colors.green < 0 || scene->light->colors.green > 255
-		|| scene->light->colors.blue < 0 || scene->light->colors.blue > 255)
+	if (ft_atoi(colors[0], &tmp->colors.red)
+		|| ft_atoi(colors[1], &tmp->colors.green)
+		|| ft_atoi(colors[2], &tmp->colors.blue)
+		|| tmp->colors.red < 0 || tmp->colors.red > 255
+		|| tmp->colors.green < 0 || tmp->colors.green > 255
+		|| tmp->colors.blue < 0 || tmp->colors.blue > 255)
 		return (ft_free_tab(colors), printf("%s%i\n", COL_ERR, line), 1);
-	ft_free_tab(colors);
-	return (0);
+	ft_light_add_back(tmp, scene);
+	return (ft_free_tab(colors), 0);
 }
