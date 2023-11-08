@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/10/31 12:48:47 by eorer            ###   ########.fr        #
+#    Updated: 2023/11/08 17:07:45 by bastien          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ SRC = 	src/parsing/check_file.c		\
 	src/parsing/ft_fill_sphere.c		\
 	src/parsing/ft_fill_vector.c		\
 	src/parsing/ft_init_data.c		\
-	src/parsing/ft_print_all.c		\
 	src/parsing/parsing.c			\
 	src/utils/ft_calloc.c			\
 	src/utils/ft_clear_gnl.c		\
@@ -41,6 +40,8 @@ SRC = 	src/parsing/check_file.c		\
 	src/utils/get_next_line_utils.c		\
 	src/utils/utils.c			\
 	src/utils/maths_utils.c 		\
+	src/utils/maths_utils2.c 		\
+	src/utils/maths_utils3.c 		\
 	src/utils/mlx_utilities.c		\
 	src/utils/normal_vector.c		\
 	src/exec/draw_scene.c			\
@@ -49,16 +50,11 @@ SRC = 	src/parsing/check_file.c		\
 	src/exec/get_closest_cylinder.c		\
 	src/exec/is_hiting_object.c		\
 	src/exec/get_form_color.c		\
+	src/exec/get_form_color_utils.c		\
+	src/exec/light_shadow.c		\
 	src/exec/ray.c				\
 	src/exec/ray_color.c			\
 	src/main.c
-#	src/tito/camera.c\
-#	src/tito/color.c \
-#	src/tito/init.c \
-#	src/tito/ray.c \
-#	src/tito/scene.c \
-#	src/tito/sphere.c 
-	
 
 INC =	inc/				\
 

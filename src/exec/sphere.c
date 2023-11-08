@@ -63,17 +63,20 @@ void	get_closest_sphere(t_ray ray, t_sphere *sphere, t_hit *first_hit_point)
 		t = is_hiting_sphere(ray, sphere);
 		if (t != -1)
 		{
-			if (t > 0.001 && (first_hit_point->time == 0 || t < first_hit_point->time))
+			if (t > 0.001 && (first_hit_point->time == 0
+					|| t < first_hit_point->time))
 			{
 				first_hit_point->time = t;
 				first_hit_point->obj = sphere;
-				first_hit_point->point = intersection(ray, first_hit_point->time);
+				first_hit_point->point = intersection(ray,
+						first_hit_point->time);
 				first_hit_point->type = SPHERE;
-				first_hit_point->normal = v_normal_sphere(*sphere, first_hit_point->point);
+				first_hit_point->normal = v_normal_sphere(*sphere,
+						first_hit_point->point);
 				first_hit_point->color = sphere->colors;
 			}
 		}
 		sphere = sphere->next;
 	}
-	return;
+	return ;
 }

@@ -14,12 +14,13 @@
 
 t_colors	ray_color(t_data *data, t_ray ray)
 {
-	t_hit	*hit_point;
+	t_hit		*hit_point;
 	t_colors	color;
 
 	hit_point = ft_calloc(sizeof(t_hit), 1);
 	if (!hit_point)
-		return (printf("%s", MAL_ERR), data->error = MALLOC_ERR, new_color(-1, -1, -1));
+		return (printf("%s", MAL_ERR), data->error = MALLOC_ERR,
+			new_color(-1, -1, -1));
 	get_closest_sphere(ray, data->scene->sphere, hit_point);
 	get_closest_plan(ray, data->scene->plan, hit_point);
 	cylinder_inter(ray, data->scene->cylinder, hit_point);
@@ -29,10 +30,10 @@ t_colors	ray_color(t_data *data, t_ray ray)
 		free(hit_point);
 		return (new_color(0, 0, 0));
 	}
-	else 
+	else
 	{
-		color = get_form_color(data, hit_point, ray);
+		color = get_form_color(data, hit_point, ray, data->scene->light);
 		free(hit_point);
-		return(color);
+		return (color);
 	}
 }

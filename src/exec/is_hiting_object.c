@@ -58,7 +58,8 @@ float	is_hiting_plan(t_ray ray, t_plan *plan)
 
 	p_dot = dot(ray.direction, ft_normalize(plan->vecteur));
 	if (p_dot > 0.0001)
-		t = dot(sous_vectors(plan->start, ray.origin), ft_normalize(plan->vecteur)) / p_dot;
+		t = dot(sous_vectors(plan->start, ray.origin),
+				ft_normalize(plan->vecteur)) / p_dot;
 	else
 		t = -1;
 	return (t);
