@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/08 18:14:33 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/09 12:18:39 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,14 @@ plusieurs fois\n"
 # define CYLINDER 12
 # define BACKGROUND 13
 # define MALLOC_ERR 100
+# define SPECULAR 0.003
+# define DIFFUSE  0.997
+# define N 40
 
 // COLOR PRINT //
 
 # define RED "\033[0;31m"
 # define YELLOW "\033[0;33m"
 # define GREEN "\033[0;32m"
-
-// OTHER //
-
-# define ABS(x) x < 0 ? -1 * x : x
 
 #endif

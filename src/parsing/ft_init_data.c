@@ -38,7 +38,5 @@ int	ft_init_data(t_data *data, t_scene *scene)
 	data->screen.aspect_ratio = (double)WIDTH / (double)HEIGHT;
 	data->screen.height = data->screen.width / data->screen.aspect_ratio;
 	data->count = 0;
-	data->error = 0;
-	data->scene->albedo = 0.18;
-	return (0);
+	return (data->error = 0, data->scene->albedo = 0.18, 0);
 }

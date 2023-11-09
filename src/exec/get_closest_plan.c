@@ -15,13 +15,14 @@
 void	get_closest_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point)
 {
 	float	t;
-	
+
 	while (plan)
 	{
 		t = is_hiting_plan(ray, plan);
 		if (t >= 0)
 		{
-			if (!first_hit_point->time || (t > 0.01 && t < first_hit_point->time))
+			if (!first_hit_point->time
+				|| (t > 0.01 && t < first_hit_point->time))
 			{
 				first_hit_point->time = t;
 				first_hit_point->point = intersection(ray, t);
