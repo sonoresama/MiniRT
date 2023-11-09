@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/09 12:22:07 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/09 19:00:50 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ int			ft_fill_plan(char **tab, t_scene *scene, int line);
 int			ft_fill_sphere(char **tab, t_scene *scene, int line);
 int			ft_fill_vector(char *str, t_vect *vector, int line);
 int			ft_init_data(t_data *data, t_scene *scene);
+int			ft_count_separator(char *str, char separator);
 int			parsing(t_data *data, int argc, char **argv);
 size_t		ft_strlen(const char *str);
+int		ft_tablen(char **tab);
 char		**ft_split_2_separator(char const *str, char c, char d);
 char		**ft_split(const char *s, char c);
 void		*ft_calloc(size_t nmemb, size_t size);
@@ -81,8 +83,10 @@ int			get_form_colors_plan(float *t, t_plan *plan, t_hit *hit_point,
 				t_vect l_direction);
 t_colors	new_color(int red, int green, int blue);
 t_vect		ft_atmos_intensity(t_atmos *atmos, t_hit *hit_point);
-t_vect		ft_diffuse(t_light *light, t_vect l_direction, t_hit *hit_point, t_data *data);
-t_vect		ft_specular(t_vect l_direction, t_hit *hit_point, t_ray ray, t_data *data);
+t_vect		ft_diffuse(t_light *light, t_vect l_direction, t_hit *hit_point,
+				t_data *data);
+t_vect		ft_specular(t_vect l_direction, t_hit *hit_point, t_ray ray,
+				t_data *data);
 
 	/*Ray*/
 t_ray		new_ray(t_vect origin, t_vect direction);

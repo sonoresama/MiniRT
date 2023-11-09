@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_vector.c                                   :+:      :+:    :+:   */
+/*   ft_count_separator.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 15:20:01 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/09 16:09:01 by blerouss         ###   ########.fr       */
+/*   Created: 2023/11/09 18:56:31 by blerouss          #+#    #+#             */
+/*   Updated: 2023/11/09 19:01:36 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-int	ft_fill_vector(char *str, t_vect *vector, int line)
+int	ft_count_separator(char *str, char separator)
 {
-	char	**pos;
+	int	i;
+	int	count;
 
-	(void)line;
-	pos = ft_split(str, ',');
-	if (!pos)
-		return (printf("%s", MAL_ERR), 1);
-	if (ft_tablen(pos) != 3 || ft_atod(pos[0], &vector->x)
-		|| ft_atod(pos[1], &vector->y)
-		|| ft_atod(pos[2], &vector->z))
-		return (ft_free_tab(pos), 1);
-	ft_free_tab(pos);
-	return (0);
+	i = 0;
+	count = 0;
+	while (str && str[i])
+	{
+		if (str[i] == separator)
+			count++;
+		i++;
+	}
+	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:17:40 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/08 14:46:52 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/09 16:04:03 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,15 @@ int	ft_fill_light(char **tab, t_scene *scene, int line)
 	if (!tmp)
 		return (printf("%s", MAL_ERR), 1);
 	if (ft_fill_vector(tab[1], &tmp->pos, line))
-		return (1);
+		return (printf("%s%i\n", POS_ERR, line), 1);
 	if (ft_atod(tab[2], &tmp->ratio) || tmp->ratio < 0
 		|| tmp->ratio > 1)
 		return (printf("%s%i\n", RAT_ERR, line), 1);
 	colors = ft_split(tab[3], ',');
 	if (!colors)
 		return (printf("%s", MAL_ERR), 1);
-	if (ft_atoi(colors[0], &tmp->colors.red)
+	if (ft_tablen(colors) != 3
+		|| ft_atoi(colors[0], &tmp->colors.red)
 		|| ft_atoi(colors[1], &tmp->colors.green)
 		|| ft_atoi(colors[2], &tmp->colors.blue)
 		|| tmp->colors.red < 0 || tmp->colors.red > 255

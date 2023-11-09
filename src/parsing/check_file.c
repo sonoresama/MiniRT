@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:21:05 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/08 14:41:54 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/09 14:23:29 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ static int	ft_define_type(char **tab, t_scene *scene)
 	line++;
 	if (!tab[0])
 		return (0);
-	else if (tab[0][0] == 'A' && !tab[0][1])
+	else if (tab[0][0] == 'A' && !tab[0][1] && ft_tablen(tab) == 3)
 		return (ft_fill_atmos(tab, scene, line));
-	else if (tab[0][0] == 'C' && !tab[0][1])
+	else if (tab[0][0] == 'C' && !tab[0][1] && ft_tablen(tab) == 4)
 		return (ft_fill_camera(tab, scene, line));
-	else if (tab[0][0] == 'l' && !tab[0][1])
+	else if (tab[0][0] == 'l' && !tab[0][1] && ft_tablen(tab) == 4)
 		return (ft_fill_light(tab, scene, line));
-	else if (!ft_strncmp(tab[0], "sp", 3))
+	else if (!ft_strncmp(tab[0], "sp", 3) && ft_tablen(tab) == 4)
 		return (ft_fill_sphere(tab, scene, line));
-	else if (!ft_strncmp(tab[0], "pl", 3))
+	else if (!ft_strncmp(tab[0], "pl", 3) && ft_tablen(tab) == 4)
 		return (ft_fill_plan(tab, scene, line));
-	else if (!ft_strncmp(tab[0], "cy", 3))
+	else if (!ft_strncmp(tab[0], "cy", 3) && ft_tablen(tab) == 6)
 		return (ft_fill_cylinder(tab, scene, line));
 	else
 		return (printf("%s%i\n", TYPE_ERR, line), 1);

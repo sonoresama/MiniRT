@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:18 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/09 12:25:41 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/09 13:52:21 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ t_colors	get_form_color(t_data *data, t_hit *hit_point, t_ray ray,
 		shadow = light_shadow(data, hit_point, l_direction);
 		a_intensity = ft_atmos_intensity(data->scene->atmos, hit_point);
 		diffuse = add_vectors(diffuse, mult(ft_diffuse(light, l_direction,
-					hit_point, data), shadow));
-		specular = add_vectors(specular, mult(ft_specular(l_direction, hit_point,
-					ray, data), shadow));
+						hit_point, data), shadow));
+		specular = add_vectors(specular, mult(ft_specular(l_direction,
+						hit_point, ray, data), shadow));
 		light = light->next;
 	}
 	return (new_color(fmin(255, (DIFFUSE * diffuse.x + SPECULAR * specular.x)

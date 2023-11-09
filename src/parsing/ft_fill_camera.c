@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:46:03 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/07 17:37:27 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/09 16:11:16 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,16 @@ int	ft_fill_camera(char **tab, t_scene *scene, int line)
 	if (!scene->camera)
 		return (printf("%s", MAL_ERR), 1);
 	if (ft_fill_vector(tab[1], &scene->camera->pos, line))
-		return (1);
-	if (ft_fill_vector(tab[2], &scene->camera->look, line))
-		return (1);
+		return (printf("%s%i\n", POS_ERR, line), 1);
+	if (ft_fill_vector(tab[2], &scene->camera->look, line)
+		|| scene->camera->look.x < -1 || scene->camera->look.x > 1
+		|| scene->camera->look.y < -1 || scene->camera->look.y > 1
+		|| scene->camera->look.z < -1 || scene->camera->look.z > 1)
+		return (printf("%s%i\n", VEC_ERR, line), 1);
 	if (ft_atod(tab[3], &scene->camera->fov) || scene->camera->fov < 0
 		|| scene->camera->fov > 180)
 		return (printf("%s%i\n", FOV_ERR, line), 1);
 	scene->camera->scale = tan(rad(scene->camera->fov) * 0.5);
 	ft_calc_matrix_cam(scene->camera);
-	print_vect(scene->camera->pos);
-	print_vect(scene->camera->look);
 	return (0);
 }
