@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:18 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/03 18:53:54 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/08 18:09:11 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define SPECULAR 0.003
 #define DIFFUSE  0.997
-#define N 50
+#define N 40
 
 float	is_hiting_sphere(t_ray ray, t_sphere *sphere);
 int	light_shadow(t_data *data, t_hit *hit_point, t_vect l_direction);
@@ -41,13 +41,13 @@ t_colors	get_form_color(t_data *data, t_hit *hit_point, t_ray ray)
 		l_direction = sous_vectors(light->pos, hit_point->point);
 		shadow = light_shadow(data, hit_point, l_direction);
 		a_intensity = ft_atmos_intensity(data->scene->atmos, hit_point);
-		diffuse = add_vectors(diffuse, ft_diffuse(light, l_direction, hit_point, data));
-		specular = add_vectors(specular, ft_specular(l_direction, hit_point, ray, data));
+		diffuse = add_vectors(diffuse, mult(ft_diffuse(light, l_direction, hit_point, data), shadow));
+		specular = add_vectors(specular, mult(ft_specular(l_direction, hit_point, ray, data), shadow));
 		light = light->next;
 	}
-	color.red = fmin(255, (DIFFUSE * diffuse.x + SPECULAR * specular.x) * shadow * hit_point->color.red + a_intensity.x);	
-	color.green = fmin(255, (DIFFUSE * diffuse.y + SPECULAR * specular.y) * shadow * hit_point->color.green + a_intensity.y);
-	color.blue = fmin(255, (DIFFUSE * diffuse.z + SPECULAR * specular.z) * shadow * hit_point->color.blue + a_intensity.z);
+	color.red = fmin(255, (DIFFUSE * diffuse.x + SPECULAR * specular.x) * hit_point->color.red + a_intensity.x);	
+	color.green = fmin(255, (DIFFUSE * diffuse.y + SPECULAR * specular.y) * hit_point->color.green + a_intensity.y);
+	color.blue = fmin(255, (DIFFUSE * diffuse.z + SPECULAR * specular.z) * hit_point->color.blue + a_intensity.z);
 	return (color);
 }
 
@@ -68,7 +68,7 @@ int	light_shadow(t_data *data, t_hit *hit_point, t_vect l_direction)
 		if (sphere != hit_point->obj)
 		{
 			t = is_hiting_sphere(new_ray(hit_point->point, ft_normalize(l_direction)), sphere);
-			if (t > 0.1 && t < ft_norm(l_direction) + 0.01)
+			if (t > 0.01 && t < ft_norm(l_direction) + 0.01)
 				return (0);
 		}
 		sphere = sphere->next;
@@ -82,7 +82,7 @@ int	light_shadow(t_data *data, t_hit *hit_point, t_vect l_direction)
 			continue;
 		}
 		t = is_hiting_plan(new_ray(hit_point->point, ft_normalize(l_direction)), plan);
-		if (t > 0.1 && t < ft_norm(l_direction) + 0.01)
+		if (t > 0.01 && t < ft_norm(l_direction) + 0.01)
 			return (0);
 		plan = plan->next;
 	}

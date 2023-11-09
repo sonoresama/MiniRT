@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/10/31 12:48:47 by eorer            ###   ########.fr        #
+#    Updated: 2023/11/08 17:02:20 by eorer            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,9 +59,11 @@ SRC = 	src/parsing/check_file.c		\
 #	src/tito/scene.c \
 #	src/tito/sphere.c 
 	
-
 INC =	inc/				\
 
+HEADER = ./inc/define.h	\
+		./inc/structures.h	\
+		./inc/minirt.h	
 
 MLX_FILE	=	libmlx_Linux.a
 
@@ -80,7 +82,7 @@ all : $(NAME)
 $(MLX_FILE):
 	make -sC $(MLX_PATH)
 
-$(NAME): $(MLX_FILE) $(OBJ)
+$(NAME): $(MLX_FILE) $(OBJ) $(HEADER)
 	$(CC) -g $(CFLAGS) $(OBJ) -lm -I $(INC)  $(MLX_EX) -o $(NAME)
 
 clean:

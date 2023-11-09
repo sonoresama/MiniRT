@@ -6,52 +6,12 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:49 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/27 17:27:33 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/08 17:34:32 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-//float	is_hiting_sphere(t_ray ray, t_sphere *sphere);
-//
-//	// NE PAS OUBLIER DE FREE LE HIT !!!!!!!!!!!!!!!!!!!!!!!!//
-//t_hit	*get_closest_sphere(t_data *data, t_ray ray)
-//{
-//	t_sphere	*tmp;
-//	t_hit	*hit_point;
-//	float	min;
-//	float	t;
-//
-//	tmp = data->scene->sphere;
-//	if (!tmp)
-//		return (NULL);
-//	hit_point = ft_calloc(sizeof(t_hit), 1);
-//	if (!hit_point)
-//		return (data->error = MALLOC_ERR, NULL);
-//	min = 0;
-//	while (tmp)
-//	{
-//		t = is_hiting_sphere(ray, tmp);
-//		if (t != -1)
-//		{
-//			if (min == 0 || t < min)
-//			{
-//				min = t;
-//				hit_point->obj = tmp;
-//				hit_point->color = tmp->colors;
-//				hit_point->point = intersection(ray, min);
-//				hit_point->type = SPHERE;
-//			}
-//		}
-//		tmp = tmp->next;
-//	}
-//	if (!min)
-//		return (NULL);
-//	return (hit_point);
-//}
-//
-//float	is_hiting_sphere(t_ray ray, t_sphere *sphere)
-//=======
 void	get_closest_sphere(t_ray ray, t_sphere *sphere, t_hit *first_hit_point)
 {
 	float	t;

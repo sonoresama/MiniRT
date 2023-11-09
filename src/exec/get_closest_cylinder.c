@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:27:09 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/07 17:43:11 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/08 17:53:31 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,8 @@ float	is_hiting_core(t_ray ray, t_cylinder *cylinder)
 	float	b;
 	float	c;
 	float	d;
-//	float	t[2];
 	t_vect	u;
 	t_vect	v;
-
-//	va = vec3_cross(vec3_cross(cy.dir, r.direction), cy.dir);
-//	ra0 = vec3_cross(vec3_cross(cy.dir, r.origin.xyz - cy.origin.xyz), cy.dir);
-//	equa.a = vec3_dot(va, va);
-//	equa.b = 2 * vec3_dot(ra0, va);
-//	equa.c = vec3_dot(ra0, ra0) -(cy.radius * cy.radius);
 
 	u = cross(cross(cylinder->vecteur, ray.direction), cylinder->vecteur);
 	v = cross(cross(sous_vectors(cylinder->center, ray.origin), cylinder->vecteur), cylinder->vecteur);
@@ -42,12 +35,6 @@ float	is_hiting_core(t_ray ray, t_cylinder *cylinder)
 		return (-1);
 	else
 		return (fmin((-b + sqrt(d)) / 2 * a, (-b - sqrt(d)) / 2 * a));
-//	t[0] = -b + sqrt(d) / 2 * a;
-//	t[1] = -b - sqrt(d) / 2 * a;
-//	if (t[1] > 0 && t[1] < t[0])
-//		return (t[1]);
-//	else
-//		return (t[0]);
 }
 
 t_vect	v_normal_cy(t_vect point, t_cylinder *cylinder, t_ray ray)
@@ -94,20 +81,29 @@ int	cylinder_inter(t_ray ray, t_cylinder *cylinder, t_hit *hit)
 	point = intersection(ray, t);
 	if (t != -1 
 			&& ft_norm(sous_vectors(point, pl_up.start)) <= cylinder->diameter / 2 
-			&& t < hit->time)
+			&& (hit->time == 0 || t < hit->time))
 		set_hit_cy(cylinder, point, t, hit, TOP, ray);
 	t = is_hiting_plan(ray, &pl_down);
 	point = intersection(ray, t);
 	if (t != -1 
 			&& ft_norm(sous_vectors(point, pl_down.start)) <= cylinder->diameter / 2 
-			&& t < hit->time)
+			&& (hit->time == 0 || t < hit->time))
 		set_hit_cy(cylinder, point, t, hit, BOT, ray);
-//	t = is_hiting_core(ray, cylinder);
-//	point = intersection(ray, t);
-//	if (t != -1 
-//			&& pow(ft_norm(sous_vectors(cylinder->center, point)), 2) <= pow(cylinder->height / 2, 2) + pow(cylinder->diameter / 2, 2)
-//			&& t < hit->time)
-//		set_hit_cy(cylinder, point, t, hit, CORE, ray);
+	t = is_hiting_core(ray, cylinder);
+//	if (t != -1 && hit->time == 0)
+//	{
+//		printf("Only core\n");
+//	}
+//	if (t != -1 && t < hit->time)
+//	{
+//		printf("t core : %f\n", t);
+//		printf("t hit : %f\n\n", hit->time);
+//	}
+	point = intersection(ray, t);
+	if (t != -1 
+			&& pow(ft_norm(sous_vectors(cylinder->center, point)), 2) <= pow(cylinder->height / 2, 2) + pow(cylinder->diameter / 2, 2)
+			&& (hit->time == 0 || t < hit->time))
+		set_hit_cy(cylinder, point, t, hit, CORE, ray);
 	if (hit->time > 0.01)
 		return (1);
 	return (0);
