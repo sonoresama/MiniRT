@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:46:03 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/07 17:37:27 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/09 13:33:41 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,5 @@ int	ft_fill_camera(char **tab, t_scene *scene, int line)
 		return (printf("%s%i\n", FOV_ERR, line), 1);
 	scene->camera->scale = tan(rad(scene->camera->fov) * 0.5);
 	ft_calc_matrix_cam(scene->camera);
-	print_vect(scene->camera->pos);
-	print_vect(scene->camera->look);
 	return (0);
 }
