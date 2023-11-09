@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/08 17:48:01 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/09 12:22:07 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ int			get_form_colors_sphere(float *t, t_sphere *sphere, t_hit *hit_point,
 int			get_form_colors_plan(float *t, t_plan *plan, t_hit *hit_point,
 				t_vect l_direction);
 t_colors	new_color(int red, int green, int blue);
+t_vect		ft_atmos_intensity(t_atmos *atmos, t_hit *hit_point);
+t_vect		ft_diffuse(t_light *light, t_vect l_direction, t_hit *hit_point, t_data *data);
+t_vect		ft_specular(t_vect l_direction, t_hit *hit_point, t_ray ray, t_data *data);
 
 	/*Ray*/
 t_ray		new_ray(t_vect origin, t_vect direction);

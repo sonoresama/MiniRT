@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:41:46 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/08 17:08:05 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/09 12:23:54 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_form_colors_sphere(float *t, t_sphere *sphere, t_hit *hit_point,
 		{
 			(*t) = is_hiting_sphere(new_ray(hit_point->point,
 						ft_normalize(l_direction)), sphere);
-			if ((*t) > 0.1 && (*t) < ft_norm(l_direction) + 0.01)
+			if ((*t) > 0.01 && (*t) < ft_norm(l_direction) + 0.01)
 				return (0);
 		}
 		sphere = sphere->next;
@@ -41,7 +41,7 @@ int	get_form_colors_plan(float *t, t_plan *plan, t_hit *hit_point,
 		}
 		(*t) = is_hiting_plan(new_ray(hit_point->point,
 					ft_normalize(l_direction)), plan);
-		if ((*t) > 0.1 && (*t) < ft_norm(l_direction) + 0.01)
+		if ((*t) > 0.01 && (*t) < ft_norm(l_direction) + 0.01)
 			return (0);
 		plan = plan->next;
 	}

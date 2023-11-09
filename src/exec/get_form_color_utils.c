@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:20:35 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/08 16:33:45 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/09 12:20:58 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,25 @@ t_vect	ft_light_intensity(t_light *light, float distance)
 	intensity.y = (light->ratio * light->colors.green) / (4 * M_PI * distance);
 	intensity.z = (light->ratio * light->colors.blue) / (4 * M_PI * distance);
 	return (intensity);
+}
+
+t_vect	ft_specular(t_vect l_direction, t_hit *hit_point,
+	t_ray ray, t_data *data)
+{
+	t_vect	reflect;
+	float	prod;
+	t_vect	color;
+	t_vect	l_ratio;
+
+	l_ratio = ft_light_intensity(data->scene->light, ft_norm(l_direction));
+	l_direction = ft_normalize(l_direction);
+	reflect = sous_vectors(mult(hit_point->normal, 2
+				* dot(l_direction, hit_point->normal)), l_direction);
+	prod = dot(ft_normalize(reflect), mult(ray.direction, -1));
+	if (prod < 0)
+		return (new_vector(0, 0, 0));
+	color.x = fmin(255, hit_point->color.red * l_ratio.x * pow(prod, N));
+	color.y = fmin(255, hit_point->color.green * l_ratio.y * pow(prod, N));
+	color.z = fmin(255, hit_point->color.blue * l_ratio.z * pow(prod, N));
+	return (color);
 }
