@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:32:23 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/08 16:28:49 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/10 16:18:35 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_vect	intersection(t_ray ray, float t)
 {
 	t_vect	point;
 
-	point = add_vectors(ray.origin, mult(ray.direction, t));
+	point.x = ray.origin.x + t * ray.direction.x;
+	point.y = ray.origin.y + t * ray.direction.y;
+	point.z = ray.origin.z + t * ray.direction.z;
 	return (point);
 }
