@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:31:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/09 15:43:57 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/10 15:50:12 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static int	ft_fill_colors(char *str, t_cylinder *tmp, int line)
 	colors = ft_split(str, ',');
 	if (!colors)
 		return (printf("%s", MAL_ERR), 1);
-	if (ft_atoi(colors[0], &tmp->colors.red)
+	if (ft_tablen(colors) != 3 || ft_count_separator(str, ',') != 2
+		|| ft_atoi(colors[0], &tmp->colors.red)
 		|| ft_atoi(colors[1], &tmp->colors.green)
 		|| ft_atoi(colors[2], &tmp->colors.blue)
 		|| tmp->colors.red < 0 || tmp->colors.red > 255
@@ -52,12 +53,12 @@ int	ft_fill_cylinder(char **tab, t_scene *scene, int line)
 	if (!tmp)
 		return (printf("%s", MAL_ERR), 1);
 	if (ft_fill_vector(tab[1], &tmp->center, line))
-		return (1);
+		return (printf("%s%i\n", POS_ERR, line), 1);
 	if (ft_fill_vector(tab[2], &tmp->vecteur, line)
 		|| tmp->vecteur.x > 1 || tmp->vecteur.x < -1
 		|| tmp->vecteur.y > 1 || tmp->vecteur.y < -1
 		|| tmp->vecteur.z > 1 || tmp->vecteur.z < -1)
-		return (1);
+		return (printf("%s%i\n", VEC_ERR, line), 1);
 	if (ft_atod(tab[3], &tmp->diameter) || tmp->diameter <= 0)
 		return (printf("%s%i\n", DIA_ERR, line), 1);
 	if (ft_atod(tab[4], &tmp->height) || tmp->height <= 0)

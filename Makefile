@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/09 12:09:59 by eorer            ###   ########.fr        #
+#    Updated: 2023/11/09 19:01:10 by blerouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC = 	src/parsing/check_file.c		\
 	src/parsing/ft_fill_sphere.c		\
 	src/parsing/ft_fill_vector.c		\
 	src/parsing/ft_init_data.c		\
+	src/parsing/ft_count_separator.c		\
 	src/parsing/parsing.c			\
 	src/utils/ft_calloc.c			\
 	src/utils/ft_clear_gnl.c		\
@@ -36,6 +37,7 @@ SRC = 	src/parsing/check_file.c		\
 	src/utils/ft_atod.c			\
 	src/utils/ft_atoi.c			\
 	src/utils/ft_strlen.c			\
+	src/utils/ft_tablen.c		\
 	src/utils/get_next_line.c		\
 	src/utils/get_next_line_utils.c		\
 	src/utils/utils.c			\

@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:46:03 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/09 13:33:41 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/07 17:37:27 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,12 @@ int	ft_fill_camera(char **tab, t_scene *scene, int line)
 	if (!scene->camera)
 		return (printf("%s", MAL_ERR), 1);
 	if (ft_fill_vector(tab[1], &scene->camera->pos, line))
-		return (1);
-	if (ft_fill_vector(tab[2], &scene->camera->look, line))
-		return (1);
+		return (printf("%s%i\n", POS_ERR, line), 1);
+	if (ft_fill_vector(tab[2], &scene->camera->look, line)
+		|| scene->camera->look.x < -1 || scene->camera->look.x > 1
+		|| scene->camera->look.y < -1 || scene->camera->look.y > 1
+		|| scene->camera->look.z < -1 || scene->camera->look.z > 1)
+		return (printf("%s%i\n", VEC_ERR, line), 1);
 	if (ft_atod(tab[3], &scene->camera->fov) || scene->camera->fov < 0
 		|| scene->camera->fov > 180)
 		return (printf("%s%i\n", FOV_ERR, line), 1);

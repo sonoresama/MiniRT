@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:56:44 by bastien           #+#    #+#             */
-/*   Updated: 2023/10/26 12:50:14 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/10 15:44:13 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	parsing(t_data *data, int argc, char **argv)
 	t_scene		*scene;
 	t_win_list	*tmp;
 
-	(void)argc;
-	(void)argv;
 	scene = ft_calloc(sizeof(t_scene), 1);
 	if (check_file(argc, argv, scene))
 		return (ft_clear_all(scene), 1);
