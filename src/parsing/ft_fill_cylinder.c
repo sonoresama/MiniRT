@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:31:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/09 16:02:46 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:11:36 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	ft_fill_cylinder(char **tab, t_scene *scene, int line)
 		return (printf("%s%i\n", HEI_ERR, line), 1);
 	if (ft_fill_colors(tab[5], tmp, line))
 		return (1);
+	tmp->vecteur = ft_normalize(tmp->vecteur);
 	ft_cylinder_add_back(tmp, scene);
 	return (0);
 }
