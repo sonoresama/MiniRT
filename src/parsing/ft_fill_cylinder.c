@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:31:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/17 12:11:36 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:50:12 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_fill_colors(char *str, t_cylinder *tmp, int line)
 	colors = ft_split(str, ',');
 	if (!colors)
 		return (printf("%s", MAL_ERR), 1);
-	if (ft_tablen(colors) != 3
+	if (ft_tablen(colors) != 3 || ft_count_separator(str, ',') != 2
 		|| ft_atoi(colors[0], &tmp->colors.red)
 		|| ft_atoi(colors[1], &tmp->colors.green)
 		|| ft_atoi(colors[2], &tmp->colors.blue)

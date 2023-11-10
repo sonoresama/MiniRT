@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 14:40:41 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/09 15:43:38 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:50:24 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_fill_atmos(char **tab, t_scene *scene, int line)
 	colors = ft_split(tab[2], ',');
 	if (!colors)
 		return (printf("%s", MAL_ERR), 1);
-	if (ft_tablen(colors) != 3
+	if (ft_tablen(colors) != 3 || ft_count_separator(tab[2], ',') != 2
 		|| ft_atoi(colors[0], &scene->atmos->colors.red)
 		|| ft_atoi(colors[1], &scene->atmos->colors.green)
 		|| ft_atoi(colors[2], &scene->atmos->colors.blue)
