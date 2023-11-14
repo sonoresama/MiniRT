@@ -6,32 +6,11 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:40:58 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/03 18:16:35 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/14 16:38:53 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
-
-int	is_hiting_object(t_data *data, t_ray ray)
-{
-	t_scene	*scene;
-
-	scene = data->scene;
-	while (scene->sphere)
-	{
-		if (is_hiting_sphere(ray, scene->sphere) != -1)
-			return (1);
-		scene->sphere = scene->sphere->next;
-	}
-	while (scene->plan)
-	{
-		if (is_hiting_plan(ray, scene->plan) != -1)
-			return (1);
-		scene->plan = scene->plan->next;
-	}
-	// add cylinder
-	return (0);
-}
 
 float	is_hiting_sphere(t_ray ray, t_sphere *sphere)
 {
@@ -48,7 +27,7 @@ float	is_hiting_sphere(t_ray ray, t_sphere *sphere)
 	d = pow(b, 2) - 4 * a * c;
 	if (d < 0.0)
 		return (-1);
-	return (fmin((-b + sqrt(d)) / 2 * a, (-b - sqrt(d)) / 2 * a));
+	return (fmin((-b + sqrt(d)) / (2 * a), (-b - sqrt(d)) / (2 * a)));
 }
 
 float	is_hiting_plan(t_ray ray, t_plan *plan)
