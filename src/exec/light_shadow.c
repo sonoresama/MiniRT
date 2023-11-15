@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:41:46 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/14 16:40:34 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/15 15:19:12 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,11 @@ int	light_shadow(t_data *data, t_hit *hit_point, t_vect l_direction)
 	if (!get_form_colors_sphere(&t, data->scene->sphere,
 			hit_point, l_direction))
 		return (0);
-	if (!get_form_colors_plan(&t, data->scene->plan, hit_point, l_direction))
+	if (!get_form_colors_plan(&t, data->scene->plan,
+				hit_point, l_direction))
 		return (0);
-	if (!get_form_colors_cyl(&t, data->scene->cylinder, hit_point, l_direction))
+	if (!get_form_colors_cyl(&t, data->scene->cylinder,
+				hit_point, l_direction))
 		return (0);
 	return (1);
 }
