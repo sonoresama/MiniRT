@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/14 13:46:28 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/14 18:04:44 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			ft_init_data(t_data *data, t_scene *scene);
 int			ft_count_separator(char *str, char separator);
 int			parsing(t_data *data, int argc, char **argv);
 size_t		ft_strlen(const char *str);
-int		ft_tablen(char **tab);
+int			ft_tablen(char **tab);
 char		**ft_split_2_separator(char const *str, char c, char d);
 char		**ft_split(const char *s, char c);
 void		*ft_calloc(size_t nmemb, size_t size);
@@ -69,7 +69,7 @@ void		get_closest_cylinder(t_ray ray, t_cylinder *cylinder,
 float		is_hiting_sphere(t_ray ray, t_sphere *sphere);
 float		is_hiting_plan(t_ray ray, t_plan *plan);
 int			is_hiting_object(t_data *data, t_ray ray);
-float			is_hiting_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *hit);
+float		is_hiting_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *hit);
 
 	/*Scene*/
 int			draw_scene(t_data *data);

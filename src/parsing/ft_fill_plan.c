@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:20:00 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/10 15:51:20 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:03:54 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ int	ft_fill_plan(char **tab, t_scene *scene, int line)
 		|| tmp->colors.green < 0 || tmp->colors.green > 255
 		|| tmp->colors.blue < 0 || tmp->colors.blue > 255)
 		return (ft_free_tab(colors), printf("%s%i\n", COL_ERR, line), 1);
-	ft_plan_add_back(tmp, scene);
-	return (ft_free_tab(colors), 0);
+	return (ft_free_tab(colors), ft_plan_add_back(tmp, scene), 0);
 }
