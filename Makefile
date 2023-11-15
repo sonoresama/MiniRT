@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/15 15:58:53 by blerouss         ###   ########.fr        #
+#    Updated: 2023/11/15 16:10:29 by blerouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,12 +83,11 @@ all : $(NAME)
 $(MLX_FILE):
 	@make -sC $(MLX_PATH)
 
-$(NAME): $(MLX_FILE) $(OBJ) $(HEADER)
-	@$(CC) -g $(CFLAGS) $(OBJ) -lm -I $(INC)  $(MLX_EX) -o $(NAME)
+$(NAME): $(OBJ) $(HEADER)
+	$(CC) -g $(CFLAGS) $(OBJ) -lm -I $(INC)  $(MLX_EX) -o $(NAME)
 
 clean:
-	@make clean -sC $(MLX_PATH)
-	@/bin/rm -f $(OBJ)
+	/bin/rm -f $(OBJ)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
