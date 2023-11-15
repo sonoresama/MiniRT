@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:28:18 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/03 18:22:30 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/14 17:09:35 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	get_closest_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point)
 {
 	float	t;
 
+	if (!plan)
+		return ;
 	while (plan)
 	{
 		t = is_hiting_plan(ray, plan);

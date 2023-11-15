@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:27:09 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/14 18:46:21 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:26:11 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,24 +117,12 @@ void	get_closest_cylinder(t_ray ray, t_cylinder *cylinder,
 		t_hit *first_hit_point)
 {
 	float	t;
-	t_hit	*tmp;
 
-	tmp = ft_calloc(sizeof(t_hit), 1);
-	if (!tmp)
+	if (!cylinder)
 		return ;
 	while (cylinder)
 	{
 		t = is_hiting_cylinder(ray, cylinder, first_hit_point);
 		cylinder = cylinder->next;
 	}
-	if (tmp->time > 0 && tmp->time < first_hit_point->time)
-	{
-		first_hit_point->time = tmp->time;
-		first_hit_point->point = tmp->point;
-		first_hit_point->normal = tmp->normal;
-		first_hit_point->type = tmp->type;
-		first_hit_point->obj = tmp->obj;
-		first_hit_point->color = tmp->color;
-	}
-	free(tmp);
 }

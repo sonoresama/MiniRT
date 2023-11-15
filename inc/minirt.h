@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/14 18:04:44 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:20:51 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void		get_closest_sphere(t_ray ray, t_sphere *sphere,
 				t_hit *first_hit_point);
 void		get_closest_cylinder(t_ray ray, t_cylinder *cylinder,
 				t_hit *first_hit_point);
+void		get_closest_triangle(t_ray ray, t_tr *tr, t_hit *hit_point);
 float		is_hiting_sphere(t_ray ray, t_sphere *sphere);
 float		is_hiting_plan(t_ray ray, t_plan *plan);
 int			is_hiting_object(t_data *data, t_ray ray);
