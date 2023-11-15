@@ -6,15 +6,11 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:27:09 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/15 15:26:11 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:01:48 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
-
-#define TOP 1
-#define BOT 2
-#define CORE 3
 
 int	is_hiting_cap(t_ray ray, t_plan plan, t_cylinder *cylinder, float *t)
 {

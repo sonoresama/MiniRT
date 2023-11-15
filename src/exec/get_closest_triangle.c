@@ -6,45 +6,45 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:33:11 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/15 13:00:36 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/15 16:08:56 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-int	inside_test(t_vect point, t_tr *tr, t_vect normal)
+int	inside_test(t_vect point, t_triangle *triangle, t_vect normal)
 {
 	t_vect	edge_a;
 	t_vect	edge_b;
 	t_vect	edge_c;
 	t_vect	c;
 
-	edge_a = sous_vectors(tr->b, tr->a);
-	edge_b = sous_vectors(tr->c, tr->b);
-	edge_c = sous_vectors(tr->a, tr->c);
-	c = sous_vectors(point, tr->a);
+	edge_a = sous_vectors(triangle->b, triangle->a);
+	edge_b = sous_vectors(triangle->c, triangle->b);
+	edge_c = sous_vectors(triangle->a, triangle->c);
+	c = sous_vectors(point, triangle->a);
 	if (dot(normal, cross(edge_a, c)) < 0)
 		return(0);
-	c = sous_vectors(point, tr->b);
+	c = sous_vectors(point, triangle->b);
 	if (dot(normal, cross(edge_b, c)) < 0)
 		return(0);
-	c = sous_vectors(point, tr->c);
+	c = sous_vectors(point, triangle->c);
 	if (dot(normal, cross(edge_c, c)) < 0)
 		return(0);
 	return (1);
 }            
 
-void	set_hit_tr(t_tr *tr, float t, t_hit *hit_point, t_vect normal, t_vect point)
+void	set_hit_triangle(t_triangle *triangle, float t, t_hit *hit_point, t_vect normal, t_vect point)
 {
 	hit_point->time = t;
 	hit_point->point = point;
 	hit_point->normal = normal;
-	hit->type = TRIANGLE;
-	hit->obj = tr;
-	hit->color = tr->colors;
+	hit_point->type = TRIANGLE;
+	hit_point->obj = triangle;
+	hit_point->color = triangle->colors;
 }
 
-int	is_hiting_triangle(t_ray ray, t_tr *tr, t_hit *hit_point)
+int	is_hiting_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 {
 	t_vect	normal;
 	t_vect	u;
@@ -52,40 +52,39 @@ int	is_hiting_triangle(t_ray ray, t_tr *tr, t_hit *hit_point)
 	t_vect	point;
 	t_plan	plan;
 	float	t;
-	int	i;
 
-	u = sous_vectors(tr->b, tr->a);
-	v = sous_vectors(tr->c, tr->a);
+	u = sous_vectors(triangle->b, triangle->a);
+	v = sous_vectors(triangle->c, triangle->a);
 	normal = ft_normalize(cross(u, v));
-	plan.start = tr->a;
+	plan.start = triangle->a;
 	plan.vecteur = normal;
-	plan.color = tr->color;
+	plan.colors = triangle->colors;
 	t = is_hiting_plan(ray, &plan);
 	if (t == -1)
 		return (0);
 	point = intersection(ray, t);
-	if (!inside_test(point, tr))
+	if (!inside_test(point, triangle, plan.vecteur))
 		return (0);
 //	if (dot(normal, ray.direction) > 0)
 //		normal = mult(normal, -1);
-	set_hit_tr(tr, t, hit_point);
+	set_hit_triangle(triangle, t, hit_point, plan.vecteur, point);
 	return (1);
 }
 
-void	get_closest_triangle(t_ray ray, t_tr *tr, t_hit *hit_point)
+void	get_closest_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 {
 	float	t;
 	t_hit	*tmp;
 
 	tmp = ft_calloc(sizeof(t_hit), 1);
-	if (!tmp || !tr)
+	if (!tmp || !triangle)
 		return ;
-	while (tr)
+	while (triangle)
 	{
-		t = is_hiting_triangle(ray, tr, tmp);
+		t = is_hiting_triangle(ray, triangle, tmp);
 		if (tmp->time > 0.001 && tmp->time < hit_point->time)
 			hit_point = tmp;
-		tr = tr->next;
+		triangle = triangle->next;
 	}
 	free(tmp);
 }

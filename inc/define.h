@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/15 13:04:20 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/15 16:02:28 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,14 @@ plusieurs fois\n"
 # define PLAN 11
 # define CYLINDER 12
 # define BACKGROUND 13
+# define TRIANGLE 14
 # define MALLOC_ERR 100
 # define SPECULAR 0.003
 # define DIFFUSE  0.997
 # define N 40
+# define TOP 1
+# define BOT 2
+# define CORE 3
 
 // COLOR PRINT //
 

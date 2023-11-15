@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/15 15:50:34 by blerouss         ###   ########.fr        #
+#    Updated: 2023/11/15 15:58:53 by blerouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC = 	src/parsing/check_file.c		\
 	src/exec/sphere.c			\
 	src/exec/get_closest_plan.c		\
 	src/exec/get_closest_cylinder.c		\
+	src/exec/get_closest_triangle.c		\
 	src/exec/is_hiting_object.c		\
 	src/exec/get_form_color.c		\
 	src/exec/get_form_color_utils.c		\

@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:19:25 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/15 13:01:40 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/15 15:58:27 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_colors	ray_color(t_data *data, t_ray ray)
 	get_closest_sphere(ray, data->scene->sphere, hit_point);
 	get_closest_plan(ray, data->scene->plan, hit_point);
 	get_closest_cylinder(ray, data->scene->cylinder, hit_point);
-//	get_closest_triangle(ray, data->scene->tr, hit_point);
+	get_closest_triangle(ray, data->scene->triangle, hit_point);
 	if (!hit_point->obj)
 	{
 		free(hit_point);
