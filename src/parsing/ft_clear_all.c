@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:50:26 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/08 14:52:48 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/15 15:31:35 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,18 @@ void	ft_clear_plan(t_plan *plan)
 		tmp = plan->next;
 		free(plan);
 		plan = tmp;
+	}
+}
+
+void	ft_clear_triangle(t_triangle *triangle)
+{
+	t_triangle	*tmp;
+
+	while (triangle)
+	{
+		tmp = triangle->next;
+		free(triangle);
+		triangle = tmp;
 	}
 }
 
@@ -76,6 +88,8 @@ void	ft_clear_all(t_scene *scene)
 		ft_clear_plan(scene->plan);
 	if (scene->cylinder)
 		ft_clear_cylinder(scene->cylinder);
+	if (scene->triangle)
+		ft_clear_triangle(scene->triangle);
 	if (scene)
 		free(scene);
 }

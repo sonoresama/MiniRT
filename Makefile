@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/09 19:01:10 by blerouss         ###   ########.fr        #
+#    Updated: 2023/11/15 15:50:34 by blerouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = 	src/parsing/check_file.c		\
 	src/parsing/ft_fill_light.c		\
 	src/parsing/ft_fill_plan.c		\
 	src/parsing/ft_fill_sphere.c		\
+	src/parsing/ft_fill_triangle.c		\
 	src/parsing/ft_fill_vector.c		\
 	src/parsing/ft_init_data.c		\
 	src/parsing/ft_count_separator.c		\
@@ -79,16 +80,16 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)	
 
 $(MLX_FILE):
-	make -sC $(MLX_PATH)
+	@make -sC $(MLX_PATH)
 
 $(NAME): $(MLX_FILE) $(OBJ) $(HEADER)
-	$(CC) -g $(CFLAGS) $(OBJ) -lm -I $(INC)  $(MLX_EX) -o $(NAME)
+	@$(CC) -g $(CFLAGS) $(OBJ) -lm -I $(INC)  $(MLX_EX) -o $(NAME)
 
 clean:
-	make clean -sC $(MLX_PATH)
-	/bin/rm -f $(OBJ)
+	@make clean -sC $(MLX_PATH)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re : fclean all

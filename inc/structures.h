@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:59:22 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/15 13:00:26 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/15 15:35:22 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,15 @@ typedef struct s_sphere{
 	struct s_sphere	*next;
 }	t_sphere;
 
+typedef struct s_triangle
+{
+	t_vect				a;
+	t_vect				b;
+	t_vect				c;
+	t_colors			colors;
+	struct s_triangle	*next;
+}	t_triangle;
+
 typedef struct s_cylinder
 {
 	t_vect				center;
@@ -78,14 +87,6 @@ typedef struct s_cylinder
 	t_colors			colors;
 	struct s_cylinder	*next;
 }	t_cylinder;
-
-typedef struct s_tr
-{
-	t_vect	a;
-	t_vect	b;
-	t_vect	c;
-	t_colors	color;
-}	t_tr;
 
 	/*Scene **********************************************/
 
@@ -137,6 +138,7 @@ typedef struct s_scene
 	t_sphere	*sphere;	
 	t_plan		*plan;
 	t_cylinder	*cylinder;
+	t_triangle	*triangle;
 	float		albedo;
 }	t_scene;
 
