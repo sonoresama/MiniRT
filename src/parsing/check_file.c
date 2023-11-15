@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:21:05 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/14 16:31:03 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/15 15:29:24 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static int	ft_define_type(char **tab, t_scene *scene)
 		return (ft_fill_plan(tab, scene, line));
 	else if (!ft_strncmp(tab[0], "cy", 3) && ft_tablen(tab) == 6)
 		return (ft_fill_cylinder(tab, scene, line));
+	else if (!ft_strncmp(tab[0], "tr", 3) && ft_tablen(tab) == 5)
+		return (ft_fill_triangle(tab, scene, line));
 	else
 		return (printf("%s%i\n", TYPE_ERR, line), 1);
 }

@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:27:09 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/15 13:03:07 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/15 15:26:11 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,22 @@ int	is_hiting_cap(t_ray ray, t_plan plan, t_cylinder *cylinder, float *t)
 
 float	is_hiting_core(t_ray ray, t_cylinder *cylinder)
 {
-	float	a;
-	float	b;
-	float	c;
-	float	d;
-	float t[2];
+	float	r[4];
+	float	t[2];
 	t_vect	u;
 	t_vect	v;
 
 	u = cross(cross(cylinder->vecteur, ray.direction), cylinder->vecteur);
-	v = cross(cross(cylinder->vecteur, sous_vectors(ray.origin, cylinder->center)), cylinder->vecteur);
-	a = dot(u, u);
-	b = 2 * dot(u, v);
-	c = dot(v, v) - pow(cylinder->diameter / 2, 2);
-	d = b * b - 4 * a * c;
-	if (d < 0)
+	v = cross(cross(cylinder->vecteur, sous_vectors(ray.origin,
+					cylinder->center)), cylinder->vecteur);
+	r[0] = dot(u, u);
+	r[1] = 2 * dot(u, v);
+	r[2] = dot(v, v) - pow(cylinder->diameter / 2, 2);
+	r[3] = r[1] * r[1] - 4 * r[0] * r[2];
+	if (r[3] < 0)
 		return (-1);
-	t[0] = (-b - sqrt(d)) / (2 * a);
-	t[1] = (-b + sqrt(d)) / (2 * a);
+	t[0] = (-r[1] - sqrt(r[3])) / (2 * r[0]);
+	t[1] = (-r[1] + sqrt(r[3])) / (2 * r[0]);
 	if (t[0] < 0.001 || (t[1] > 0.001 && (t[1] < t[0])))
 		return (t[1]);
 	else
@@ -64,7 +62,8 @@ t_vect	v_normal_cy(t_vect point, t_cylinder *cylinder, t_ray ray)
 	t_vect	normal;
 	t_vect	projection;
 
-	projection = cross(sous_vectors(cylinder->center, point), cylinder->vecteur);
+	projection = cross(sous_vectors(cylinder->center, point),
+			cylinder->vecteur);
 	normal = ft_normalize(cross(projection, cylinder->vecteur));
 	if (dot(normal, ray.direction) > 0)
 		normal = mult(normal, -1);
@@ -114,23 +113,11 @@ float	is_hiting_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *hit)
 	return (-1);
 }
 
-void	cpy_hit(t_hit *a, t_hit *b)
-{
-	b->time = a->time;
-	b->point = a->point; 
-	b->normal = a->normal;
-	b->type = a->type;
-	b->obj =  a->obj;
-	b->color = a->color;
-}
-
-void	get_closest_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *first_hit_point)
+void	get_closest_cylinder(t_ray ray, t_cylinder *cylinder,
+		t_hit *first_hit_point)
 {
 	float	t;
-//	t_hit	*tmp;
 
-//	tmp = ft_calloc(sizeof(t_hit), 1);
-	//if (!tmp || !cylinder)
 	if (!cylinder)
 		return ;
 	while (cylinder)
@@ -138,7 +125,4 @@ void	get_closest_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *first_hit_poin
 		t = is_hiting_cylinder(ray, cylinder, first_hit_point);
 		cylinder = cylinder->next;
 	}
-//	if (tmp->time > 0 && tmp->time < first_hit_point->time)
-//		cpy_hit(tmp, first_hit_point);
-//	free(tmp);
 }

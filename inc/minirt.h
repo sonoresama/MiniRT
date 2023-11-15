@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/15 13:00:59 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/15 15:39:51 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ int			ft_fill_cylinder(char **tab, t_scene *scene, int line);
 int			ft_fill_light(char **tab, t_scene *scene, int line);
 int			ft_fill_plan(char **tab, t_scene *scene, int line);
 int			ft_fill_sphere(char **tab, t_scene *scene, int line);
+int			ft_fill_triangle(char **tab, t_scene *scene, int line);
 int			ft_fill_vector(char *str, t_vect *vector, int line);
 int			ft_init_data(t_data *data, t_scene *scene);
 int			ft_count_separator(char *str, char separator);
 int			parsing(t_data *data, int argc, char **argv);
 size_t		ft_strlen(const char *str);
-int		ft_tablen(char **tab);
+int			ft_tablen(char **tab);
 char		**ft_split_2_separator(char const *str, char c, char d);
 char		**ft_split(const char *s, char c);
 void		*ft_calloc(size_t nmemb, size_t size);
@@ -66,11 +67,11 @@ void		get_closest_sphere(t_ray ray, t_sphere *sphere,
 				t_hit *first_hit_point);
 void		get_closest_cylinder(t_ray ray, t_cylinder *cylinder,
 				t_hit *first_hit_point);
-void		get_closest_triangle(t_ray ray, t_tr *tr, t_hit *hit_point);
+void		get_closest_triangle(t_ray ray, t_triangle *tr, t_hit *hit_point);
 float		is_hiting_sphere(t_ray ray, t_sphere *sphere);
 float		is_hiting_plan(t_ray ray, t_plan *plan);
 int			is_hiting_object(t_data *data, t_ray ray);
-float			is_hiting_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *hit);
+float		is_hiting_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *hit);
 
 	/*Scene*/
 int			draw_scene(t_data *data);

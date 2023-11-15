@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:41:46 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/15 15:19:12 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/15 15:54:42 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	get_form_colors_cyl(float *t, t_cylinder *cylinder, t_hit *hit_point,
 		if (cylinder == hit_point->obj)
 		{
 			cylinder = cylinder->next;
-			continue;
+			continue ;
 		}
 		(*t) = is_hiting_cylinder(new_ray(hit_point->point,
 					ft_normalize(l_direction)), cylinder, tmp);
