@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:33:44 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/15 15:41:17 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:50:38 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_fill_triangle(char **tab, t_scene *scene, int line)
 		return (printf("%s%i\n", POS_ERR, line), 1);
 	if (ft_fill_vector(tab[2], &tmp->b, line))
 		return (printf("%s%i\n", POS_ERR, line), 1);
-	if (ft_fill_vector(tab[3], &tmp->b, line))
+	if (ft_fill_vector(tab[3], &tmp->c, line))
 		return (printf("%s%i\n", POS_ERR, line), 1);
 	if (ft_fill_colors(tab[4], tmp, line))
 		return (1);

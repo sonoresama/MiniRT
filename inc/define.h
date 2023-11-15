@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/15 16:11:12 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:07:37 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ plusieurs fois\n"
 
 // MACROS //
 
-# define WIDTH 1000
-# define HEIGHT 700 
+# define WIDTH 400//1000
+# define HEIGHT 250//700 
 # define SAMPLES_PER_PIXEL 1
 # define MAX_DEPTH 1
 # define SPHERE 10

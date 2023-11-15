@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:33:11 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/15 16:47:23 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/15 17:21:44 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,21 @@ int	is_hiting_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 	t_plan	plan;
 	float	t;
 
-	print_tr(*triangle);
 	u = sous_vectors(triangle->b, triangle->a);
 	v = sous_vectors(triangle->c, triangle->a);
 	normal = ft_normalize(cross(u, v));
+//	if (dot(normal, ray.direction) > 0)
+//		normal = mult(normal, -1);
 	plan.vecteur = normal;
-	plan.start = triangle->b;
+	plan.start = triangle->a;
 	plan.colors = triangle->colors;
 	t = is_hiting_plan(ray, &plan);
 	if (t == -1)
 		return (0);
-//	if (t != 0)
-//		printf("t plan : %f\n", t);
+	printf("t : %f\n", t);
 	point = intersection(ray, t);
 	if (!inside_test(point, triangle, plan.vecteur))
 		return (0);
-//	if (dot(normal, ray.direction) > 0)
-//		normal = mult(normal, -1);
 	set_hit_triangle(triangle, t, hit_point, plan.vecteur, point);
 	return (1);
 }
@@ -87,19 +85,16 @@ int	is_hiting_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 void	get_closest_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 {
 	float	t;
-	t_hit	*tmp;
+	t_hit	tmp;
 
-	tmp = ft_calloc(sizeof(t_hit), 1);
-	if (!tmp || !triangle)
+	if (!triangle)
 		return ;
 	while (triangle)
 	{
-		t = is_hiting_triangle(ray, triangle, tmp);
-		if (tmp->time != 0)
-			printf("t : %f\n", tmp->time);
-		if (tmp->time > 0.001 && (hit_point->time == 0 || tmp->time < hit_point->time))
-			hit_point = tmp;
+		ft_bzero(&tmp, sizeof(t_triangle));
+		t = is_hiting_triangle(ray, triangle, &tmp);
+		if (tmp.time > 0.001 && (hit_point->time == 0 || tmp.time < hit_point->time))
+			*hit_point = tmp;
 		triangle = triangle->next;
 	}
-	free(tmp);
 }
