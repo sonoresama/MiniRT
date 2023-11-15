@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:59:22 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/08 18:06:30 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/15 13:00:26 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ typedef struct s_cylinder
 	t_colors			colors;
 	struct s_cylinder	*next;
 }	t_cylinder;
+
+typedef struct s_tr
+{
+	t_vect	a;
+	t_vect	b;
+	t_vect	c;
+	t_colors	color;
+}	t_tr;
 
 	/*Scene **********************************************/
 
