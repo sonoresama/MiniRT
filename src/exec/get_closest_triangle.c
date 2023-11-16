@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:33:11 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/15 17:21:44 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/16 14:43:31 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,17 @@ int	is_hiting_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 	u = sous_vectors(triangle->b, triangle->a);
 	v = sous_vectors(triangle->c, triangle->a);
 	normal = ft_normalize(cross(u, v));
-//	if (dot(normal, ray.direction) > 0)
-//		normal = mult(normal, -1);
 	plan.vecteur = normal;
 	plan.start = triangle->a;
 	plan.colors = triangle->colors;
 	t = is_hiting_plan(ray, &plan);
 	if (t == -1)
 		return (0);
-	printf("t : %f\n", t);
 	point = intersection(ray, t);
 	if (!inside_test(point, triangle, plan.vecteur))
 		return (0);
+//	if (dot(normal, ray.direction) > 0)
+//		normal = mult(normal, -1);
 	set_hit_triangle(triangle, t, hit_point, plan.vecteur, point);
 	return (1);
 }
