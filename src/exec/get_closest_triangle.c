@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:33:11 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/16 15:54:32 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:06:46 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ void	set_hit_triangle(t_triangle *triangle, float t, t_hit *hit_point, t_vect no
 	hit_point->color = triangle->colors;
 }
 
+void	print_tr(t_triangle tr)
+{
+	printf("A : ");
+	print_vect(tr.a);
+	printf("B : ");
+	print_vect(tr.b);
+	printf("C : ");
+	print_vect(tr.c);
+}
+
 int	is_hiting_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 {
 	t_vect	normal;
@@ -56,8 +66,8 @@ int	is_hiting_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 	u = sous_vectors(triangle->b, triangle->a);
 	v = sous_vectors(triangle->c, triangle->a);
 	normal = ft_normalize(cross(u, v));
-	plan.start = triangle->a;
 	plan.vecteur = normal;
+	plan.start = triangle->a;
 	plan.colors = triangle->colors;
 	t = is_hiting_plan(ray, &plan);
 	if (t == -1)
@@ -74,11 +84,17 @@ int	is_hiting_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 
 void	get_closest_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 {
+	float	t;
+	t_hit	tmp;
+
 	if (!triangle)
 		return ;
 	while (triangle)
 	{
-		is_hiting_triangle(ray, triangle, hit_point);
+		ft_bzero(&tmp, sizeof(t_triangle));
+		t = is_hiting_triangle(ray, triangle, &tmp);
+		if (tmp.time > 0.001 && (hit_point->time == 0 || tmp.time < hit_point->time))
+			*hit_point = tmp;
 		triangle = triangle->next;
 	}
 }
