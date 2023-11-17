@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:59:22 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/15 15:35:22 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:47:47 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,12 @@ typedef struct s_data {
 	int			count;
 	int			error;
 }	t_data;
+
+typedef struct s_thr_utils
+{
+	int				max;
+	int				start;
+	t_data			*data;
+}	t_thr_utils;
 
 #endif

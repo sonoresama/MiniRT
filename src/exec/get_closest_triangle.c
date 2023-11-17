@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:33:11 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/15 16:08:56 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:54:32 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,18 @@ int	is_hiting_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 		return (0);
 //	if (dot(normal, ray.direction) > 0)
 //		normal = mult(normal, -1);
-	set_hit_triangle(triangle, t, hit_point, plan.vecteur, point);
+	if (t > 0.001 && t < hit_point->time)
+		set_hit_triangle(triangle, t, hit_point, plan.vecteur, point);
 	return (1);
 }
 
 void	get_closest_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 {
-	float	t;
-	t_hit	*tmp;
-
-	tmp = ft_calloc(sizeof(t_hit), 1);
-	if (!tmp || !triangle)
+	if (!triangle)
 		return ;
 	while (triangle)
 	{
-		t = is_hiting_triangle(ray, triangle, tmp);
-		if (tmp->time > 0.001 && tmp->time < hit_point->time)
-			hit_point = tmp;
+		is_hiting_triangle(ray, triangle, hit_point);
 		triangle = triangle->next;
 	}
-	free(tmp);
 }

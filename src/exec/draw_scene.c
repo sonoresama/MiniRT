@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:58:09 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/08 17:40:28 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/17 17:49:19 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,73 @@ static int	ray_throwing(t_data *data, int i, int j, t_colors *color)
 	return (0);
 }
 
-int	draw_scene(t_data *data)
+void	*draw_scene(void *tmp)
 {
-	int			i;
 	int			j;
 	int			s;
+	t_thr_utils	*utils;
 	t_colors	color;
 
-	i = 0;
-	while (i < data->img_width)
+	utils = (t_thr_utils *)tmp;
+	while (utils->start < utils->max)
 	{
 		j = 0;
-		while (j < data->img_height)
+		while (j < utils->data->img_height)
 		{
 			s = 0;
 			color = new_color(0, 0, 0);
 			while (s < SAMPLES_PER_PIXEL)
 			{
-				if (ray_throwing(data, i, j, &color) == -1)
-					return (-1);
+				if (ray_throwing(utils->data, utils->start, j, &color) == -1)
+					return (NULL);
 				s++;
 			}
-			my_mlx_pixel_put(&data->mlx_img, i, j, get_sampled_color(color));
+			my_mlx_pixel_put(&utils->data->mlx_img, utils->start, j, get_sampled_color(color));
 			j++;
+		}
+		utils->start += NB_THREAD;
+	}
+	return (NULL);
+}
+
+static int	ft_fill_utils(t_thr_utils *utils, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < NB_THREAD)
+	{
+		utils[i].start = i;
+		utils[i].max = data->img_width;
+		utils[i].data = data;
+		i++;
+	}
+	return (0);	
+}
+
+int	init_thread(t_data *data)
+{
+	pthread_t	*thread;
+	t_thr_utils	utils[NB_THREAD];
+	int			i;
+
+	i = 0;
+	thread = ft_calloc(sizeof(pthread_t), NB_THREAD);
+	if (!thread)
+		return (-1);
+	ft_fill_utils(utils, data);
+	while (i < NB_THREAD)
+	{
+		if (pthread_create(&thread[i], NULL, &draw_scene, (void *)&utils[i]))
+		{
+			while (i != -1)
+				pthread_join(thread[i--], NULL);
+			free(thread);
+			return (-1);
 		}
 		i++;
 	}
-	return (0);
+	while (i != 0)
+		pthread_join(thread[--i], NULL);
+	return (free(thread), 0);
 }

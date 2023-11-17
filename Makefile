@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/15 16:10:29 by blerouss         ###   ########.fr        #
+#    Updated: 2023/11/16 15:54:59 by blerouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = miniRT
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=leak
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = 	src/parsing/check_file.c		\
 	src/parsing/ft_clear_all.c		\

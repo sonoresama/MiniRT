@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/02 13:14:35 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/17 17:45:18 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ int	render(void *ptr)
 int	main(int argc, char **argv)
 {
 	t_data		data;
+	int			i;
 
+	i = 0;
 	if (parsing(&data, argc, argv))
 		return (1);
 	data.count = 0;

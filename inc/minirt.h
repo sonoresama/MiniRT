@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/15 15:39:51 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:33:17 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
+# include <pthread.h>
 
 //PARSING//
 
@@ -74,7 +75,7 @@ int			is_hiting_object(t_data *data, t_ray ray);
 float		is_hiting_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *hit);
 
 	/*Scene*/
-int			draw_scene(t_data *data);
+void		*draw_scene(void *tmp);
 t_colors	ray_color(t_data *data, t_ray ray);
 t_colors	get_form_color(t_data *data, t_hit *hit_point, t_ray ray,
 				t_light *light);
@@ -98,6 +99,7 @@ t_vect		ft_light_intensity(t_light *light, float distance);
 t_vect		ft_diffuse(t_light *light, t_vect l_direction, t_hit *hit_point,
 				t_data *data);
 t_vect		ft_atmos_intensity(t_atmos *atmos, t_hit *hit_point);
+int			init_thread(t_data *data);
 
 	/*Camera*/
 
