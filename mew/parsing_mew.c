@@ -4,6 +4,8 @@
 #include <readline/history.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
+#include <ctype.h>
 
 #define BUFFER_SIZE 5
 
@@ -74,29 +76,67 @@ char  *delete_end_spaces(char *str)
   return (cpy);
 }
 
+char  first_char(char *str)
+{
+  int i = 0;
+  while (str[i] == ' ')
+    i++;
+  return (str[i]);
+}
+
+int  get_vectors(int infile)
+{
+  int fd;
+  int i;
+  char  *str;
+
+  fd = open("middle.txt", O_RDWR | O_CREAT, 0666);
+  if (fd == -1)
+    return (printf("ERREUR OPEN MIDDLE\n"), 1);
+  str = get_next_line(infile);
+  while (str)
+  {
+    if (first_char(str) == 'v')
+    {
+      for(i = 0; str[i] != '-' && !isdigit(str[i]); i++){}
+      write(fd, str + i, strlen(str) - i);
+    }
+    free(str);
+    str = get_next_line(infile);
+  }
+  close(fd);
+  return (0);
+}
+
 int	main(int argc, char **argv)
 {
   char  *str;
   char  *line;
   int infile;
   int outfile;
+  int middle;
   int count;
 
   if (argc != 3)
     return (printf("Bad arguments number\n"), 1);
   infile = open(argv[1], O_RDWR);
-  outfile = open(argv[2], O_RDWR | O_CREAT);
+  outfile = open(argv[2], O_RDWR | O_CREAT, 0666);
   if (infile == -1 || outfile == -1)
     return (printf("ERREUR OPEN\n"), 1);
+  if (get_vectors(infile))
+    return (1);
+  middle = open("middle.txt", O_RDWR);
+  if (middle == -1)
+    return (printf("ERREUR OPEN MIDDLE 2\n"), 1);
   while (1)
   {
     count = 0;
     write(outfile, "tr ", 3);
     while (count < 3)
     {
-      str = get_next_line(infile);
+      str = get_next_line(middle);
       if (!str)
-        return (close(infile), close(outfile), printf("EOF\n"), 0);
+        return (close(middle), close(outfile), unlink("middle.txt"), printf("EOF\n"), 0);
       if (is_empty(str))
        {free(str);continue;}
       str = delete_end_spaces(str);
