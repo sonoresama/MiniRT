@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:27:09 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/15 16:01:48 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/19 12:18:00 by bastien          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,11 @@ float	is_hiting_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *hit)
 void	get_closest_cylinder(t_ray ray, t_cylinder *cylinder,
 		t_hit *first_hit_point)
 {
-	float	t;
-
 	if (!cylinder)
 		return ;
 	while (cylinder)
 	{
-		t = is_hiting_cylinder(ray, cylinder, first_hit_point);
+		is_hiting_cylinder(ray, cylinder, first_hit_point);
 		cylinder = cylinder->next;
 	}
 }
