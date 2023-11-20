@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/16 15:33:17 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:47:42 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ float		is_hiting_sphere(t_ray ray, t_sphere *sphere);
 float		is_hiting_plan(t_ray ray, t_plan *plan);
 int			is_hiting_object(t_data *data, t_ray ray);
 float		is_hiting_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *hit);
+int	is_hiting_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point);
 
 	/*Scene*/
 void		*draw_scene(void *tmp);

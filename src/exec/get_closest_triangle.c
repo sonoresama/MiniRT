@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:33:11 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/19 12:18:56 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/20 17:47:50 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	inside_test(t_vect point, t_triangle *triangle, t_vect normal)
 
 void	set_hit_triangle(t_triangle *triangle, float t, t_hit *hit_point, t_vect normal, t_vect point)
 {
+	if (!hit_point)
+		return ;
 	hit_point->time = t;
 	hit_point->point = point;
 	hit_point->normal = normal;
@@ -44,42 +46,14 @@ void	set_hit_triangle(t_triangle *triangle, float t, t_hit *hit_point, t_vect no
 	hit_point->color = triangle->colors;
 }
 
-void	print_tr(t_triangle tr)
+void	cpy_hit(t_hit *dst, t_hit *adr)
 {
-	printf("A : ");
-	print_vect(tr.a);
-	printf("B : ");
-	print_vect(tr.b);
-	printf("C : ");
-	print_vect(tr.c);
-}
-
-int	is_hiting_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
-{
-	t_vect	normal;
-	t_vect	u;
-	t_vect	v;
-	t_vect	point;
-	t_plan	plan;
-	float	t;
-
-	u = sous_vectors(triangle->b, triangle->a);
-	v = sous_vectors(triangle->c, triangle->a);
-	normal = ft_normalize(cross(u, v));
-	plan.vecteur = normal;
-	plan.start = triangle->a;
-	plan.colors = triangle->colors;
-	t = is_hiting_plan(ray, &plan);
-	if (t == -1)
-		return (0);
-	point = intersection(ray, t);
-	if (!inside_test(point, triangle, plan.vecteur))
-		return (0);
-//	if (dot(normal, ray.direction) > 0)
-//		normal = mult(normal, -1);
-	if (t > 0.001 && t < hit_point->time)
-		set_hit_triangle(triangle, t, hit_point, plan.vecteur, point);
-	return (1);
+	dst->time = adr->time;
+	dst->point = adr->point;
+	dst->normal = adr->normal;
+	dst->type = adr->type;
+	dst->obj = adr->obj;
+	dst->color = adr->color;
 }
 
 void	get_closest_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
@@ -91,9 +65,10 @@ void	get_closest_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 	while (triangle)
 	{
 		ft_bzero(&tmp, sizeof(t_triangle));
-		is_hiting_triangle(ray, triangle, &tmp);
-		if (tmp.time > 0.001 && (hit_point->time == 0 || tmp.time < hit_point->time))
-			*hit_point = tmp;
+		if (is_hiting_triangle(ray, triangle, &tmp) 
+				&& tmp.time > 0.001
+				&& (hit_point->time == 0 || tmp.time < hit_point->time))
+			cpy_hit(hit_point, &tmp);
 		triangle = triangle->next;
 	}
 }

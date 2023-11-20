@@ -9,6 +9,9 @@
 
 #define BUFFER_SIZE 5
 
+char	**ft_split(const char *s, char *charset);
+void  ft_free_tab(char **tab);
+
 char *get_next_line(int fd)
 {
     int i = 0;
@@ -68,10 +71,11 @@ char  *delete_end_spaces(char *str)
   int i = strlen(str) - 1;
   while (str[i] == '\n' || str[i] == ' ')
     i--;
-  cpy = calloc(sizeof(char), (i + 2));
+  cpy = calloc(sizeof(char), (i + 1));
   if (!cpy)
     return (printf("ERREUR MALL CPY\n"), NULL);
-  strncpy(cpy, str, i + 2);
+  strncpy(cpy, str, i);
+  cpy[i + 1] = '\0';
   free(str);
   return (cpy);
 }
@@ -108,6 +112,56 @@ int  get_vectors(int infile)
   return (0);
 }
 
+int parse_scientific(void)
+{
+  int middle;
+  int scient;
+  int i;
+  int j;
+  char  *str;
+  char  **split;
+
+  middle = open("middle.txt", O_RDWR);
+  scient = open("scient.txt", O_RDWR | O_CREAT, 0666);
+  if (scient == -1 || middle == -1)
+    return (printf("pb open scient\n"), 1);
+  str = get_next_line(middle);
+  while (str)
+  {
+    i = 0;
+    split = ft_split(str, " ");
+    while (split && split[i])
+    {
+      j = 0;
+      while (split[i][j])
+      {
+        if (split[i][j] == 'e')
+          break;
+        j++;
+      }
+      if (split[i][j])
+      {
+        write(scient, "0.00000000 ", 11);
+         if (!split[i + 1])
+           write(scient, "\n", 1);
+      }
+      else
+      {
+        write(scient, split[i], strlen(split[i]));
+        if (split[i + 1])
+          write(scient, " ", 1);
+      }
+      i++;
+    }
+    free(str);
+    ft_free_tab(split);
+    str = get_next_line(middle);
+  }
+  close(middle);
+  close(scient);
+  return (0);
+}
+
 int	main(int argc, char **argv)
 {
   char  *str;
@@ -125,7 +179,10 @@ int	main(int argc, char **argv)
     return (printf("ERREUR OPEN\n"), 1);
   if (get_vectors(infile))
     return (1);
-  middle = open("middle.txt", O_RDWR);
+  if (parse_scientific())
+    return (1);
+  close(infile);
+  middle = open("scient.txt", O_RDWR);
   if (middle == -1)
     return (printf("ERREUR OPEN MIDDLE 2\n"), 1);
   while (1)
@@ -136,18 +193,17 @@ int	main(int argc, char **argv)
     {
       str = get_next_line(middle);
       if (!str)
-        return (close(middle), close(outfile), unlink("middle.txt"), printf("EOF\n"), 0);
+        return (close(middle), close(outfile), unlink("middle.txt"), unlink("scient.txt"), printf("EOF\n"), 0);
       if (is_empty(str))
        {free(str);continue;}
-      str = delete_end_spaces(str);
+//      str = delete_end_spaces(str);
       line = ft_replace(str, ' ', ',');
       if (!line)
         return (1);
       write(outfile, line, strlen(line) - 1);
       write(outfile, " ", 1);
       count++;
-      free(str);
-      free(line);
+      free(str);  free(line);
     }
     write(outfile, "247,184,207\n", strlen("247,184,207") + 1);
   }

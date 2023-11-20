@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:41:46 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/15 15:54:42 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/20 18:12:16 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,28 @@ int	get_form_colors_plan(float *t, t_plan *plan, t_hit *hit_point,
 		if ((*t) > 0.001 && (*t) < ft_norm(l_direction) + 0.001)
 			return (0);
 		plan = plan->next;
+	}
+	return (1);
+}
+
+int	get_form_colors_triangle(t_triangle *triangle, t_hit *hit_point,
+	t_vect l_direction)
+{
+	t_hit tmp;
+
+	while (triangle)
+	{
+		ft_bzero(&tmp, sizeof(t_triangle));
+		if (triangle == hit_point->obj)
+		{
+			triangle = triangle->next;
+			continue ;
+		}
+		is_hiting_triangle(new_ray(hit_point->point,
+					ft_normalize(l_direction)), triangle, &tmp);
+		if (tmp.time > 0.001 && tmp.time < ft_norm(l_direction) + 0.001)
+			return (0);
+		triangle = triangle->next;
 	}
 	return (1);
 }
@@ -93,6 +115,9 @@ int	light_shadow(t_data *data, t_hit *hit_point, t_vect l_direction)
 				hit_point, l_direction))
 		return (0);
 	if (!get_form_colors_cyl(&t, data->scene->cylinder,
+				hit_point, l_direction))
+		return (0);
+	if (!get_form_colors_triangle(data->scene->triangle,
 				hit_point, l_direction))
 		return (0);
 	return (1);
