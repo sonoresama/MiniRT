@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:59:22 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/17 17:47:47 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:52:00 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,6 @@ typedef struct s_data {
 	t_imgs		mlx_img;
 	int			img_width;
 	int			img_height;
-	int			count;
 	int			error;
 }	t_data;
 

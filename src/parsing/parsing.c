@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:56:44 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/17 17:45:08 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:24:50 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	parsing(t_data *data, int argc, char **argv)
 		return (ft_clear_all(scene), 1);
 	if (ft_init_data(data, scene))
 		return (ft_clear_all(scene), 1);
-	if (init_thread(data))
+	if (draw_scene(data))
 	{
 		tmp = data->win;
 		return (ft_clear_all(scene),

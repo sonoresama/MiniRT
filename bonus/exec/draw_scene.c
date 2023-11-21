@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_scene.c                                       :+:      :+:    :+:   */
+/*   b_draw_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -37,7 +37,7 @@ static int	ray_throwing(t_data *data, int i, int j, t_colors *color)
 	return (0);
 }
 
-void	*draw_scene(void *tmp)
+void	*b_draw_scene(void *tmp)
 {
 	int			j;
 	int			s;
@@ -94,7 +94,7 @@ int	init_thread(t_data *data)
 	ft_fill_utils(utils, data);
 	while (i < NB_THREAD)
 	{
-		if (pthread_create(&thread[i], NULL, &draw_scene, (void *)&utils[i]))
+		if (pthread_create(&thread[i], NULL, &b_draw_scene, (void *)&utils[i]))
 		{
 			while (i != -1)
 				pthread_join(thread[i--], NULL);

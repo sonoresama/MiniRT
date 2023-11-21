@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/21 13:29:13 by eorer            ###   ########.fr        #
+#    Updated: 2023/11/21 13:51:18 by eorer            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ SRC = 	src/parsing/check_file.c		\
 	src/parsing/ft_fill_light.c		\
 	src/parsing/ft_fill_plan.c		\
 	src/parsing/ft_fill_sphere.c		\
-	src/parsing/ft_fill_triangle.c		\
 	src/parsing/ft_fill_vector.c		\
 	src/parsing/ft_init_data.c		\
 	src/parsing/ft_count_separator.c		\
@@ -53,7 +52,6 @@ SRC = 	src/parsing/check_file.c		\
 	src/exec/sphere.c			\
 	src/exec/get_closest_plan.c		\
 	src/exec/get_closest_cylinder.c		\
-	src/exec/get_closest_triangle.c		\
 	src/exec/is_hiting_object.c		\
 	src/exec/get_form_color.c		\
 	src/exec/get_form_color_utils.c		\
@@ -146,7 +144,7 @@ fclean_m : clean_m
 clean_b : 
 	/bin/rm -f $(OBJ_BONUS)
 
-fclean_b : clean_m
+fclean_b : clean_b
 	/bin/rm -f $(BONUS)
 
 clean: clean_m clean_b
