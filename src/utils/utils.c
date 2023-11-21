@@ -6,13 +6,13 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:19:22 by eorer             #+#    #+#             */
-/*   Updated: 2023/10/26 17:08:43 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/21 13:04:11 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-t_vect	new_vector(int x, int y, int z)
+t_vect	new_vector(float x, float y, float z)
 {
 	t_vect	vect;
 

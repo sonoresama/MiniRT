@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/20 17:47:42 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/21 13:04:37 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ t_vect		mult_mat_vect(float mat[4][4], t_vect vector);
 double		dot(t_vect vect_a, t_vect vect_b);
 t_vect		cross(t_vect a, t_vect b);
 double		rad(double angle);
-t_vect		new_vector(int x, int y, int z);
+t_vect		new_vector(float x, float y, float z);
 void		print_vect(t_vect vect);
 
 // FONCTIONS MLX //

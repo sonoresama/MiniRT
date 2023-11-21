@@ -51,7 +51,7 @@ int	get_form_colors_plan(float *t, t_plan *plan, t_hit *hit_point,
 int	get_form_colors_triangle(t_triangle *triangle, t_hit *hit_point,
 	t_vect l_direction)
 {
-	t_hit tmp;
+	t_hit	tmp;
 
 	while (triangle)
 	{
@@ -62,7 +62,7 @@ int	get_form_colors_triangle(t_triangle *triangle, t_hit *hit_point,
 			continue ;
 		}
 		is_hiting_triangle(new_ray(hit_point->point,
-					ft_normalize(l_direction)), triangle, &tmp);
+				ft_normalize(l_direction)), triangle, &tmp);
 		if (tmp.time > 0.001 && tmp.time < ft_norm(l_direction) + 0.001)
 			return (0);
 		triangle = triangle->next;
@@ -112,13 +112,13 @@ int	light_shadow(t_data *data, t_hit *hit_point, t_vect l_direction)
 			hit_point, l_direction))
 		return (0);
 	if (!get_form_colors_plan(&t, data->scene->plan,
-				hit_point, l_direction))
+			hit_point, l_direction))
 		return (0);
 	if (!get_form_colors_cyl(&t, data->scene->cylinder,
-				hit_point, l_direction))
+			hit_point, l_direction))
 		return (0);
 	if (!get_form_colors_triangle(data->scene->triangle,
-				hit_point, l_direction))
+			hit_point, l_direction))
 		return (0);
 	return (1);
 }

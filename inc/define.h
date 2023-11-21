@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/17 18:05:23 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:14:31 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ plusieurs fois\n"
 # define SPECULAR 0.003
 # define DIFFUSE  0.997
 # define N 40
-# define TOP 1
-# define BOT 2
-# define CORE 3
+# define TOP 1.0
+# define BOT 2.0
+# define CORE 3.0
 
 // COLOR PRINT //
 

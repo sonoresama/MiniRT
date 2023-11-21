@@ -47,8 +47,8 @@ void	*draw_scene(void *tmp)
 	utils = (t_thr_utils *)tmp;
 	while (utils->start < utils->max)
 	{
-		j = 0;
-		while (j < utils->data->img_height)
+		j = -1;
+		while (++j < utils->data->img_height)
 		{
 			s = 0;
 			color = new_color(0, 0, 0);
@@ -58,8 +58,8 @@ void	*draw_scene(void *tmp)
 					return (NULL);
 				s++;
 			}
-			my_mlx_pixel_put(&utils->data->mlx_img, utils->start, j, get_sampled_color(color));
-			j++;
+			my_mlx_pixel_put(&utils->data->mlx_img, utils->start, j,
+				get_sampled_color(color));
 		}
 		utils->start += NB_THREAD;
 	}
@@ -78,7 +78,7 @@ static int	ft_fill_utils(t_thr_utils *utils, t_data *data)
 		utils[i].data = data;
 		i++;
 	}
-	return (0);	
+	return (0);
 }
 
 int	init_thread(t_data *data)
