@@ -6,11 +6,13 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/21 12:33:17 by eorer            ###   ########.fr        #
+#    Updated: 2023/11/21 13:29:13 by eorer            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
+
+BONUS = miniRT_bonus
 
 CC = cc
 
@@ -61,6 +63,51 @@ SRC = 	src/parsing/check_file.c		\
 	src/exec/cylinder_utils.c			\
 	src/main.c
 
+SRC_BONUS = bonus/parsing/check_file.c		\
+	bonus/parsing/ft_clear_all.c		\
+	bonus/parsing/ft_fill_atmos.c		\
+	bonus/parsing/ft_fill_camera.c		\
+	bonus/parsing/ft_fill_cylinder.c		\
+	bonus/parsing/ft_fill_light.c		\
+	bonus/parsing/ft_fill_plan.c		\
+	bonus/parsing/ft_fill_sphere.c		\
+	bonus/parsing/ft_fill_triangle.c		\
+	bonus/parsing/ft_fill_vector.c		\
+	bonus/parsing/ft_init_data.c		\
+	bonus/parsing/ft_count_separator.c		\
+	bonus/parsing/parsing.c			\
+	bonus/utils/ft_calloc.c			\
+	bonus/utils/ft_clear_gnl.c		\
+	bonus/utils/ft_strncmp.c			\
+	bonus/utils/ft_free_tab.c			\
+	bonus/utils/ft_split.c			\
+	bonus/utils/ft_split_2_separator.c	\
+	bonus/utils/ft_atod.c			\
+	bonus/utils/ft_atoi.c			\
+	bonus/utils/ft_strlen.c			\
+	bonus/utils/ft_tablen.c		\
+	bonus/utils/get_next_line.c		\
+	bonus/utils/get_next_line_utils.c		\
+	bonus/utils/utils.c			\
+	bonus/utils/maths_utils.c 		\
+	bonus/utils/maths_utils2.c 		\
+	bonus/utils/maths_utils3.c 		\
+	bonus/utils/mlx_utilities.c		\
+	bonus/utils/normal_vector.c		\
+	bonus/exec/draw_scene.c			\
+	bonus/exec/sphere.c			\
+	bonus/exec/get_closest_plan.c		\
+	bonus/exec/get_closest_cylinder.c		\
+	bonus/exec/get_closest_triangle.c		\
+	bonus/exec/is_hiting_object.c		\
+	bonus/exec/get_form_color.c		\
+	bonus/exec/get_form_color_utils.c		\
+	bonus/exec/light_shadow.c		\
+	bonus/exec/ray.c				\
+	bonus/exec/ray_color.c			\
+	bonus/exec/cylinder_utils.c			\
+	bonus/main.c
+
 INC =	inc/				\
 
 HEADER = ./inc/define.h	\
@@ -79,18 +126,31 @@ MLX_EX		=	$(MLX_LIB) $(MLX_FLAG)
 
 OBJ = $(SRC:.c=.o)
 
-all : $(NAME)	
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
-$(MLX_FILE):
-	@make -sC $(MLX_PATH)
 
-$(NAME): $(OBJ) $(HEADER)
+all : mandatory	
+
+mandatory : clean_b $(OBJ) $(HEADER)
 	@$(CC) -g $(CFLAGS) $(OBJ) -lm -I $(INC)  $(MLX_EX) -o $(NAME)
 
-clean:
-	@/bin/rm -f $(OBJ)
+bonus: clean_m $(OBJ_BONUS) $(HEADER)
+	@$(CC) -g $(CFLAGS) $(OBJ_BONUS) -lm -I $(INC)  $(MLX_EX) -o $(BONUS)
 
-fclean: clean
-	@/bin/rm -f $(NAME)
+clean_m : 
+	/bin/rm -f $(OBJ)
+
+fclean_m : clean_m
+	/bin/rm -f $(NAME)
+
+clean_b : 
+	/bin/rm -f $(OBJ_BONUS)
+
+fclean_b : clean_m
+	/bin/rm -f $(BONUS)
+
+clean: clean_m clean_b
+
+fclean: fclean_m fclean_b
 
 re : fclean all
