@@ -141,9 +141,9 @@ int parse_scientific(void)
       }
       if (split[i][j])
       {
-        write(scient, "0.00000000 ", 11);
+        write(scient, "0.00000000", 11);
          if (!split[i + 1])
-           write(scient, "\n", 1);
+           write(scient, " ", 1);
       }
       else
       {

@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:21:05 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/15 15:29:24 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:50:48 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	ft_define_type(char **tab, t_scene *scene)
 		return (ft_fill_atmos(tab, scene, line));
 	else if (tab[0][0] == 'C' && !tab[0][1] && ft_tablen(tab) == 4)
 		return (ft_fill_camera(tab, scene, line));
-	else if (tab[0][0] == 'l' && !tab[0][1])
+	else if (tab[0][0] == 'l' && !tab[0][1] && ft_tablen(tab) == 4)
 		return (ft_fill_light(tab, scene, line));
 	else if (!ft_strncmp(tab[0], "sp", 3) && ft_tablen(tab) == 4)
 		return (ft_fill_sphere(tab, scene, line));
