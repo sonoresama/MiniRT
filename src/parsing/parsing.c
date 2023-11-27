@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:56:44 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/21 14:24:50 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/27 17:52:27 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int	parsing(t_data *data, int argc, char **argv)
 	scene = ft_calloc(sizeof(t_scene), 1);
 	if (check_file(argc, argv, scene))
 		return (ft_clear_all(scene), 1);
+	if (!scene->atmos)
+		return (ft_clear_all(scene), printf("%s", ARG_ERR), 1);
+	if (!scene->camera)
+		return (ft_clear_all(scene), printf("%s", ARG_ERR), 1);
 	if (ft_init_data(data, scene))
 		return (ft_clear_all(scene), 1);
 	if (draw_scene(data))

@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/27 14:07:13 by blerouss         ###   ########.fr        #
+#    Updated: 2023/11/27 16:09:22 by blerouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,10 +126,12 @@ OBJ = $(SRC:.c=.o)
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
-
 all : $(NAME)	
 
-$(NAME) : $(SRC) $(OBJ) $(HEADER)
+$(MLX_LIB):
+	@make -sC $(MLX_PATH)
+
+$(NAME) : $(MLX_LIB) $(SRC) $(OBJ) $(HEADER)
 	$(CC) -g $(CFLAGS) $(OBJ) -I $(INC)  $(MLX_EX) -o $(NAME)
 
 bonus:  $(SRC_BONUS) $(OBJ_BONUS) $(HEADER)
@@ -137,6 +139,7 @@ bonus:  $(SRC_BONUS) $(OBJ_BONUS) $(HEADER)
 
 clean_m : 
 	@/bin/rm -f $(OBJ)
+	@make clean -sC $(MLX_PATH)
 
 fclean_m : clean_m
 	@/bin/rm -f $(NAME)
