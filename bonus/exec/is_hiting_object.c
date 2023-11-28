@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:40:58 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/21 12:38:22 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/23 15:21:03 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,27 @@ float	is_hiting_sphere(t_ray ray, t_sphere *sphere)
 	return (fmin((-b + sqrt(d)) / (2 * a), (-b - sqrt(d)) / (2 * a)));
 }
 
+int	is_cam_on_plane(t_vect point, t_plan *plan)
+{
+	t_vect	normal;
+	t_vect	b;
+	float	d;
+
+	b = plan->start;
+	normal = ft_normalize(plan->vecteur);
+	d = normal.x * b.x + normal.y * b.y + normal.z * b.z;
+	if (normal.x * point.x + normal.y * point.y + normal.z * point.z == d)
+		return (1);
+	return (0);
+}
+
 float	is_hiting_plan(t_ray ray, t_plan *plan)
 {
 	float	p_dot;
 	float	t;
 
+	if (is_cam_on_plane(ray.origin, plan))
+		return (-1);
 	p_dot = dot(ray.direction, ft_normalize(plan->vecteur));
 	if (p_dot > 0.0001)
 		t = dot(sous_vectors(plan->start, ray.origin),

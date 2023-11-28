@@ -6,11 +6,25 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:23:18 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/09 13:52:21 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:22:49 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
+
+t_colors	send_color(t_vect diffuse, t_vect specular, t_vect a_intensity,
+		t_hit *hit_point)
+{
+	t_colors	color;
+
+	color.red = fmin(255, (DIFFUSE * diffuse.x + SPECULAR * specular.x)
+			* hit_point->color.red + a_intensity.x);
+	color.green = fmin(255, (DIFFUSE * diffuse.y + SPECULAR * specular.y)
+			* hit_point->color.green + a_intensity.y);
+	color.blue = fmin(255, (DIFFUSE * diffuse.z + SPECULAR * specular.z)
+			* hit_point->color.blue + a_intensity.z);
+	return (color);
+}
 
 t_colors	get_form_color(t_data *data, t_hit *hit_point, t_ray ray,
 	t_light *light)
@@ -34,10 +48,5 @@ t_colors	get_form_color(t_data *data, t_hit *hit_point, t_ray ray,
 						hit_point, ray, data), shadow));
 		light = light->next;
 	}
-	return (new_color(fmin(255, (DIFFUSE * diffuse.x + SPECULAR * specular.x)
-				* hit_point->color.red + a_intensity.x), fmin(255,
-				(DIFFUSE * diffuse.y + SPECULAR * specular.y)
-				* hit_point->color.green + a_intensity.y), fmin(255, (DIFFUSE
-					* diffuse.z + SPECULAR * specular.z)
-				* hit_point->color.blue + a_intensity.z)));
+	return (send_color(diffuse, specular, a_intensity, hit_point));
 }
