@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:26:35 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/08 16:31:31 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/29 14:58:33 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,4 @@ t_vect	sous_vectors(t_vect vect_a, t_vect vect_b)
 	result.y = vect_a.y - vect_b.y;
 	result.z = vect_a.z - vect_b.z;
 	return (result);
-}
-
-t_vect	mult_vect(t_vect vector, t_vect vector2)
-{
-	return ((t_vect){vector2.x * vector.x, vector2.y
-		* vector.y, vector2.z * vector.z});
 }

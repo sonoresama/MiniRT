@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:40:58 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/23 15:21:03 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/29 15:25:03 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ float	is_hiting_sphere(t_ray ray, t_sphere *sphere)
 	t_vect	oc;
 	float	d;
 
-	oc = sous_vectors(ray.origin, sphere->center);
+	oc = ray.origin.xyz - sphere->center.xyz;
 	a = dot(ray.direction, ray.direction);
 	b = 2 * dot(ray.direction, oc);
 	c = dot(oc, oc) - pow(sphere->diameter / 2, 2);
@@ -57,7 +57,7 @@ float	is_hiting_plan(t_ray ray, t_plan *plan)
 		return (-1);
 	p_dot = dot(ray.direction, ft_normalize(plan->vecteur));
 	if (p_dot > 0.0001)
-		t = dot(sous_vectors(plan->start, ray.origin),
+		t = dot(plan->start.xyz - ray.origin.xyz,
 				ft_normalize(plan->vecteur)) / p_dot;
 	else
 		t = -1;
@@ -72,8 +72,12 @@ float	inside_tr_plan(t_triangle *triangle, t_ray ray, t_plan *plan)
 	t_vect	normal;
 	float	p_dot;
 
-	u = sous_vectors(triangle->b, triangle->a);
-	v = sous_vectors(triangle->c, triangle->a);
+//	u = sous_vectors(triangle->b, triangle->a);
+//	v = sous_vectors(triangle->c, triangle->a);
+	if (triangle == NULL)
+		return (printf("NULLLLLL\n"), -1);
+	u = triangle->b.xyz - triangle->a.xyz;
+	v = triangle->c.xyz - triangle->a.xyz;
 	normal = ft_normalize(cross(u, v));
 	p_dot = dot(normal, ray.direction);
 	if (fabs(p_dot) < 0.001)

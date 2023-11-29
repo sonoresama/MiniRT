@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:41:46 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/20 18:12:16 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/29 13:22:05 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ int	light_shadow(t_data *data, t_hit *hit_point, t_vect l_direction)
 	t_ray		shadow_ray;
 
 	shadow_ray.origin = hit_point->point;
-	shadow_ray.direction = sous_vectors(hit_point->point,
-			data->scene->light->pos);
+	shadow_ray.direction = hit_point->point.xyz -
+			data->scene->light->pos.xyz;
 	shadow_ray.direction = ft_normalize(shadow_ray.direction);
 	shadow_ray.origin = intersection(shadow_ray, 0.001);
 	if (!get_form_colors_sphere(&t, data->scene->sphere,

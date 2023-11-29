@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/23 14:03:16 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/27 17:49:59 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define DEFINE_H
 
 # define ARG_ERR "Error\nNécessite une description de scène dans un \
-fichier .rt en premier argument\n" 
+fichier .rt en premier argument avec une ligne de description pour la caméra \
+et pour la lumière d'ambiance\n" 
 # define OPEN_ERR "Error\nProblème rencontré lors de l'ouverture du fichier .rt\n"
 # define MAL_ERR "Error\nEchec d'allocation mémoire\n"
 # define TYPE_ERR "Error\nProblème pendant l'analyse du fichier .rt, \

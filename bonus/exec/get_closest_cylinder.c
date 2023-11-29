@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:27:09 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/21 13:05:44 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/29 13:17:22 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	is_hiting_cap(t_ray ray, t_plan plan, t_cylinder *cylinder, float *t)
 	d = dot(normal, ray.direction);
 	if (d == 0)
 		return (0);
-	*t = dot(sous_vectors(plan.start, ray.origin), normal) / d;
+	*t = dot(plan.start.xyz - ray.origin.xyz, normal) / d;
 	point = intersection(ray, *t);
-	if (ft_norm(sous_vectors(point, plan.start)) <= cylinder->diameter / 2)
+	if (ft_norm(point.xyz - plan.start.xyz) <= cylinder->diameter / 2)
 		return (1);
 	return (0);
 }
@@ -41,8 +41,8 @@ float	is_hiting_core(t_ray ray, t_cylinder *cylinder)
 	t_vect	v;
 
 	u = cross(cross(cylinder->vecteur, ray.direction), cylinder->vecteur);
-	v = cross(cross(cylinder->vecteur, sous_vectors(ray.origin,
-					cylinder->center)), cylinder->vecteur);
+	v = cross(cross(cylinder->vecteur, ray.origin.xyz - cylinder->center.xyz),
+			cylinder->vecteur);
 	r[0] = dot(u, u);
 	r[1] = 2 * dot(u, v);
 	r[2] = dot(v, v) - pow(cylinder->diameter / 2, 2);

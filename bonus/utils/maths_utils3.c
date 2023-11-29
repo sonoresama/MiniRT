@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:28:07 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/08 16:31:19 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/29 13:23:55 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@ t_vect	mult(t_vect vector, double c)
 
 double	dot(t_vect a, t_vect b)
 {
-	double	result;
-
-	result = a.x * b.x + a.y * b.y + a.z * b.z;
-	return (result);
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
 t_vect	cross(t_vect a, t_vect b)
 {
-	t_vect	result;
-
-	result.x = a.y * b.z - a.z * b.y;
-	result.y = a.z * b.x - a.x * b.z;
-	result.z = a.x * b.y - a.y * b.x;
-	return (result);
+	return (a.yzx * b.zxy - a.zxy * b.yzx);
 }
+//t_vect	cross(t_vect a, t_vect b)
+//{
+//	t_vect	result;
+//
+//	result.x = a.y * b.z - a.z * b.y;
+//	result.y = a.z * b.x - a.x * b.z;
+//	result.z = a.x * b.y - a.y * b.x;
+//	return (result);
+//}
 
 t_vect	mult_mat_vect(float mat[4][4], t_vect vector)
 {

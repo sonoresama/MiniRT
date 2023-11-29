@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:40:58 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/23 15:19:48 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/29 13:13:04 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ float	is_hiting_sphere(t_ray ray, t_sphere *sphere)
 	t_vect	oc;
 	float	d;
 
-	oc = sous_vectors(ray.origin, sphere->center);
+	oc = ray.origin.xyz - sphere->center.xyz;
 	a = dot(ray.direction, ray.direction);
 	b = 2 * dot(ray.direction, oc);
 	c = dot(oc, oc) - pow(sphere->diameter / 2, 2);
@@ -53,7 +53,7 @@ float	is_hiting_plan(t_ray ray, t_plan *plan)
 		return (-1);
 	p_dot = dot(ray.direction, ft_normalize(plan->vecteur));
 	if (p_dot > 0.0001)
-		t = dot(sous_vectors(plan->start, ray.origin),
+		t = dot(plan->start.xyz - ray.origin.xyz,
 				ft_normalize(plan->vecteur)) / p_dot;
 	else
 		t = -1;

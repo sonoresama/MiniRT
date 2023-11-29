@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:19:22 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/21 13:04:11 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/29 13:24:30 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 
 t_vect	new_vector(float x, float y, float z)
 {
-	t_vect	vect;
-
-	vect.x = x;
-	vect.y = y;
-	vect.z = z;
-	return (vect);
+	return ((t_vect){x, y, z});
 }
 
 void	print_vect(t_vect vect)

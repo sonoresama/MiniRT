@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:33:11 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/21 12:10:43 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/29 15:26:24 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int	inside_test(t_vect point, t_triangle *triangle, t_vect normal)
 	t_vect	edge_c;
 	t_vect	c;
 
-	edge_a = sous_vectors(triangle->b, triangle->a);
-	edge_b = sous_vectors(triangle->c, triangle->b);
-	edge_c = sous_vectors(triangle->a, triangle->c);
-	c = sous_vectors(point, triangle->a);
+	edge_a = triangle->b.xyz - triangle->a.xyz;
+	edge_b = triangle->c.xyz - triangle->b.xyz;
+	edge_c = triangle->a.xyz - triangle->c.xyz;
+	c = point.xyz - triangle->a.xyz;
 	if (dot(normal, cross(edge_a, c)) < 0)
 		return (0);
-	c = sous_vectors(point, triangle->b);
+	c = point.xyz - triangle->b.xyz;
 	if (dot(normal, cross(edge_b, c)) < 0)
 		return (0);
-	c = sous_vectors(point, triangle->c);
+	c = point.xyz - triangle->c.xyz;
 	if (dot(normal, cross(edge_c, c)) < 0)
 		return (0);
 	return (1);
@@ -58,9 +58,9 @@ void	get_closest_triangle(t_ray ray, t_triangle *triangle, t_hit *hit_point)
 {
 	t_hit	tmp;
 
-	if (!triangle)
+	if (triangle == NULL || hit_point == NULL)
 		return ;
-	while (triangle)
+	while (triangle != NULL)
 	{
 		ft_bzero(&tmp, sizeof(t_triangle));
 		if (is_hiting_triangle(ray, triangle, &tmp)

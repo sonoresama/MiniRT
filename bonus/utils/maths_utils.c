@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:32:23 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/10 16:18:35 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/29 14:56:45 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 t_vect	ft_normalize(t_vect vector)
 {
 	float	norm;
-	t_vect	vect;
+//	t_vect	vect;
 
 	norm = ft_norm(vector);
 	if (!norm)
-		return (new_vector(0, 0, 0));
-	vect.x = vector.x / norm;
-	vect.y = vector.y / norm;
-	vect.z = vector.z / norm;
-	return (vect);
+		return ((t_vect){0,0,0});
+	return (vector.xyz / norm);
+//	vect.x = vector.x / norm;
+//	vect.y = vector.y / norm;
+//	vect.z = vector.z / norm;
+//	return (vect);
 }
 
 float	ft_norm(t_vect vect)
@@ -36,10 +37,11 @@ float	ft_norm(t_vect vect)
 
 t_vect	intersection(t_ray ray, float t)
 {
-	t_vect	point;
+//	t_vect	point;
 
-	point.x = ray.origin.x + t * ray.direction.x;
-	point.y = ray.origin.y + t * ray.direction.y;
-	point.z = ray.origin.z + t * ray.direction.z;
-	return (point);
+	return (ray.origin.xyz + t * ray.direction.xyz);
+//	point.x = ray.origin.x + t * ray.direction.x;
+//	point.y = ray.origin.y + t * ray.direction.y;
+//	point.z = ray.origin.z + t * ray.direction.z;
+//	return (point);
 }
