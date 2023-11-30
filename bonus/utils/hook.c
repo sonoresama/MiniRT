@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:34:33 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/30 14:22:27 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/30 16:42:55 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ t_system	init_system(t_camera *camera)
 
 	up = new_vector(0, 1, 0);
 	z = ft_normalize(camera->look);
-//	if (camera->look.x == 0 && camera->look.z == 0 && camera->look.y > 0)
-//		u = new_vector(0, 0, 1);
-//	else if (camera->look.x == 0 && camera->look.z == 0 && camera->look.y < 0)
-//		u = new_vector(0, 0, -1);
 	x = cross(up, z);
 	y = cross(z, x);
 	return ((t_system){x, y, z});
@@ -96,6 +92,11 @@ int	handle_keys(int keycode, t_data *data)
 			free(tmp->gc), free(data->win), 1);
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->mlx_img.img, 0, 0);
+//	printf("Camera position : ");
+//	print_vect(data->scene->camera->pos);
+//	printf("Camera direction : ");
+//	print_vect(data->scene->camera->look);
+//	printf("\n");
 	return (0);
 }
 
