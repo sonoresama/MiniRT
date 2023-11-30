@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:27:09 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/29 13:01:53 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/30 17:37:10 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ float	is_hiting_core(t_ray ray, t_cylinder *cylinder)
 		return (t[0]);
 }
 
+// avant modification : if t != -1 au lieu de if t < 0
 float	is_hiting_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *hit)
 {
 	t_plan	pl_up;
@@ -75,7 +76,7 @@ float	is_hiting_cylinder(t_ray ray, t_cylinder *cylinder, t_hit *hit)
 		set_hit_cy(new_vector(t, BOT, 0), cylinder, hit, ray);
 	t = is_hiting_core(ray, cylinder);
 	point = intersection(ray, t);
-	if (t != -1
+	if (t > 0
 		&& pow(ft_norm(sous_vectors(point, cylinder->center)), 2)
 		<= pow(cylinder->height / 2, 2) + pow(cylinder->diameter / 2, 2)
 		&& (hit->time == 0 || t < hit->time))

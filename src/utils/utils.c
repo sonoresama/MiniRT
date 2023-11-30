@@ -14,13 +14,7 @@
 
 t_vect	new_vector(float x, float y, float z)
 {
-//	t_vect	vect;
-
 	return ((t_vect){x, y, z});
-//	vect.x = x;
-//	vect.y = y;
-//	vect.z = z;
-//	return (vect);
 }
 
 void	print_vect(t_vect vect)

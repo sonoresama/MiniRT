@@ -104,8 +104,8 @@ int	light_shadow(t_data *data, t_hit *hit_point, t_vect l_direction)
 	t_ray		shadow_ray;
 
 	shadow_ray.origin = hit_point->point;
-	shadow_ray.direction = hit_point->point.xyz -
-			data->scene->light->pos.xyz;
+	shadow_ray.direction = hit_point->point.xyz
+		- data->scene->light->pos.xyz;
 	shadow_ray.direction = ft_normalize(shadow_ray.direction);
 	shadow_ray.origin = intersection(shadow_ray, 0.001);
 	if (!get_form_colors_sphere(&t, data->scene->sphere,
