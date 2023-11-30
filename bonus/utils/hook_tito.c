@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   hook_tito.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 15:34:33 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/30 19:51:13 by eorer            ###   ########.fr       */
+/*   Created: 2023/11/30 19:54:16 by eorer             #+#    #+#             */
+/*   Updated: 2023/11/30 19:56:27 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,6 @@
 #define DOWN 13
 #define FRONT 14
 #define BACK 15
-
-typedef struct s_system{
-	t_vect	x;
-	t_vect	y;
-	t_vect	z;
-}	t_system;
-
-t_system	init_system(t_camera *camera)
-{
-	t_vect up;
-	t_vect	x;
-	t_vect	y;
-	t_vect	z;
-
-	up = new_vector(0, 1, 0);
-	z = ft_normalize(camera->look);
-	x = cross(up, z);
-	y = cross(z, x);
-	return ((t_system){x, y, z});
-}
 
 int	ft_translate(t_system system, t_data *data, int keycode)
 {

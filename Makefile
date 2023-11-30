@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/30 15:39:05 by eorer            ###   ########.fr        #
+#    Updated: 2023/11/30 19:56:51 by eorer            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ BONUS = miniRT_bonus
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=leak
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=leak
 
 SRC = 	src/parsing/check_file.c			\
 		src/parsing/ft_clear_all.c			\
@@ -90,9 +90,10 @@ SRC_BONUS = bonus/parsing/check_file.c			\
 			bonus/utils/maths_utils.c 			\
 			bonus/utils/maths_utils2.c 			\
 			bonus/utils/maths_utils3.c 			\
+			bonus/utils/maths_utils4.c 			\
 			bonus/utils/mlx_utilities.c			\
 			bonus/utils/normal_vector.c			\
-			bonus/utils/hook.c			\
+			bonus/utils/hook_tito.c			\
 			bonus/exec/draw_scene.c				\
 			bonus/exec/sphere.c					\
 			bonus/exec/get_closest_plan.c		\
