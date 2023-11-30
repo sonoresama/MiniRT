@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:40:58 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/29 15:25:03 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/30 14:35:04 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,6 @@ float	inside_tr_plan(t_triangle *triangle, t_ray ray, t_plan *plan)
 	t_vect	normal;
 	float	p_dot;
 
-//	u = sous_vectors(triangle->b, triangle->a);
-//	v = sous_vectors(triangle->c, triangle->a);
-	if (triangle == NULL)
-		return (printf("NULLLLLL\n"), -1);
 	u = triangle->b.xyz - triangle->a.xyz;
 	v = triangle->c.xyz - triangle->a.xyz;
 	normal = ft_normalize(cross(u, v));

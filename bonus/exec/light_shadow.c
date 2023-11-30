@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:41:46 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/29 13:22:05 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/29 16:22:20 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	get_form_colors_triangle(t_triangle *triangle, t_hit *hit_point,
 
 	while (triangle)
 	{
-		ft_bzero(&tmp, sizeof(t_triangle));
+		ft_bzero(&tmp, sizeof(t_hit));
 		if (triangle == hit_point->obj)
 		{
 			triangle = triangle->next;

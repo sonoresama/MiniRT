@@ -6,22 +6,11 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/21 15:17:00 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/30 14:14:07 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
-int	keypress(int keycode, t_data *data)
-{
-	if (keycode == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx, data->win);
-		data->win = NULL;
-		return (0);
-	}
-	return (0);
-}
 
 int	handle_client_message(t_data *data)
 {
@@ -29,6 +18,17 @@ int	handle_client_message(t_data *data)
 	data->win = NULL;
 	return (0);
 }
+
+//int	keypress(int keycode, t_data *data)
+//{
+//	if (keycode == XK_Escape)
+//	{
+//		mlx_destroy_window(data->mlx, data->win);
+//		data->win = NULL;
+//		return (0);
+//	}
+//	return (0);
+//}
 
 int	render(void *ptr)
 {

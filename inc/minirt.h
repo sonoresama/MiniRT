@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/21 15:19:26 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/30 14:17:48 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int			init_color(int t, int r, int g, int b);
 t_ui		mlx_get_pixel(t_imgs *img, int x, int y);
 void		my_mlx_pixel_put(t_imgs *img, int x, int y, int color);
 void		init_img(t_imgs *img, void **mlx, int x, int y);
+int	keypress(int keycode, t_data *data);
 
 void		ft_bzero(void *s, size_t n);
 #endif

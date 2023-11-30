@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/27 17:49:59 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:54:06 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ plusieurs fois\n"
 # define MALLOC_ERR 100
 # define SPECULAR 0.003
 # define DIFFUSE  0.997
-# define N 40
+# define N 50
 # define TOP 1.0
 # define BOT 2.0
 # define CORE 3.0
