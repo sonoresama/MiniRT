@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:28:18 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/30 14:49:29 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:37:06 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	get_closest_plan(t_ray ray, t_plan *plan, t_hit *first_hit_point)
 	while (plan)
 	{
 		t = is_hiting_plan(ray, plan);
-		if (t >= 0)
+		if (t > 0)
 		{
 			if (!first_hit_point->time
 				|| (t > 0.01 && t < first_hit_point->time))

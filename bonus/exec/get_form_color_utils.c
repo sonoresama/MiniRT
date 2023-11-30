@@ -30,12 +30,6 @@ t_vect	ft_diffuse(t_light *light, t_vect l_direction,
 	t_vect	result;
 
 	intensity = ft_light_intensity(light, ft_norm(l_direction));
-//	intensity.x = (light->ratio * light->colors.red)
-//		/ (4 * M_PI * ft_norm(l_direction));
-//	intensity.y = (light->ratio * light->colors.green)
-//		/ (4 * M_PI * ft_norm(l_direction));
-//	intensity.z = (light->ratio * light->colors.blue)
-//		/ (4 * M_PI * ft_norm(l_direction));
 	result = mult(intensity, data->scene->albedo / M_PI
 			* fmax(0.0, dot(hit_point->normal, l_direction)));
 	return (result);
@@ -43,16 +37,10 @@ t_vect	ft_diffuse(t_light *light, t_vect l_direction,
 
 t_vect	ft_light_intensity(t_light *light, float distance)
 {
-//	t_vect	intensity;
-
 	return ((t_vect)
-			{(light->ratio * light->colors.red) / (4 * M_PI * distance),
-		    (light->ratio * light->colors.green) / (4 * M_PI * distance),
+		{(light->ratio * light->colors.red) / (4 * M_PI * distance),
+			(light->ratio * light->colors.green) / (4 * M_PI * distance),
 			(light->ratio * light->colors.blue) / (4 * M_PI * distance)});
-//	intensity.x = (light->ratio * light->colors.red) / (4 * M_PI * distance);
-//	intensity.y = (light->ratio * light->colors.green) / (4 * M_PI * distance);
-//	intensity.z = (light->ratio * light->colors.blue) / (4 * M_PI * distance);
-//	return (intensity);
 }
 
 t_vect	ft_specular(t_vect l_direction, t_hit *hit_point,
@@ -65,9 +53,8 @@ t_vect	ft_specular(t_vect l_direction, t_hit *hit_point,
 
 	l_ratio = ft_light_intensity(data->scene->light, ft_norm(l_direction));
 	l_direction = ft_normalize(l_direction);
-	reflect = (hit_point->normal.xyz * 2 * dot(l_direction, hit_point->normal)) - l_direction.xyz;
-//	reflect = sous_vectors(mult(hit_point->normal, 2
-//				* dot(l_direction, hit_point->normal)), l_direction);
+	reflect = (hit_point->normal.xyz
+			* 2 * dot(l_direction, hit_point->normal)) - l_direction.xyz;
 	prod = dot(ft_normalize(reflect), ray.direction.xyz * -1);
 	if (prod < 0)
 		return (new_vector(0, 0, 0));

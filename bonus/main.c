@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/30 14:14:07 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/30 17:25:03 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,42 @@ int	handle_client_message(t_data *data)
 	return (0);
 }
 
-//int	keypress(int keycode, t_data *data)
-//{
-//	if (keycode == XK_Escape)
-//	{
-//		mlx_destroy_window(data->mlx, data->win);
-//		data->win = NULL;
-//		return (0);
-//	}
-//	return (0);
-//}
-
 int	render(void *ptr)
 {
 	(void)ptr;
 	return (0);
+}
+
+void	print_exit(void)
+{
+	printf("--------- THANK YOU FOR USING ----------\n");
+	printf("---------       MINI RT       ----------\n");
+}
+
+void	print_manual(void)
+{
+	printf("----------------------------------------\n");
+	printf("-                                      -\n");
+	printf("--------- WELCOME TO MINI RT -----------\n");
+	printf("-                                      -\n");
+	printf("-            * MOVEMENTS *             -\n");
+	printf("-                                      -\n");
+	printf("- Press UP arrow to move forward       -\n");
+	printf("- Press DOWN arrow to move backward    -\n");
+	printf("- Press LEFT arrow to move left        -\n");
+	printf("- Press RIGHT arrow to move right      -\n");
+	printf("- Press o to move up                   -\n");
+	printf("- Press l to move down                 -\n");
+	printf("-                                      -\n");
+	printf("-             * ROTATION *             -\n");
+	printf("-                                      -\n");
+	printf("- Press x to look left                 -\n");
+	printf("- Press x to look right                -\n");
+	printf("- Press x to look up                   -\n");
+	printf("- Press x to look down                 -\n");
+	printf("-                                      -\n");
+	printf("----------------------------------------\n");
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -42,7 +63,7 @@ int	main(int argc, char **argv)
 
 	if (parsing(&data, argc, argv))
 		return (1);
-	printf("Done\n");
+	print_manual();
 	mlx_put_image_to_window(data.mlx, data.win, data.mlx_img.img, 0, 0);
 	mlx_loop_hook(data.mlx, &render, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, &keypress, &data);
@@ -53,5 +74,6 @@ int	main(int argc, char **argv)
 	mlx_destroy_display(data.mlx);
 	free(data.mlx);
 	ft_clear_all(data.scene);
+	print_exit();
 	return (0);
 }

@@ -15,16 +15,11 @@
 t_vect	ft_normalize(t_vect vector)
 {
 	float	norm;
-//	t_vect	vect;
 
 	norm = ft_norm(vector);
 	if (!norm)
-		return ((t_vect){0,0,0});
+		return ((t_vect){0, 0, 0});
 	return (vector.xyz / norm);
-//	vect.x = vector.x / norm;
-//	vect.y = vector.y / norm;
-//	vect.z = vector.z / norm;
-//	return (vect);
 }
 
 float	ft_norm(t_vect vect)
@@ -37,11 +32,5 @@ float	ft_norm(t_vect vect)
 
 t_vect	intersection(t_ray ray, float t)
 {
-//	t_vect	point;
-
 	return (ray.origin.xyz + t * ray.direction.xyz);
-//	point.x = ray.origin.x + t * ray.direction.x;
-//	point.y = ray.origin.y + t * ray.direction.y;
-//	point.z = ray.origin.z + t * ray.direction.z;
-//	return (point);
 }

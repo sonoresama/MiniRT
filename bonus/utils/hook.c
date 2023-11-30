@@ -7,7 +7,7 @@ clang -Wall -Wextra -Werror -g    -c -o ****************************************
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:34:33 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/30 14:22:27 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/30 16:42:55 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,11 @@ int	handle_keys(int keycode, t_data *data)
 			free(tmp->gc), free(data->win), 1);
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->mlx_img.img, 0, 0);
+//	printf("Camera position : ");
+//	print_vect(data->scene->camera->pos);
+//	printf("Camera direction : ");
+//	print_vect(data->scene->camera->look);
+//	printf("\n");
 	return (0);
 }
 
