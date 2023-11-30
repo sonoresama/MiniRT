@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:46:03 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/07 17:37:27 by bastien          ###   ########.fr       */
+/*   Updated: 2023/11/30 19:03:40 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init_matrix(float matrix[4][4])
 	matrix[3][3] = 1;
 }
 
-static void	ft_calc_matrix_cam(t_camera *camera)
+void	ft_calc_matrix_cam(t_camera *camera)
 {
 	t_vect	forward;
 	t_vect	right;

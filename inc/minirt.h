@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/30 14:17:48 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/30 19:04:17 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ t_vect		ft_diffuse(t_light *light, t_vect l_direction, t_hit *hit_point,
 				t_data *data);
 t_vect		ft_specular(t_vect l_direction, t_hit *hit_point, t_ray ray,
 				t_data *data);
+void	ft_calc_matrix_cam(t_camera *camera);
 
 	/*Ray*/
 t_ray		new_ray(t_vect origin, t_vect direction);
