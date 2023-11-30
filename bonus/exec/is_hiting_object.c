@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:40:58 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/30 14:35:04 by eorer            ###   ########.fr       */
+/*   Updated: 2023/11/30 16:17:33 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,21 @@ int	is_cam_on_plane(t_vect point, t_plan *plan)
 
 float	is_hiting_plan(t_ray ray, t_plan *plan)
 {
-	float	p_dot;
+//	float	p_dot;
 	float	t;
 
 	if (is_cam_on_plane(ray.origin, plan))
 		return (-1);
-	p_dot = dot(ray.direction, ft_normalize(plan->vecteur));
-	if (p_dot > 0.0001)
-		t = dot(plan->start.xyz - ray.origin.xyz,
-				ft_normalize(plan->vecteur)) / p_dot;
+	if (dot(ray.direction, plan->vecteur) != 0)
+	{
+ 	   t = -dot(ray.origin.xyz - plan->start.xyz, plan->vecteur) / dot(ray.direction, plan->vecteur);
+ 	   if (dot(ray.direction, plan->vecteur) > 0 || dot(ray.direction, plan->vecteur.xyz * -1) > 0) 
+		   return (t);
+	}
+//	p_dot = dot(ray.direction, ft_normalize(plan->vecteur));
+//	if (p_dot > 0.0001)
+//		t = dot(plan->start.xyz - ray.origin.xyz,
+//				ft_normalize(plan->vecteur)) / p_dot;
 	else
 		t = -1;
 	return (t);

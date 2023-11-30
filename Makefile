@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/30 14:40:46 by eorer            ###   ########.fr        #
+#    Updated: 2023/11/30 15:39:05 by eorer            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = miniRT
 
 BONUS = miniRT_bonus
 
-CC = clang
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=leak
 
