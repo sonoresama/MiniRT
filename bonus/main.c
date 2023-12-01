@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/12/01 14:28:47 by eorer            ###   ########.fr       */
+/*   Updated: 2023/12/01 14:33:14 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	print_manual(void)
 	printf("- Press DOWN arrow to move backward    -\n");
 	printf("- Press LEFT arrow to move left        -\n");
 	printf("- Press RIGHT arrow to move right      -\n");
-	printf("- Press o to move up                   -\n");
-	printf("- Press l to move down                 -\n");
+	printf("- Press w to move up                   -\n");
+	printf("- Press s to move down                 -\n");
 	printf("-                                      -\n");
 	printf("-             * ROTATION *             -\n");
 	printf("-                                      -\n");

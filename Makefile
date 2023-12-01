@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/12/01 13:46:45 by eorer            ###   ########.fr        #
+#    Updated: 2023/12/01 14:33:00 by eorer            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ SRC_BONUS = bonus/parsing/check_file.c			\
 			bonus/utils/maths_utils2.c 			\
 			bonus/utils/maths_utils3.c 			\
 			bonus/utils/maths_utils4.c 			\
+			bonus/utils/maths_utils5.c 			\
 			bonus/utils/mlx_utilities.c			\
 			bonus/utils/normal_vector.c			\
 			bonus/utils/hook_tito.c			\

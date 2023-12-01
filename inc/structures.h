@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:59:22 by bastien           #+#    #+#             */
-/*   Updated: 2023/12/01 13:47:23 by eorer            ###   ########.fr       */
+/*   Updated: 2023/12/01 14:38:37 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,7 @@ typedef struct s_pixel{
 	int	y;
 }	t_pixel;
 
-//typedef struct s_vect{
-//	float	x;
-//	float	y;
-//	float	z;
-//}	t_vect;
-
-typedef float	t_vect	__attribute__((ext_vector_type(3)));
+typedef float			t_vect	__attribute__((ext_vector_type(3)));
 
 typedef struct s_system{
 	t_vect	x;

@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:42:32 by eorer             #+#    #+#             */
-/*   Updated: 2023/12/01 14:30:37 by eorer            ###   ########.fr       */
+/*   Updated: 2023/12/01 14:36:58 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,32 @@ t_system	init_system(t_camera *camera)
 	x = ft_normalize(cross(up, z));
 	y = ft_normalize(cross(z, x));
 	return ((t_system){x, y, z});
+}
+
+static void	ft_calc_matrix_cam(t_camera *camera)
+{
+	t_vect	forward;
+	t_vect	right;
+	t_vect	up;
+	t_vect	tmp;
+
+	tmp = new_vector(0, 1, 0);
+	if (camera->look.x == 0 && camera->look.z == 0 && camera->look.y > 0)
+		tmp = new_vector(0, 0, 1);
+	else if (camera->look.x == 0 && camera->look.z == 0 && camera->look.y < 0)
+		tmp = new_vector(0, 0, -1);
+	forward = ft_normalize(camera->look);
+	right = cross(tmp, forward);
+	up = cross(forward, right);
+	camera->matrix[0][0] = right.x;
+	camera->matrix[0][1] = right.y;
+	camera->matrix[0][2] = right.z;
+	camera->matrix[1][0] = up.x;
+	camera->matrix[1][1] = up.y;
+	camera->matrix[1][2] = up.z;
+	camera->matrix[2][0] = forward.x;
+	camera->matrix[2][1] = forward.y;
+	camera->matrix[2][2] = forward.z;
 }
 
 void	init_rot_matrix(float matrix[3][3], t_vect u, float angle)
