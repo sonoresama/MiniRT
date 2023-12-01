@@ -6,7 +6,7 @@
 /*   By: eorer <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:37:41 by eorer             #+#    #+#             */
-/*   Updated: 2023/11/30 17:25:03 by eorer            ###   ########.fr       */
+/*   Updated: 2023/12/01 13:29:22 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,13 @@ void	print_manual(void)
 	printf("- Press DOWN arrow to move backward    -\n");
 	printf("- Press LEFT arrow to move left        -\n");
 	printf("- Press RIGHT arrow to move right      -\n");
-	printf("- Press o to move up                   -\n");
-	printf("- Press l to move down                 -\n");
+	printf("- Press w to move up                   -\n");
+	printf("- Press s to move down                 -\n");
 	printf("-                                      -\n");
 	printf("-             * ROTATION *             -\n");
 	printf("-                                      -\n");
-	printf("- Press x to look left                 -\n");
-	printf("- Press x to look right                -\n");
-	printf("- Press x to look up                   -\n");
-	printf("- Press x to look down                 -\n");
+	printf("- Press a to look left                 -\n");
+	printf("- Press d to look right                -\n");
 	printf("-                                      -\n");
 	printf("----------------------------------------\n");
 	printf("\n");
@@ -66,7 +64,7 @@ int	main(int argc, char **argv)
 	print_manual();
 	mlx_put_image_to_window(data.mlx, data.win, data.mlx_img.img, 0, 0);
 	mlx_loop_hook(data.mlx, &render, &data);
-	mlx_hook(data.win, KeyPress, KeyPressMask, &keypress, &data);
+	mlx_hook(data.win, KeyRelease, KeyReleaseMask, &keypress, &data);
 	mlx_hook(data.win, ClientMessage, StructureNotifyMask,
 		&handle_client_message, &data);
 	mlx_loop(data.mlx);
