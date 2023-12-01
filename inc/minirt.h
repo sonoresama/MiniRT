@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/12/01 11:40:31 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:53:25 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,9 @@ t_vect		mult_mat_vect_l(t_vect *vector, t_system system);
 t_vect		mult_mat_vect_r(t_vect *vector, t_system system);
 t_vect		mult_mat_vect_u(t_vect *vector, t_system system);
 t_vect		mult_mat_vect_d(t_vect *vector, t_system system);
+t_system	init_system(t_camera *camera);
+int			ft_translate(t_system system, t_data *data, int keycode);
+t_vect		mat_rotate(float matrix[3][3], t_vect u);
 
 // FONCTIONS MLX //
 
@@ -132,7 +135,6 @@ int			init_color(int t, int r, int g, int b);
 t_ui		mlx_get_pixel(t_imgs *img, int x, int y);
 void		my_mlx_pixel_put(t_imgs *img, int x, int y, int color);
 void		init_img(t_imgs *img, void **mlx, int x, int y);
-int	keypress(int keycode, t_data *data);
-
+int			keypress(int keycode, t_data *data);
 void		ft_bzero(void *s, size_t n);
 #endif
