@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:23:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/12/01 13:45:18 by eorer            ###   ########.fr       */
+/*   Updated: 2023/12/01 14:42:49 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,12 @@ plusieurs fois\n"
 # define TOP 1.0
 # define BOT 2.0
 # define CORE 3.0
-#define LEFT 10
-#define RIGHT 11
-#define UP 12
-#define DOWN 13
-#define FRONT 14
-#define BACK 15
-
+# define LEFT 10
+# define RIGHT 11
+# define UP 12
+# define DOWN 13
+# define FRONT 14
+# define BACK 15
 
 // COLOR PRINT //
 

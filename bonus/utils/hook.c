@@ -53,7 +53,7 @@ int	ft_translate(t_system system, t_data *data, int keycode)
 	else if (keycode == XK_l)
 		data->scene->camera->pos.y -= 1;
 	else
-		return(0);
+		return (0);
 	return (1);
 }
 
