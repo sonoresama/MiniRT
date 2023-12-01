@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:31:49 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/10 15:50:12 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/12/01 18:39:55 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,18 @@ int	ft_fill_cylinder(char **tab, t_scene *scene, int line)
 
 	tmp = ft_calloc(sizeof(t_cylinder), 1);
 	if (!tmp)
-		return (printf("%s", MAL_ERR), 1);
+		return (printf("%s", MAL_ERR), free(tmp), 1);
 	if (ft_fill_vector(tab[1], &tmp->center, line))
-		return (printf("%s%i\n", POS_ERR, line), 1);
+		return (printf("%s%i\n", POS_ERR, line), free(tmp), 1);
 	if (ft_fill_vector(tab[2], &tmp->vecteur, line)
 		|| tmp->vecteur.x > 1 || tmp->vecteur.x < -1
 		|| tmp->vecteur.y > 1 || tmp->vecteur.y < -1
 		|| tmp->vecteur.z > 1 || tmp->vecteur.z < -1)
-		return (printf("%s%i\n", VEC_ERR, line), 1);
+		return (printf("%s%i\n", VEC_ERR, line), free(tmp), 1);
 	if (ft_atod(tab[3], &tmp->diameter) || tmp->diameter <= 0)
-		return (printf("%s%i\n", DIA_ERR, line), 1);
+		return (printf("%s%i\n", DIA_ERR, line), free(tmp), 1);
 	if (ft_atod(tab[4], &tmp->height) || tmp->height <= 0)
-		return (printf("%s%i\n", HEI_ERR, line), 1);
+		return (printf("%s%i\n", HEI_ERR, line), free(tmp), 1);
 	if (ft_fill_colors(tab[5], tmp, line))
 		return (1);
 	tmp->vecteur = ft_normalize(tmp->vecteur);

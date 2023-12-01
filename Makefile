@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/12/01 14:43:51 by eorer            ###   ########.fr        #
+#    Updated: 2023/12/01 15:42:45 by blerouss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,8 +90,6 @@ SRC_BONUS = bonus/parsing/check_file.c			\
 			bonus/utils/maths_utils.c 			\
 			bonus/utils/maths_utils2.c 			\
 			bonus/utils/maths_utils3.c 			\
-			bonus/utils/maths_utils4.c 			\
-			bonus/utils/maths_utils5.c 			\
 			bonus/utils/mlx_utilities.c			\
 			bonus/utils/normal_vector.c			\
 			bonus/utils/hook.c					\
@@ -142,12 +140,14 @@ bonus:  $(MLX_LIB) $(SRC_BONUS) $(OBJ_BONUS) $(HEADER)
 	$(CC) -g $(CFLAGS) $(OBJ_BONUS) -I $(INC)  $(MLX_EX) -o $(BONUS)
 
 clean_m : 
+	@make clean -sC $(MLX_PATH)
 	@/bin/rm -f $(OBJ)
 
 fclean_m : clean_m
 	@/bin/rm -f $(NAME)
 
 clean_b : 
+	@make clean -sC $(MLX_PATH)
 	@/bin/rm -f $(OBJ_BONUS)
 
 fclean_b : clean_b
