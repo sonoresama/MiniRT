@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/30 19:53:24 by eorer            ###   ########.fr       */
+/*   Updated: 2023/12/01 13:45:35 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,10 @@ t_vect		cross(t_vect a, t_vect b);
 double		rad(double angle);
 t_vect		new_vector(float x, float y, float z);
 void		print_vect(t_vect vect);
+
+t_system	init_system(t_camera *camera);
+void	init_rot_matrix(float matrix[3][3], t_vect u, float angle);
+t_vect	mat_rotate(float matrix[3][3], t_vect u);
 t_vect		mult_mat_vect_l(t_vect *vector, t_system system);
 t_vect		mult_mat_vect_r(t_vect *vector, t_system system);
 t_vect		mult_mat_vect_u(t_vect *vector, t_system system);

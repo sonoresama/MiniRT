@@ -6,7 +6,7 @@
 #    By: blerouss <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 15:06:04 by blerouss          #+#    #+#              #
-#    Updated: 2023/11/30 19:56:51 by eorer            ###   ########.fr        #
+#    Updated: 2023/12/01 13:46:45 by eorer            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ SRC_BONUS = bonus/parsing/check_file.c			\
 			bonus/utils/mlx_utilities.c			\
 			bonus/utils/normal_vector.c			\
 			bonus/utils/hook_tito.c			\
+			bonus/utils/hook_utils.c			\
 			bonus/exec/draw_scene.c				\
 			bonus/exec/sphere.c					\
 			bonus/exec/get_closest_plan.c		\

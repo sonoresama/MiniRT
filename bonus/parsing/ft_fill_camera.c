@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:46:03 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/30 19:53:08 by eorer            ###   ########.fr       */
+/*   Updated: 2023/12/01 13:41:53 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	ft_calc_matrix_cam(t_camera *camera)
 		tmp = new_vector(0, 0, 1);
 	else if (camera->look.x == 0 && camera->look.z == 0 && camera->look.y < 0)
 		tmp = new_vector(0, 0, -1);
-	camera->look.y = -camera->look.y;
-	camera->look.x = -camera->look.x;
+//	camera->look.y = -camera->look.y;
+//	camera->look.x = -camera->look.x;
 	forward = ft_normalize(camera->look);
 	right = cross(tmp, forward);
 	up = cross(forward, right);

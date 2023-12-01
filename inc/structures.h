@@ -6,7 +6,7 @@
 /*   By: bastien <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:59:22 by bastien           #+#    #+#             */
-/*   Updated: 2023/11/30 18:11:21 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:47:23 by eorer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_system{
 	t_vect	y;
 	t_vect	z;
 }	t_system;
-
 
 typedef struct s_colors
 {
