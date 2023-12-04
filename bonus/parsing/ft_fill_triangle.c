@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:33:44 by blerouss          #+#    #+#             */
-/*   Updated: 2023/11/29 13:48:06 by eorer            ###   ########.fr       */
+/*   Updated: 2023/12/04 16:11:32 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ int	ft_fill_triangle(char **tab, t_scene *scene, int line)
 
 	tmp = ft_calloc(sizeof(t_triangle), 1);
 	if (!tmp)
-		return (printf("%s", MAL_ERR), 1);
+		return (printf("%s", MAL_ERR), free(tmp), 1);
 	if (ft_fill_vector(tab[1], &tmp->a, line))
-		return (printf("%s%i\n", POS_ERR, line), 1);
+		return (printf("%s%i\n", POS_ERR, line), free(tmp), 1);
 	if (ft_fill_vector(tab[2], &tmp->b, line))
-		return (printf("%s%i\n", POS_ERR, line), 1);
+		return (printf("%s%i\n", POS_ERR, line), free(tmp), 1);
 	if (ft_fill_vector(tab[3], &tmp->c, line))
-		return (printf("%s%i\n", POS_ERR, line), 1);
+		return (printf("%s%i\n", POS_ERR, line), free(tmp), 1);
 	if (ft_fill_colors(tab[4], tmp, line))
-		return (1);
+		return (free(tmp), 1);
 	ft_triangle_add_back(tmp, scene);
 	return (0);
 }
