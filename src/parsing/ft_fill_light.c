@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:17:40 by blerouss          #+#    #+#             */
-/*   Updated: 2023/12/01 18:49:43 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:07:26 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_fill_light(char **tab, t_scene *scene, int line)
 		|| tmp->colors.red < 0 || tmp->colors.red > 255
 		|| tmp->colors.green < 0 || tmp->colors.green > 255
 		|| tmp->colors.blue < 0 || tmp->colors.blue > 255)
-		return (ft_free_tab(colors), printf("%s%i\n", COL_ERR, line), 
+		return (ft_free_tab(colors), printf("%s%i\n", COL_ERR, line),
 			free(tmp), 1);
 	ft_light_add_back(tmp, scene);
 	return (ft_free_tab(colors), 0);

@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:31:01 by blerouss          #+#    #+#             */
-/*   Updated: 2023/10/19 14:07:56 by eorer            ###   ########.fr       */
+/*   Updated: 2023/12/04 14:03:12 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,10 @@ int	ft_atod(char *nptr, float *res)
 		resultat = resultat * 10 + *nptr - '0';
 		nptr++;
 	}
-	if (!*nptr || (*nptr) == '.')
-	{
-		if (ft_atod_after_separator(&nptr, (long)resultat, res) || *nptr)
-			return (1);
-	}
+	if ((*nptr && *nptr != '.' ) || ((!*nptr || (*nptr) == '.')
+			&& ft_atod_after_separator(&nptr, (long)resultat, res))
+		|| *res > 1000 || *res < -1000)
+		return (1);
 	*res = *res * neg;
 	return (0);
 }

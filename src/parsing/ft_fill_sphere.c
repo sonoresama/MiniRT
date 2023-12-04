@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:47:44 by blerouss          #+#    #+#             */
-/*   Updated: 2023/12/01 18:49:27 by blerouss         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:07:00 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ static void	ft_sphere_add_back(t_sphere *sphere, t_scene *scene)
 	}
 }
 
-int	ft_fill_sphere(char **tab, t_scene *scene, int line)
+int	ft_fill_sphere(char **tab, t_scene *scene, int l)
 {
 	char		**colors;
 	t_sphere	*tmp;
 
 	tmp = ft_calloc(sizeof(t_sphere), 1);
-	if (ft_fill_vector(tab[1], &tmp->center, line))
-		return (printf("%s%i\n", POS_ERR, line), free(tmp), 1);
+	if (ft_fill_vector(tab[1], &tmp->center, l))
+		return (printf("%s%i\n", POS_ERR, l), free(tmp), 1);
 	if (ft_atod(tab[2], &tmp->diameter) || tmp->diameter <= 0)
-		return (printf("%s%i\n", DIA_ERR, line), free(tmp), 1);
+		return (printf("%s%i\n", DIA_ERR, l), free(tmp), 1);
 	colors = ft_split(tab[3], ',');
 	if (!colors)
 		return (printf("%s", MAL_ERR), free(tmp), 1);
@@ -47,7 +47,7 @@ int	ft_fill_sphere(char **tab, t_scene *scene, int line)
 		|| tmp->colors.red < 0 || tmp->colors.red > 255
 		|| tmp->colors.green < 0 || tmp->colors.green > 255
 		|| tmp->colors.blue < 0 || tmp->colors.blue > 255)
-		return (ft_free_tab(colors), printf("%s%i\n", COL_ERR, line), free(tmp), 1);
+		return (ft_free_tab(colors), printf("%s%i\n", COL_ERR, l), free(tmp), 1);
 	ft_sphere_add_back(tmp, scene);
 	return (ft_free_tab(colors), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: blerouss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:12:14 by blerouss          #+#    #+#             */
-/*   Updated: 2023/12/01 14:38:18 by eorer            ###   ########.fr       */
+/*   Updated: 2023/12/04 14:07:49 by blerouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int			ft_fill_atmos(char **tab, t_scene *scene, int line);
 int			ft_fill_camera(char **tab, t_scene *scene, int line);
 int			ft_fill_cylinder(char **tab, t_scene *scene, int line);
 int			ft_fill_light(char **tab, t_scene *scene, int line);
-int			ft_fill_plan(char **tab, t_scene *scene, int line);
-int			ft_fill_sphere(char **tab, t_scene *scene, int line);
+int			ft_fill_plan(char **tab, t_scene *scene, int l);
+int			ft_fill_sphere(char **tab, t_scene *scene, int l);
 int			ft_fill_triangle(char **tab, t_scene *scene, int line);
 int			ft_fill_vector(char *str, t_vect *vector, int line);
 int			ft_init_data(t_data *data, t_scene *scene);
